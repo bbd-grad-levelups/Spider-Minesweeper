@@ -1,0 +1,74 @@
+html{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    height: 100%;
+    background-color: #FFF8E8;
+}
+
+body{
+
+    display: flex;
+    flex-direction: row;
+    flex:1;
+    font-family: 'poppins';
+    color: #353959;
+}
+
+section{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:1em;
+}
+
+section h1{
+    text-align:center;
+    font-size: 5vw;
+    max-width: 50%;
+}
+
+section h2{
+    text-align: center;
+    font-size: 1vw;
+    max-width: 50%;
+    border: transparent;
+}
+
+button{
+    border-radius: 10rem;
+    min-width: 30%;
+    min-height: 5%;
+    font-family: poppins;
+    border:none;
+}
+
+.new-game-button{
+    background-color: #FD7461;
+}
+
+.login-button{
+    background-color: #B59584;
+}
+
+.leaderboard-button{
+    background-color: #99B8AA;
+}
+.instructions-button{
+    background-color: #777CA4;
+}
+@media (max-width: 450px){
+    body{
+        flex-direction: column;
+    }    
+    section h1{
+        font-size: 5vh;
+
+    }
+    section h2{
+        font-size: 1vh;
+    }
+}
+
