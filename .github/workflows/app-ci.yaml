@@ -1,0 +1,29 @@
+name: Application CI
+
+on:
+  workflow_call:
+
+permissions:
+  checks: write
+  contents: read
+  id-token: write
+
+jobs:
+  api-ci:
+    name: API CI
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@main
+        with:
+          role-to-assume: ${{ secrets.AWS_ASSUME_ROLE }}
+          aws-region: eu-west-1
+          role-session-name: API_CI_GitHub_to_AWS_via_FederatedOIDC
+      
+      - name: Do Nothing
+        run: |
+          echo "Not implemented"
