@@ -23,19 +23,19 @@ jobs:
           aws-region: "eu-west-1"
           role-session-name: Database_CI_GitHub_to_AWS_via_FederatedOIDC
 
-      - name: Get DB credentials
-        uses: aws-actions/aws-secretsmanager-get-secrets@v2.0.1
-        with:
-          secret-ids: |
-            DB_DETAILS, rds*
-          parse-json-secrets: true
+      # - name: Get DB credentials
+      #   uses: aws-actions/aws-secretsmanager-get-secrets@v2.0.1
+      #   with:
+      #     secret-ids: |
+      #       DB_DETAILS, rds*
+      #     parse-json-secrets: true
 
-      - name: Fetch AWS RDS endpoint
-        run: |
-          echo "DB_ENDPOINT=$(aws rds describe-db-instances --db-instance-identifier spider-sweeper-db --query 'DBInstances[0].Endpoint.Address' --output text)" >> $GITHUB_ENV
-      - name: Do nothing yet
-        run: |
-          echo "Currently stubbed"
+      # - name: Fetch AWS RDS endpoint
+      #   run: |
+      #     echo "DB_ENDPOINT=$(aws rds describe-db-instances --db-instance-identifier spider-sweeper-db --query 'DBInstances[0].Endpoint.Address' --output text)" >> $GITHUB_ENV
+      # - name: Do nothing yet
+      #   run: |
+      #     echo "Currently stubbed"
       
       # - name: Migration Test
       #   run: |
