@@ -33,10 +33,7 @@ jobs:
       - name: Fetch AWS RDS endpoint
         run: |
           echo "DB_ENDPOINT=$(aws rds describe-db-instances --db-instance-identifier spider-sweeper-db --query 'DBInstances[0].Endpoint.Address' --output text)" >> $GITHUB_ENV
-      - name: Do nothing yet
-        run: |
-          echo "Currently stubbed"
-      
+
       - name: Migration Test
         run: |
           wget -qO- https://download.red-gate.com/maven/release/com/redgate/flyway/flyway-commandline/10.11.0/flyway-commandline-10.11.0-linux-x64.tar.gz | tar -xvz && sudo ln -s `pwd`/flyway-10.11.0/flyway /usr/local/bin
