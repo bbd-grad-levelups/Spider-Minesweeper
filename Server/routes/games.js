@@ -1,11 +1,15 @@
-// Test route
+// Games route
 
 import { Router } from 'express';
+import { pool } from '../db';
 const router = Router();
 
-// Test endpoint
+// Get all
 router.get('/', (req, res) => {
-  res.send('Hello, world!');
+
+    res.json("games endpoint");
 });
+
+
 
 export default router;

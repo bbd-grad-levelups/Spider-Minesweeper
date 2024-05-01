@@ -1,4 +1,4 @@
-const sql = require('mssql');
+import { ConnectionPool } from 'mssql';
 
 // Database configuration
 const config = {
@@ -13,7 +13,7 @@ const config = {
 };
 
 // Create a new connection pool
-const pool = new sql.ConnectionPool(config);
+const pool = new ConnectionPool(config);
 
 // Connect to the database
 pool.connect()
@@ -24,4 +24,4 @@ pool.connect()
     console.error('Error connecting to Microsoft SQL Server database:', err);
   });
 
-module.exports = { pool };
+export default { pool };

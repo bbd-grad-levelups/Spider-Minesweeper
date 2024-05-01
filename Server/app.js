@@ -2,7 +2,6 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const { pool } = require('./db');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -10,29 +9,33 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(bodyParser.json());
 
-// Test Router
-const testRouter = require('./routes/test');
-app.use('/test', testRouter);
+// OAuth Step
+const oauthMiddleware = require('./Middleware/OAuth');
+app.use(oauthMiddleware);
 
 // Actors Router
-const actorsRouter = require('./routes/Actors');
+const actorsRouter = require('./routes/Actors').default;
 app.use('/actors', actorsRouter);
 
-// Users router - Mostly for getting usernames
-const usersRouter = require('./routes/users');
-app.use('/users', usersRouter);
+// Test Router
+const testRouter = require('./routes/test').default;
+app.use('/test', testRouter);
 
 // Games router
-const gamesRouter = require('./routes/games');
+const gamesRouter = require('./routes/games').default;
 app.use('/games', gamesRouter);
+
+// Board size and difficulty router
+const modifiersRouter = require('./routes/modifiers').default;
+app.use('/modifiers', modifiersRouter);
 
 // Scores router
 const scoresRouter = require('./routes/scores');
 app.use('/scores', scoresRouter);
 
-// Board size and difficulty router
-const modifiersRouter = require('./routes/modifiers');
-app.use('/modifiers', modifiersRouter);
+// Users router - Mostly for getting usernames
+const usersRouter = require('./routes/users').default;
+app.use('/users', usersRouter);
 
 
 // Start the server
