@@ -17,12 +17,17 @@ const nav = (newPage) => {
     currenPage=newPage
     const newPageContent=pageToObject[currenPage]();
     document.body.innerHTML='';
+    newPageContent.classList.add('generalContent');
     document.body.appendChild(newPageContent);
 
-    // navigated();
+    if(newPage==="leaderboard page"){
+        document.dispatchEvent(new CustomEvent("popoulateLeaderBoard"))
+    }
 }
 
 
 nav("welcome page")
 
-
+document.addEventListener('TriggerRouting', (event) =>{
+    nav(event.detail.message);
+})

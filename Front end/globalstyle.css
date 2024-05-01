@@ -14,6 +14,7 @@ body{
     flex-direction: row;
     flex:1;
     height: 100%;
+    width: 100%;
     font-family: 'poppins';
     color: #353959;
 }

@@ -1,3 +1,4 @@
+
 main{
     display: flex;
     flex-direction: row;
@@ -5,6 +6,7 @@ main{
     height: 100%;
     font-family: 'poppins';
     color: #353959;
+    width: 100%;
 }
 
 section{

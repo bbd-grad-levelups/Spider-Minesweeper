@@ -1,0 +1,107 @@
+main{
+    display: flex;
+    flex-direction: row;
+    flex:1;
+    height: 100%;
+    font-family: 'poppins';
+    color: #353959;
+    width: 100%;
+}
+
+section{
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.right-side{
+    color: #FD7461;
+    text-align: center;
+}
+
+.left-side h1{
+    margin: 0;
+    font-size: 3em;
+}
+.stats{
+    display: flex;
+    flex-direction: row;
+    height:min-content;
+    flex:0;
+    margin: 0;
+    justify-content: center;
+}
+
+.stats h2{
+    font-size: 1em;
+    text-wrap:nowrap;
+}
+.vertical-bar{
+    margin-left: 10%;
+    margin-right: 10%;
+    height:3em;
+}
+.prestats{
+    max-height: min-content;
+    flex:0;
+    margin: 0;
+}
+
+.board{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: start;
+}
+
+.boardSection{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    text-align: left;
+    align-items:flex-start;
+    flex: 0;
+}
+.boardSection p{
+    flex:1;
+    text-align: left;
+    
+}
+
+.outer{
+
+    flex:1;
+    text-align: left;
+}
+
+.inner{
+    align-items:flex-start;
+    text-align: left;
+    flex:5
+}
+
+
+img{
+    max-width: 10rem;
+}
+
+
+.boardSectionEven{
+    background-color: #EAE6DA;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    text-align: left;
+    align-items:flex-start;
+    flex: 0;
+
+
+}
+.boardSectionEven p{
+    flex:1;
+    text-align: left;
+}
