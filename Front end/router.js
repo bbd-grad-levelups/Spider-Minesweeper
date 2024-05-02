@@ -13,16 +13,14 @@ const pageToObject={
     "leaderboard page": ()=>{return new leaderboard()},
 }
 
+
+
 const nav = (newPage) => {
     currentPage=newPage
     const newPageContent=pageToObject[currentPage]();
     document.body.innerHTML='';
     newPageContent.classList.add('generalContent');
     document.body.appendChild(newPageContent);
-
-    if(newPage==="leaderboard page"){
-        document.dispatchEvent(new CustomEvent("popoulateLeaderBoard"))
-    }
 
     const url = window.location.pathname + '?page=' + currentPage.replace(/ /g, '-');
         window.history.pushState({ page: currentPage }, "", url);
@@ -37,6 +35,11 @@ const handlePopState = (event) => {
 
 window.addEventListener('popstate', handlePopState);
 nav("welcome page")
+
+
+document.addEventListener('leaderboard-ready',()=>{
+    document.dispatchEvent(new CustomEvent("popoulateLeaderBoard"))
+})
 
 document.addEventListener('TriggerRouting', (event) =>{
     nav(event.detail.message);

@@ -39,14 +39,10 @@ section{
     font-size: 1em;
     text-wrap:nowrap;
 }
-.vertical-bar{
-    margin-left: 10%;
-    margin-right: 10%;
-    height:3em;
-}
+
 .prestats{
     max-height: min-content;
-    flex:0;
+    flex:1;
     margin: 0;
 }
 
@@ -62,8 +58,9 @@ section{
     flex-direction: row;
     width: 100%;
     text-align: left;
-    align-items:flex-start;
-    flex: 0;
+    align-items: center; /* Align items vertically in the center */
+    flex: 1;
+    justify-content: center;
 }
 .boardSection p{
     flex:1;
@@ -85,23 +82,76 @@ section{
 
 
 img{
-    max-width: 10rem;
+    max-width: 60%
 }
 
 
 .boardSectionEven{
     background-color: #EAE6DA;
-    border-radius: 10px;
+    border-radius: 1em;
     display: flex;
     flex-direction: row;
     width: 100%;
     text-align: left;
-    align-items:flex-start;
-    flex: 0;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
 
 
 }
 .boardSectionEven p{
     flex:1;
     text-align: left;
+}
+
+.right-stats{
+    display: flex;
+    flex-direction: column;
+    padding-left: 20%;
+    border-left: 1px solid #FD7461;
+}
+
+.left-stats{
+    display: flex;
+    flex-direction: column;
+    padding-right: 20%;
+    border-right: 1px solid #FD7461;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+    width: 15rem;
+}
+
+button{
+    width: 100%;
+    border-radius: 10rem;
+    font-family: 'poppins';
+    border:none;
+    cursor: pointer;
+    height: 20%;
+}
+
+.new-game-button{
+    background-color: #FD7461;
+}
+
+.instructions-button{
+    background-color: #777CA4;
+}
+
+
+@media (max-width: 600px){
+    main{
+        flex-direction: column-reverse;
+    }
+
+    img{
+        max-width: 35%;
+    }
+    .left-side h1{
+        font-size: 2em;
+    }
+
 }

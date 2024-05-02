@@ -7,7 +7,10 @@ class leaderboard extends HTMLElement {
         .then(response=>response.text())
         .then(html=>{
             this.innerHTML=html;
+            document.dispatchEvent(new CustomEvent('leaderboard-ready',{detail: leaderboard}))
         }).catch(error => console.error(error))
+
+        
     }
 }
 

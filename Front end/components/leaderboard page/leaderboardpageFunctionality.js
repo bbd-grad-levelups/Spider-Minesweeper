@@ -14,10 +14,8 @@ data = [
 
 
 const populateBoard = (event) => {
-    const board = document.getElementById("leaderboard");
-    console.log(board)
+    const board = document.getElementsByClassName("board")[0];
     data.forEach((element, index) => {
-        console.log(element)
         let section = document.createElement('section');
         let first = document.createElement('section');
         let second = document.createElement('section');
