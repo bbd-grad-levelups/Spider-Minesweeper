@@ -1,11 +1,11 @@
 // Test route
 
-import { Router } from 'express';
-const router = Router();
+const express = require('express');
+const router = express.Router();
 
 // Test endpoint
 router.get('/', (req, res) => {
   res.send('Hello, world!');
 });
 
-export default router;
+module.exports = router;

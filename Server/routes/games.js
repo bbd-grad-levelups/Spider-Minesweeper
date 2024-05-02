@@ -1,8 +1,8 @@
-// Games route
+// Games router
 
-import { Router } from 'express';
-import { pool } from '../db';
-const router = Router();
+const express = require('express');
+const { pool } = require('../db');
+const router = express.Router();
 
 const spiderNumber = {
     'easy': 2,
@@ -39,4 +39,4 @@ router.get('/', (req, res) => {
 
 
 
-export default router;
+module.exports = router;
