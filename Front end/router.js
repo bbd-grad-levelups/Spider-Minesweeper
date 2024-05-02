@@ -1,7 +1,7 @@
 import welcomePage from "./components/welcome page/welcomepage.js";
 import leaderboard from "./components/leaderboard page/leaderboard.js";
 
-let currenPage="welcome page";
+let currentPage="welcome page";
 
 const nameToFile={
     "welcome page":"./components/welcome page/",
@@ -14,8 +14,8 @@ const pageToObject={
 }
 
 const nav = (newPage) => {
-    currenPage=newPage
-    const newPageContent=pageToObject[currenPage]();
+    currentPage=newPage
+    const newPageContent=pageToObject[currentPage]();
     document.body.innerHTML='';
     newPageContent.classList.add('generalContent');
     document.body.appendChild(newPageContent);
@@ -23,9 +23,19 @@ const nav = (newPage) => {
     if(newPage==="leaderboard page"){
         document.dispatchEvent(new CustomEvent("popoulateLeaderBoard"))
     }
+
+    const url = window.location.pathname + '?page=' + currentPage.replace(/ /g, '-');
+        window.history.pushState({ page: currentPage }, "", url);
+
 }
 
 
+const handlePopState = (event) => {
+    const page = event.state ? event.state.page : "welcome page";
+    nav(page, false);
+};
+
+window.addEventListener('popstate', handlePopState);
 nav("welcome page")
 
 document.addEventListener('TriggerRouting', (event) =>{
