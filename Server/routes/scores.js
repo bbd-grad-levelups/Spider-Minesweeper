@@ -1,7 +1,7 @@
 // Scores route
 
 const express = require('express');
-const { pool } = require('../db').default;
+const { pool } = require('../db');
 const router = express.Router();
 
 // Get all

@@ -1,8 +1,8 @@
 // Actors route (testing only)
 
-import { Router } from 'express';
-import { pool } from '../db';
-const router = Router();
+const express = require('express');
+const { pool } = require('../db');
+const router = express.Router();
 
 // Get all actors
 router.get('/', (req, res) => {
@@ -45,4 +45,4 @@ router.put('/', (req, res) => {
   });
 });
 
-export default router;
+module.exports = router;

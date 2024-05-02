@@ -1,8 +1,8 @@
 // Modifiers route
 
-import { Router } from 'express';
-import { pool } from '../db';
-const router = Router();
+const express = require('express');
+const { pool } = require('../db');
+const router = express.Router();
 
 // Get all
 router.get('/', (req, res) => {
@@ -12,4 +12,4 @@ router.get('/', (req, res) => {
 
 
 
-export default router;
+module.exports = router;
