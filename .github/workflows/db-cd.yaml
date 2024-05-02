@@ -11,7 +11,6 @@ permissions:
 env:
   MIGRATION_LOCATION: SQL
   DOCKER_IMAGE: redgate/flyway
-  SCHEMAS: public
 
 jobs:
   migrate_db:
@@ -47,4 +46,4 @@ jobs:
           -url="jdbc:sqlserver://${{env.DB_ENDPOINT}}:1433;authentication=sqlPassword;databaseName=SpiderSweeperDB;encrypt=false;trustServerCertificate=true"
           -user="${{ env.DB_DETAILS_USERNAME }}"
           -password="${{ env.DB_DETAILS_PASSWORD }}" 
-          migrate -schemas="${{ env.SCHEMAS }}"
+          migrate
