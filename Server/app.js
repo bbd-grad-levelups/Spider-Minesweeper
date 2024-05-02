@@ -14,7 +14,7 @@ const oauthMiddleware = require('./Middleware/OAuth');
 app.use(oauthMiddleware);
 
 // Actors Router
-const actorsRouter = require('./routes/Actors');
+const actorsRouter = require('./routes/actors');
 app.use('/actors', actorsRouter);
 
 // Test Router
