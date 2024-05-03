@@ -2,10 +2,10 @@ const sql = require('mssql');
 
 // Database configuration
 const config = {
-  server: 'localhost', // You can use 'localhost' if the server is running on the same machine
-  database: 'MovieDB',
-  user: 'expressUser',
-  password: 'pass123',
+  server: process.env.minesweeper_db_endpoint,
+  database: 'SpiderSweeperDB',
+  user: process.env.minesweeper_db_user,
+  password: process.env.minesweeper_db_password,
   options: {
     trustedConnection: true,
     trustServerCertificate: true
