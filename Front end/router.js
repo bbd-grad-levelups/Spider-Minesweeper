@@ -22,8 +22,8 @@ const nav = (newPage) => {
     newPageContent.classList.add('generalContent');
     document.body.appendChild(newPageContent);
 
-    const url = window.location.pathname + '?page=' + currentPage.replace(/ /g, '-');
-        window.history.pushState({ page: currentPage }, "", url);
+    // const url = window.location.pathname + '?page=' + currentPage.replace(/ /g, '-');
+        window.history.pushState({ page: currentPage }, "", window.location.pathname);
 
 }
 
