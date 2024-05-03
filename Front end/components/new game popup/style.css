@@ -1,0 +1,53 @@
+.mainBody{
+    width: 100%;
+    height: 100%;
+    background-color: #777CA4;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 5%;
+}
+
+.mainBody h1{
+    width: 100%;
+
+    text-wrap:balance;
+    font-size: 3em;
+}
+
+.popup-button-container{
+    width: 100%;
+}
+.popup-button-container button{
+    border-radius: 10rem;
+    height: 4rem;
+    min-width: 100%;
+    font-family: poppins;
+    cursor: pointer;
+    border: 1px solid white;
+    background-color:#777CA4;
+    color: white;
+    font-size: 2rem;
+
+}
+.popup-button-container button:active{
+    background-color:#515571;
+}
+
+.exit-button{
+    background-color: #777CA4;
+    border:none;
+    height: 100%;
+    width: 20%;
+    font-size: 1em;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainBody header{
+    height: 5%;
+    font-size: 2em;
+}

@@ -4,3 +4,11 @@ const handleButtonClick=(newPage)=>{
 
     document.dispatchEvent(event);
 }
+
+const openNewGamePopup=()=>{
+    const eventData={message:"new game popup"};
+    const event = new CustomEvent('openPopup',{detail: eventData});
+
+    document.dispatchEvent(event);
+
+}

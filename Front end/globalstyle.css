@@ -18,3 +18,13 @@ body{
     font-family: 'poppins';
     color: #353959;
 }
+
+.popupContainer{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    height: 60%;
+    width: 40%;
+}

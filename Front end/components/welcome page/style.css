@@ -30,7 +30,7 @@ section h2{
     border: transparent;
 }
 
-button{
+.button-container button{
     border-radius: 10rem;
     min-width: 100%;
     min-height: 3rem;

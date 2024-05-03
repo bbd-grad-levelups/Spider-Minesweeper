@@ -1,15 +1,16 @@
+import { getHTML } from "../../util/common.js";
 class leaderboard extends HTMLElement {
     constructor(){
         super();
     }
     connectedCallback(){
-        fetch("components/leaderboard page/leaderboardpage.html")
-        .then(response=>response.text())
-        .then(html=>{
+
+        getHTML("components/leaderboard page/leaderboardpage.html").then(html =>{
             this.innerHTML=html;
             document.dispatchEvent(new CustomEvent('leaderboard-ready',{detail: leaderboard}))
-        }).catch(error => console.error(error))
-
+        }).catch(error =>{
+            console.error(error)
+        })
         
     }
 }
