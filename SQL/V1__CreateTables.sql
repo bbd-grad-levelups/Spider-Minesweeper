@@ -1,11 +1,11 @@
 CREATE TABLE Users (
-    UserId INT PRIMARY KEY,
+    UserId INT IDENTITY(1,1) PRIMARY KEY,
     Username VARCHAR(50) NOT NULL,
 	UserUid VARCHAR(50),
 );
 
 CREATE TABLE Difficulty (
-    DifficultyId INT PRIMARY KEY,
+    DifficultyId INT IDENTITY(1,1) PRIMARY KEY,
     Difficultyname VARCHAR(50) NOT NULL,
 	BombPercentage INT,
 	ScoreMult FLOAT,
@@ -13,19 +13,19 @@ CREATE TABLE Difficulty (
 
 
 CREATE TABLE BoardSize (
-    BoardSizeId INT PRIMARY KEY,
+    BoardSizeId INT IDENTITY(1,1) PRIMARY KEY,
 	SizeDescription VARCHAR(100),
     BoardSize INT,
 	ScoreMult FLOAT,
 );
 
 CREATE TABLE GameStatus (
-    GameStatusId INT PRIMARY KEY,
+    GameStatusId INT IDENTITY(1,1) PRIMARY KEY,
 	GameStatusName VARCHAR(100),
 );
 
 CREATE TABLE Games (
-    GameID INT PRIMARY KEY,
+    GameID INT IDENTITY(1,1) PRIMARY KEY,
     UserId INT NOT NULL,
     Gameboard VARCHAR(50) NOT NULL,
     TimePlayed INT,
@@ -43,7 +43,7 @@ CREATE TABLE Games (
 );
 
 CREATE TABLE Score (
-    ScoreId INT PRIMARY KEY,
+    ScoreId INT IDENTITY(1,1) PRIMARY KEY,
     ScoreAmount INT,
 	GameId INT,
 	CONSTRAINT FK_GameId FOREIGN KEY (GameId)

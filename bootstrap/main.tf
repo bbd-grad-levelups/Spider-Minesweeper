@@ -62,7 +62,7 @@ locals {
         {
           "Effect" : "Allow",
           "Principal" : {
-            "Federated" : "arn:aws:iam::363615071302:oidc-provider/token.actions.githubusercontent.com"
+            "Federated" : "arn:aws:iam::958933916692:oidc-provider/token.actions.githubusercontent.com"
           },
           "Action" : "sts:AssumeRoleWithWebIdentity",
           "Condition" : {
