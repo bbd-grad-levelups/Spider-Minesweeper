@@ -3,6 +3,7 @@
     flex:1;
     height: 100%;
     gap:0;
+    color: white;
 }
 .full-content-instructions p{
     text-align: center;
@@ -21,6 +22,7 @@
     border-radius: 2em;
     border:1px solid white;
     margin: 5%;
+    color: white;
 }
 
 .full-content-instructions button:active{
