@@ -4,55 +4,43 @@ const jwt = require('jsonwebtoken');
 
 function oauthMiddleware(req, res, next) {
 
+  var playerName = '';
+  var uniqueID = '';
+  
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {
 
     const accessToken = req.headers.authorization.split(' ')[1];
 
-    // Verify the access token (example: using a JWT library)
-    // This is where you would implement your OAuth validation logic
 
-    const key = '';
-
+    const privateKey = process.env.minesweeper_private_key;
+    console.log(privateKey);
     try {
-      jwt.verify(token, key, (err, decoded) => {
-        if (err) {
-          console.log("Error login detected, going for anon");
-          req.user = {
-            userId: "",
-            UniqueIdentifier: ""
-          }
-          // return res.status(400).send('Invalid OAuth Token.');
-        }
-        else
-        {
+      jwt.verify(accessToken, privateKey, (err, decoded) => {
+        if (!err) {
           // Get UID and username from decoded
           console.log(decoded);
-          req.user = {
-            userId: decoded,
-            UniqueIdentifier: decoded,
-            accessToken: accessToken
-          };
+          
+          playerName = decoded.username;
+          uniqueID = decoded.userId;
+          
+        }
+        else {
+          console.log("Error with login: " + err);
         }
       });
     } catch (error) {
-      console.log("Strange token detected?: " + accessToken);
-      // return res.status(400).send('Invalid OAuth Token.');
-      console.log("Incorrect login detected, going for anon");
-      req.user = {
-        userId: "",
-        UniqueIdentifier: ""
-      }
+      console.log("Caught error:" + error);
     }
-
   }
   else {
     console.log("Anonymous login detected");
-    req.user = {
-      userId: "",
-      UniqueIdentifier: ""
-    }
   }
 
+  req.user = {
+    userName: playerName,
+    UID: uniqueID
+  }
+  
   next();
 }
 

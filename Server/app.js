@@ -13,6 +13,9 @@ app.use(bodyParser.json());
 const oauthMiddleware = require('./Middleware/OAuth');
 app.use(oauthMiddleware);
 
+const registrationMiddleware = require('./Middleware/RegisterUser');
+app.use(registrationMiddleware);
+
 // Test Router
 const testRouter = require('./routes/test');
 app.use('/test', testRouter);
@@ -32,6 +35,10 @@ app.use('/scores', scoresRouter);
 // Users router - Mostly for getting usernames
 const usersRouter = require('./routes/users');
 app.use('/users', usersRouter);
+
+// Login router - JWT token
+const loginRouter = require('./routes/login');
+app.use('/login', loginRouter);
 
 // Start the server
 app.listen(PORT, () => {
