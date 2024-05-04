@@ -2,7 +2,7 @@ import welcomePage from "./components/welcome page/welcomepage.js";
 import leaderboard from "./components/leaderboard page/leaderboard.js";
 import newgamePopup from "./components/new game popup/newgamePopup.js";
 import popups from "./components/popups/popups.js";
-
+import instructionPopup from "./components/instructions popup/instructions.js";
 
 let currentPage="welcome page";
 let currPopup=null;
@@ -11,9 +11,14 @@ const pageToObject={
     "welcome page": ()=>{return new welcomePage()},
     "leaderboard page": ()=>{return new leaderboard()},
     "new game popup":()=>{return new newgamePopup()},
+    "instructions popup":()=>{return new instructionPopup()},
     "popups":()=>{return new popups()}
 }
 
+const popupToColour={
+    "new game popup":"#777CA4",
+    "instructions popup":"#99B8AA"
+}
 
 const nav = (newPage) => {
     currentPage=newPage
@@ -36,9 +41,11 @@ const openPopup =() =>{
 
 const createChildrenContent=() =>{
     
+
     const popup=pageToObject[currPopup]();
     const popupContainer= document.getElementById('openPopup');
     popup.classList.add('generalContent')
+    popupContainer.childNodes[15].style.backgroundColor=popupToColour[currPopup]
     popupContainer.children[6].children[1].appendChild(popup)
 }
 
@@ -74,7 +81,6 @@ document.addEventListener('TriggerRouting', (event) =>{
 
 document.addEventListener('openPopup',(event) =>{
     currPopup=event.detail.message;
-    console.log(currPopup)
     openPopup();
 })
 

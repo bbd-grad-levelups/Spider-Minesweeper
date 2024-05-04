@@ -17,12 +17,12 @@ section{
     text-align: center;
 }
 
-.right-side{
+.right-side-leaderboard{
     color: #FD7461;
     text-align: center;
 }
 
-.left-side h1{
+.left-side-leaderboard h1{
     margin: 0;
     font-size: 3em;
 }
@@ -150,8 +150,11 @@ button{
     img{
         max-width: 35%;
     }
-    .left-side h1{
+    .left-side-leaderboard h1{
         font-size: 2em;
+    }
+    .stats{
+        width: fit-content;
     }
 
 }

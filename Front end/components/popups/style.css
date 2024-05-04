@@ -1,7 +1,6 @@
 .mainBody{
-    max-width: 25%;
-    height: 60%;
-    background-color: #777CA4;
+    max-width: 80%;
+    height: 80%;
     display: flex;
     border-radius: 10px;
     flex-direction: column;
@@ -12,7 +11,7 @@
 .mainBody h1{
     width: 100%;
     text-wrap:balance;
-    font-size: 3em;
+    font-size: 3rem;
 }
 
 .exit-button{
@@ -32,4 +31,5 @@
     height: 5%;
     font-size: 2em;
     width: fit-content;
+    margin: 1%;
 }

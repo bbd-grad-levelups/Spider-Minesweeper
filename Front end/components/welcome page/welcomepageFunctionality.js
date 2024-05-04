@@ -12,3 +12,10 @@ const openNewGamePopup=()=>{
     document.dispatchEvent(event);
 
 }
+const openInstructionsPopup=()=>{
+    const eventData={message:"instructions popup"};
+    const event = new CustomEvent('openPopup',{detail: eventData});
+
+    document.dispatchEvent(event);
+    
+}
