@@ -4,6 +4,7 @@ import newgamePopup from "./components/new game popup/newgamePopup.js";
 import popups from "./components/popups/popups.js";
 import instructionPopup from "./components/instructions popup/instructions.js";
 import victorypopup from "./components/victory popup/victorypopup.js";
+import losspopup from "./components/loss popup/losspopup.js";
 let currentPage="welcome page";
 let currPopup=null;
 
@@ -13,13 +14,15 @@ const pageToObject={
     "new game popup":()=>{return new newgamePopup()},
     "instructions popup":()=>{return new instructionPopup()},
     "victory popup":()=>{return new victorypopup()},
-    "popups":()=>{return new popups()}
+    "popups":()=>{return new popups()},
+    "loss popup":() =>{return new losspopup()}
 }
 
 const popupToColour={
     "new game popup":"#777CA4",
     "instructions popup":"#99B8AA",
-    "victory popup":"#FD7461"
+    "victory popup":"#FD7461",
+    "loss popup":"#555A80",
 }
 
 const nav = (newPage) => {

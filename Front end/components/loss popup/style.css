@@ -1,0 +1,48 @@
+.full-content-loss{
+    display: flex;
+    flex:1;
+    height: 100%;
+    gap:0;
+}
+.full-content-loss p{
+    text-align: center;
+    font-family: poppins;
+    flex:1;
+}
+
+.loss-text{
+    margin: 0;
+    font-size: 3em;
+    color: white;
+    
+}
+
+.full-content-loss button{
+    background-color: transparent;
+    width: 60%;
+    height: 10%;
+    border-radius: 2em;
+    border:1px solid white;
+    margin: 5%;
+    font-size: 1rem;
+    font-family: "poppins";
+    color: white;
+}
+
+.full-content-loss button:active{
+    background-color: #555A80;
+}
+.loss-heading{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-right: 10%;
+}
+
+.loss-footer{
+
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    margin-left: 10%;
+}

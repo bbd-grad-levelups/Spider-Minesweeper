@@ -7,7 +7,7 @@ const handleButtonClick=(newPage)=>{
 
 const openNewGamePopup=()=>{
     //  const eventData={message:"new game popup"};
-    const eventData={message:"victory popup"};
+    const eventData={message:"loss popup"};
     const event = new CustomEvent('openPopup',{detail: eventData});
 
     document.dispatchEvent(event);
