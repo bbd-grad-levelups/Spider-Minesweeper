@@ -25,7 +25,7 @@ CREATE TABLE GameStatus (
 );
 
 CREATE TABLE Games (
-    GameID INT IDENTITY(1,1) PRIMARY KEY,
+     GameID INT IDENTITY(1,1) PRIMARY KEY,
     UserId INT NOT NULL,
     Gameboard VARCHAR(50) NOT NULL,
     TimePlayed INT,
