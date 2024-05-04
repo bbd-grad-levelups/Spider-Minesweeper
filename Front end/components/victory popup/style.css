@@ -1,20 +1,21 @@
-.full-content-instructions{
+.full-content-victory{
     display: flex;
     flex:1;
     height: 100%;
     gap:0;
 }
-.full-content-instructions p{
+.full-content-victory p{
     text-align: center;
     font-family: poppins;
     flex:1;
 }
 
-.full-content-instructions h1{
+.victory-heading{
     margin: 0;
+    font-size: 2rem;
 }
 
-.full-content-instructions button{
+.full-content-victory button{
     background-color: transparent;
     width: 60%;
     height: 10%;
@@ -23,9 +24,6 @@
     margin: 5%;
 }
 
-.full-content-instructions button:active{
-    background-color: #74867d;
-}
-.full-content-instructions h1{
-    font-size: 3rem;
+.full-content-victory button:active{
+    background-color: #fd7461;
 }

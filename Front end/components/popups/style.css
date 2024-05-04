@@ -11,7 +11,7 @@
 .mainBody h1{
     width: 100%;
     text-wrap:balance;
-    font-size: 3rem;
+    /* font-size: 3rem; */
 }
 
 .exit-button{
