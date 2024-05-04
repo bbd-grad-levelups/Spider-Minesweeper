@@ -1,16 +1,17 @@
 import welcomePage from "./components/welcome page/welcomepage.js";
 import leaderboard from "./components/leaderboard page/leaderboard.js";
 import newgamePopup from "./components/new game popup/newgamePopup.js";
+import popups from "./components/popups/popups.js";
+
+
 let currentPage="welcome page";
-const nameToFile={
-    "welcome page":"./components/welcome page/",
-    "leaderboard page":"./componenets/leaderboard page/"
-}
+let currPopup=null;
 
 const pageToObject={
     "welcome page": ()=>{return new welcomePage()},
     "leaderboard page": ()=>{return new leaderboard()},
-    "new game popup":()=>{return new newgamePopup()}
+    "new game popup":()=>{return new newgamePopup()},
+    "popups":()=>{return new popups()}
 }
 
 
@@ -20,25 +21,33 @@ const nav = (newPage) => {
     document.body.innerHTML='';
     newPageContent.classList.add('generalContent');
     document.body.appendChild(newPageContent);
-
-    // const url = window.location.pathname + '?page=' + currentPage.replace(/ /g, '-');
-        window.history.pushState({ page: currentPage }, "", window.location.pathname);
+    window.history.pushState({ page: currentPage }, "", window.location.pathname);
 
 }
 
-const openPopup =(popupName) =>{
+const openPopup =() =>{
     closePopup();
-    const popup=pageToObject[popupName]();
+    const popup=pageToObject["popups"]();
     popup.setAttribute('id','openPopup')
     popup.classList.add("popupContainer")
     document.body.appendChild(popup);
 
 }
 
+const createChildrenContent=() =>{
+    
+    const popup=pageToObject[currPopup]();
+    const popupContainer= document.getElementById('openPopup');
+    popup.classList.add('generalContent')
+    popupContainer.children[6].children[1].appendChild(popup)
+}
+
 const closePopup = () =>{
+    
     const popup=document.getElementById('openPopup');
 
     if(popup){
+        currPopup=null;
         document.body.removeChild(popup);
     }
 }
@@ -56,12 +65,17 @@ document.addEventListener('leaderboard-ready',()=>{
     document.dispatchEvent(new CustomEvent("popoulateLeaderBoard"))
 })
 
+document.addEventListener('popup-ready',(event)=>{
+    createChildrenContent()
+})
 document.addEventListener('TriggerRouting', (event) =>{
     nav(event.detail.message);
 })
 
 document.addEventListener('openPopup',(event) =>{
-    openPopup(event.detail.message);
+    currPopup=event.detail.message;
+    console.log(currPopup)
+    openPopup();
 })
 
 document.addEventListener('closePopup',()=>{
