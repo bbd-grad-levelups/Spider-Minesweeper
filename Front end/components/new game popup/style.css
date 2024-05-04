@@ -4,6 +4,7 @@
     height: 100%;
 }
 .popup-button-container{
+    gap:1em;
     width: 100%;
 }
 .popup-button-container button{

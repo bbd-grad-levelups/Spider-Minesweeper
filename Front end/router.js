@@ -31,7 +31,7 @@ const nav = (newPage) => {
 }
 
 const openPopup =() =>{
-    closePopup();
+    
     const popup=pageToObject["popups"]();
     popup.setAttribute('id','openPopup')
     popup.classList.add("popupContainer")
@@ -80,6 +80,7 @@ document.addEventListener('TriggerRouting', (event) =>{
 })
 
 document.addEventListener('openPopup',(event) =>{
+    closePopup();
     currPopup=event.detail.message;
     openPopup();
 })
