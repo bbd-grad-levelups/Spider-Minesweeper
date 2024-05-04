@@ -7,9 +7,17 @@ const handleButtonClick=(newPage)=>{
 }
 
 const openNewGamePopup=()=>{
-    const eventData={message:"new game popup"};
+     const eventData={message:"new game popup"};
+    // const eventData={message:"warning popup"};
     const event = new CustomEvent('openPopup',{detail: eventData});
 
     document.dispatchEvent(event);
 
+}
+const openInstructionsPopup=()=>{
+    const eventData={message:"instructions popup"};
+    const event = new CustomEvent('openPopup',{detail: eventData});
+
+    document.dispatchEvent(event);
+    
 }

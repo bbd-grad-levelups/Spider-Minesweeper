@@ -38,4 +38,6 @@ const populateBoard = (event) => {
     });
 }
 
+
+
 document.addEventListener("popoulateLeaderBoard", populateBoard);

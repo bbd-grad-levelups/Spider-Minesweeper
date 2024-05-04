@@ -1,0 +1,31 @@
+.full-content-victory{
+    display: flex;
+    flex:1;
+    height: 100%;
+    gap:0;
+}
+.full-content-victory p{
+    text-align: center;
+    font-family: poppins;
+    flex:1;
+}
+
+.victory-heading{
+    margin: 0;
+    font-size: 2rem;
+}
+
+.full-content-victory button{
+    background-color: transparent;
+    width: 60%;
+    height: 10%;
+    border-radius: 2em;
+    border:1px solid white;
+    margin: 5%;
+    color: white;
+    cursor: pointer;
+}
+
+.full-content-victory button:active{
+    background-color: "#ca5c4d";
+}

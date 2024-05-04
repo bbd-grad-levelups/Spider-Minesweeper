@@ -2,19 +2,32 @@ import welcomePage from "./components/welcome page/welcomepage.js";
 import leaderboard from "./components/leaderboard page/leaderboard.js";
 import logIn from "./components/logIn page/logIn.js";
 import newgamePopup from "./components/new game popup/newgamePopup.js";
+import popups from "./components/popups/popups.js";
+import instructionPopup from "./components/instructions popup/instructions.js";
+import victorypopup from "./components/victory popup/victorypopup.js";
+import losspopup from "./components/loss popup/losspopup.js";
+import warningpopup from "./components/warning popup/warningpopup.js";
 
 let currentPage="welcome page";
-const nameToFile={
-    "welcome page":"./components/welcome page/",
-    "leaderboard page":"./componenets/leaderboard page/",
-    "logIn page":"./components/logIn page/"
-}
+let currPopup=null;
 
 const pageToObject={
     "welcome page": ()=>{return new welcomePage()},
     "leaderboard page": ()=>{return new leaderboard()},
-    "login page": () => {return new logIn()},
     "new game popup":()=>{return new newgamePopup()},
+    "instructions popup":()=>{return new instructionPopup()},
+    "victory popup":()=>{return new victorypopup()},
+    "popups":()=>{return new popups()},
+    "loss popup":() =>{return new losspopup()},
+    "warning popup":()=>{return new warningpopup()}
+}
+
+const popupToColour={
+    "new game popup":"#777CA4",
+    "instructions popup":"#99B8AA",
+    "victory popup":"#FD7461",
+    "warning popup":"#FD7461",
+    "loss popup":"#555A80",
 }
 
 const nav = (newPage) => {
@@ -23,25 +36,35 @@ const nav = (newPage) => {
     document.body.innerHTML='';
     newPageContent.classList.add('generalContent');
     document.body.appendChild(newPageContent);
-
-    const url = window.location.pathname + '?page=' + currentPage.replace(/ /g, '-');
     window.history.pushState({ page: currentPage }, "", window.location.pathname);
 
 }
 
-const openPopup =(popupName) =>{
-    closePopup();
-    const popup=pageToObject[popupName]();
+const openPopup =() =>{
+
+    const popup=pageToObject["popups"]();
     popup.setAttribute('id','openPopup')
     popup.classList.add("popupContainer")
     document.body.appendChild(popup);
 
 }
 
+const createChildrenContent=() =>{
+
+
+    const popup=pageToObject[currPopup]();
+    const popupContainer= document.getElementById('openPopup');
+    popup.classList.add('generalContent')
+    popupContainer.childNodes[15].style.backgroundColor=popupToColour[currPopup]
+    popupContainer.children[6].children[1].appendChild(popup)
+}
+
 const closePopup = () =>{
+
     const popup=document.getElementById('openPopup');
 
     if(popup){
+        currPopup=null;
         document.body.removeChild(popup);
     }
 }
@@ -63,12 +86,17 @@ document.addEventListener('leaderboard-ready',()=>{
     document.dispatchEvent(new CustomEvent("popoulateLeaderBoard"))
 })
 
+document.addEventListener('popup-ready',(event)=>{
+    createChildrenContent()
+})
 document.addEventListener('TriggerRouting', (event) =>{
     nav(event.detail.message);
 })
 
 document.addEventListener('openPopup',(event) =>{
-    openPopup(event.detail.message);
+    closePopup();
+    currPopup=event.detail.message;
+    openPopup();
 })
 
 document.addEventListener('closePopup',()=>{
