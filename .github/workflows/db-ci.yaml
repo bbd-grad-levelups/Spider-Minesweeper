@@ -37,7 +37,7 @@ jobs:
       - name: Fetch AWS RDS endpoint
         run: |
           echo "DB_ENDPOINT=$(aws rds describe-db-instances --db-instance-identifier spider-sweeper-db --query 'DBInstances[0].Endpoint.Address' --output text)" >> $GITHUB_ENV
-          
+
       - name: Migration
         run: >-
           docker run --rm
@@ -45,5 +45,5 @@ jobs:
           "${{env.DOCKER_IMAGE}}"
           -url="jdbc:sqlserver://${{env.DB_ENDPOINT}}:1433;authentication=sqlPassword;databaseName=SpiderSweeperDB;encrypt=false;trustServerCertificate=true"
           -user="${{ env.DB_DETAILS_USERNAME }}"
-          -password="${{ env.DB_DETAILS_PASSWORD }}" 
+          -password="${{ env.DB_DETAILS_PASSWORD }}"
           migrate
