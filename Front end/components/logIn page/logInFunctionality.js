@@ -11,52 +11,52 @@
     window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
   }
 
-  async function exchangeCodeForToken(code) {
-    const response = await fetch('https://github.com/login/oauth/access_token', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-            client_id: clientId,
-            client_secret: clientSecret,
-            code: code,
-            redirect_uri: redirectUri
-        })
-    });
-    const data = await response.json();
-    if (data.error) {
-        throw new Error(data.error_description || 'Failed to exchange code for token');
-    }
-    return data.access_token;
-  }
+//   async function exchangeCodeForToken(code) {
+//     const response = await fetch('https://github.com/login/oauth/access_token', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Accept': 'application/json'
+//         },
+//         body: JSON.stringify({
+//             client_id: clientId,
+//             client_secret: clientSecret,
+//             code: code,
+//             redirect_uri: redirectUri
+//         })
+//     });
+//     const data = await response.json();
+//     if (data.error) {
+//         throw new Error(data.error_description || 'Failed to exchange code for token');
+//     }
+//     return data.access_token;
+//   }
 
-  async function getUserData(accessToken) {
-    const response = await fetch('https://api.github.com/user', {
-        headers: {
-            Authorization: `Bearer ${accessToken}`
-        }
-    });
-    if (!response.ok) {
-        throw new Error('Failed to fetch user data');
-    }
-    return response.json();
-  }
+//   async function getUserData(accessToken) {
+//     const response = await fetch('https://api.github.com/user', {
+//         headers: {
+//             Authorization: `Bearer ${accessToken}`
+//         }
+//     });
+//     if (!response.ok) {
+//         throw new Error('Failed to fetch user data');
+//     }
+//     return response.json();
+//   }
 
-  async function generateJWT(code) {
-  const accessToken = await exchangeCodeForToken(code);
-  const userData = await getUserData(accessToken);
+//   async function generateJWT(code) {
+//   const accessToken = await exchangeCodeForToken(code);
+//   const userData = await getUserData(accessToken);
 
-  const jwt = jose.JWT.sign({
-      sub: userData.login,
-      exp: Math.floor(Date.now() / 1000) + 3600
-  }, clientSecret, {
-      algorithm: 'RS256'
-  });
+//   const jwt = jose.JWT.sign({
+//       sub: userData.login,
+//       exp: Math.floor(Date.now() / 1000) + 3600
+//   }, clientSecret, {
+//       algorithm: 'RS256'
+//   });
 
-  console.log('JWT:', jwt);
-  }
+//   console.log('JWT:', jwt);
+//   }
 
 //   const urlParams = new URLSearchParams(window.location.search);
 //   const code = urlParams.get('code');
@@ -116,6 +116,19 @@ const urlParams = new URLSearchParams(window.location.search);
 const code = urlParams.get('code');
 
 console.log("code: " + code);
+
+if (code) {
+    // Send code to backend
+    fetch('http://localhost:5000/login/access_token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Handle the response from your backend. Maybe store an authentication token or set user data.
+    });
+}
 
 function navigateToPage(page) {
   window.location.href = page;
