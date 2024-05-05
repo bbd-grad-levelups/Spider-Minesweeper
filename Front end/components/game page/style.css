@@ -1,0 +1,55 @@
+.game-full-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    font-family: 'poppins';
+}
+
+.game-left-side{
+}
+
+
+.game-right-side h1{
+    font-size: 4em;
+}
+.game-right-side p{
+    color: #FD776E;
+    font-size: 3em;
+    font-family: 'poppins';
+}
+
+
+.game-right-side button{
+    border-radius: 10rem;
+    min-width: 100%;
+    min-height: 3rem;
+    font-family: poppins;
+    border:none;
+    cursor: pointer;
+}
+.game-full-content section{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+}
+
+.game-button-section{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    flex:1;
+    gap:5%;
+}
+.leaderboard-button{
+    background-color: #99B8AA;
+}
+.instructions-button{
+    background-color: #777CA4;
+}
+.new-game-button{
+    background-color: #FD7461;
+}

@@ -6,6 +6,7 @@ import instructionPopup from "./components/instructions popup/instructions.js";
 import victorypopup from "./components/victory popup/victorypopup.js";
 import losspopup from "./components/loss popup/losspopup.js";
 import warningpopup from "./components/warning popup/warningpopup.js";
+import gamePage from "./components/game page/gamepage.js";
 let currentPage="welcome page";
 let currPopup=null;
 
@@ -17,7 +18,8 @@ const pageToObject={
     "victory popup":()=>{return new victorypopup()},
     "popups":()=>{return new popups()},
     "loss popup":() =>{return new losspopup()},
-    "warning popup":()=>{return new warningpopup()}
+    "warning popup":()=>{return new warningpopup()},
+    "game page":()=>{return new gamePage()}
 }
 
 const popupToColour={
@@ -33,6 +35,7 @@ const nav = (newPage) => {
     const newPageContent=pageToObject[currentPage]();
     document.body.innerHTML='';
     newPageContent.classList.add('generalContent');
+    console.log(newPageContent)
     document.body.appendChild(newPageContent);
     window.history.pushState({ page: currentPage }, "", window.location.pathname);
 
