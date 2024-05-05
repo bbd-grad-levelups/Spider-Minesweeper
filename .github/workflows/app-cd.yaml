@@ -22,12 +22,12 @@ jobs:
         uses: actions/checkout@main
 
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@main
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_ASSUME_ROLE }}
-          aws-region: eu-west-1
+          aws-region: "eu-west-1"
           role-session-name: Server_CD_GitHub_to_AWS_via_FederatedOIDC
-      
+
       - name: Create API Package
         working-directory: ${{ env.api_directory }}
         run: | 
