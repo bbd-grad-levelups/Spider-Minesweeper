@@ -29,6 +29,7 @@ jobs:
     uses: ./.github/workflows/db-cd.yaml
 
   app-cd:
-    name: App CD
+    name: "Server Deployment"
     needs: db-cd
+    secrets: inherit
     uses: ./.github/workflows/app-cd.yaml
