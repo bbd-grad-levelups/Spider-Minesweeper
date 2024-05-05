@@ -1,0 +1,35 @@
+.generalContent{
+    width: 100%;
+    height: 100%;
+}
+html{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    height: 100%;
+    background-color: #FFF8E8;
+}
+body{
+    display: flex;
+    flex-direction: row;
+    flex:1;
+    height: 100%;
+    width: 100%;
+    font-family: 'poppins';
+    color: #353959;
+}
+
+.popupContainer{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 600px){
+    html{
+        height: fit-content;
+    }
+}

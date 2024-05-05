@@ -1,0 +1,33 @@
+.full-content-instructions{
+    display: flex;
+    flex:1;
+    height: 100%;
+    gap:0;
+    color: white;
+}
+.full-content-instructions p{
+    text-align: center;
+    font-family: poppins;
+    flex:1;
+}
+
+.full-content-instructions h1{
+    margin: 0;
+}
+
+.full-content-instructions button{
+    background-color: transparent;
+    width: 60%;
+    height: 10%;
+    border-radius: 2em;
+    border:1px solid white;
+    margin: 5%;
+    color: white;
+}
+
+.full-content-instructions button:active{
+    background-color: #74867d;
+}
+.full-content-instructions h1{
+    font-size: 3rem;
+}

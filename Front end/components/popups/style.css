@@ -1,0 +1,35 @@
+.mainBody{
+    max-width: 80%;
+    height: 90%;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 1%;
+    flex:1
+}
+
+.mainBody h1{
+    width: 100%;
+    text-wrap:balance;
+    /* font-size: 3rem; */
+}
+
+.exit-button{
+    background-color: transparent;
+    border:none;
+    height: 100%;
+    width: 20%;
+    font-size: 1em;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainBody header{
+    height: 5%;
+    font-size: 2em;
+    width: fit-content;
+    margin: 1%;
+}
