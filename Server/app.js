@@ -40,10 +40,5 @@ app.use('/users', usersRouter);
 const loginRouter = require('./routes/login');
 app.use('/login', loginRouter);
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-
 // Export the app object
 module.exports = app;

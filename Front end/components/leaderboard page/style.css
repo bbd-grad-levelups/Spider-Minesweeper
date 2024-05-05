@@ -1,0 +1,160 @@
+main{
+    display: flex;
+    flex-direction: row;
+    flex:1;
+    height: 100%;
+    font-family: 'poppins';
+    color: #353959;
+    width: 100%;
+}
+
+section{
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.right-side-leaderboard{
+    color: #FD7461;
+    text-align: center;
+}
+
+.left-side-leaderboard h1{
+    margin: 0;
+    font-size: 3em;
+}
+.stats{
+    display: flex;
+    flex-direction: row;
+    height:min-content;
+    flex:0;
+    margin: 0;
+    justify-content: center;
+}
+
+.stats h2{
+    font-size: 1em;
+    text-wrap:nowrap;
+}
+
+.prestats{
+    max-height: min-content;
+    flex:1;
+    margin: 0;
+}
+
+.board{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: start;
+}
+
+.boardSection{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    text-align: left;
+    align-items: center; /* Align items vertically in the center */
+    flex: 1;
+    justify-content: center;
+}
+.boardSection p{
+    flex:1;
+    text-align: left;
+    
+}
+
+.outer{
+
+    flex:1;
+    text-align: left;
+}
+
+.inner{
+    align-items:flex-start;
+    text-align: left;
+    flex:5
+}
+
+
+img{
+    max-width: 60%
+}
+
+
+.boardSectionEven{
+    background-color: #EAE6DA;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    text-align: left;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+
+
+}
+.boardSectionEven p{
+    flex:1;
+    text-align: left;
+}
+
+.right-stats{
+    display: flex;
+    flex-direction: column;
+    padding-left: 20%;
+    border-left: 1px solid #FD7461;
+}
+
+.left-stats{
+    display: flex;
+    flex-direction: column;
+    padding-right: 20%;
+    border-right: 1px solid #FD7461;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+    width: 15rem;
+}
+
+button{
+    width: 100%;
+    border-radius: 10rem;
+    font-family: 'poppins';
+    border:none;
+    cursor: pointer;
+    height: 20%;
+}
+
+.new-game-button{
+    background-color: #FD7461;
+}
+
+.instructions-button{
+    background-color: #777CA4;
+}
+
+
+@media (max-width: 600px){
+    main{
+        flex-direction: column-reverse;
+    }
+
+    img{
+        max-width: 35%;
+    }
+    .left-side-leaderboard h1{
+        font-size: 2em;
+    }
+    .stats{
+        width: fit-content;
+    }
+
+}
