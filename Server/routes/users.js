@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
       res.json({ userName: playerName});
   } 
   else {
-      res.status(404).json({ error : 'Cannot get highscore for anonymous player!' });
+      res.status(404).json({ error : 'Cannot get username for anonymous player!' });
   }
 });
 
