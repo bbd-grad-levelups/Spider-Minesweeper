@@ -1,22 +1,23 @@
+// const board = [
+//   [-1, -1, 1, 0, 1, 1, 1, 0],
+//   [3, 3, 1, 0, 2, -1, 3, 1],
+//   [-1, 2, 0, 0, 2, -1, 3, -1],
+//   [-1, 3, 1, 1, 1, 2, 4, 3],
+//   [1, 2, -1, 1, 0, 1, -1, -1],
+//   [0, 1, 1, 2, 1, 2, 2, 2],
+//   [0, 1, 2, 4, -1, 3, 1, 0],
+//   [0, 1, -1, -1, -1, -1, 1, 0],
+// ];
 const board = [
-  [-1, -1, 1, 0, 1, 1, 1, 0],
-  [3, 3, 1, 0, 2, -1, 3, 1],
-  [-1, 2, 0, 0, 2, -1, 3, -1],
-  [-1, 3, 1, 1, 1, 2, 4, 3],
-  [1, 2, -1, 1, 0, 1, -1, -1],
-  [0, 1, 1, 2, 1, 2, 2, 2],
-  [0, 1, 2, 4, -1, 3, 1, 0],
-  [0, 1, -1, -1, -1, -1, 1, 0],
-];
+    [-1, -1, 1, 0],
+    [3, 3, 1, 0],
+    [-1, 2, 0, 0],
+    [-1, 3, 1, 1]
+  ];
 const size = board.length;
 
 const openBoard = Array.from({ length: size }, () => Array(size).fill(0)); //0 means closed, 1 means open, -1 means flagged
-// const board = [
-//     [-1, -1, 1, 0],
-//     [3, 3, 1, 0],
-//     [-1, 2, 0, 0],
-//     [-1, 3, 1, 1]
-//   ];
+
 let modeFlag=false;
 const fillBoard = () => {
     const grid=document.createElement('article');
@@ -36,7 +37,6 @@ const fillBoard = () => {
 
         grid.appendChild(row);
     }
-    console.log(document.getElementById('gameBody'))
     document.getElementById('gameBody').appendChild(grid);
 };
 
@@ -46,7 +46,9 @@ document.addEventListener('populateGameBoard',()=>{
 })  
 
 const clearBoard=()=>{
-    
+    document.getElementById('gameBody').innerHTML="";
+    openBoard.forEach(row => row.fill(0));
+    fillBoard();
 }
 
 const changeFlagMode=()=>{

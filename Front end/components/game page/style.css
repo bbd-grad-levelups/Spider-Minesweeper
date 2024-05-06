@@ -79,7 +79,7 @@ section h1 {
     flex-direction: column;
     border: 1px solid black;
     width: 90%;
-    height: 70%;
+    height: 90%;
     border-radius: 1rem;
 }
 
@@ -102,6 +102,10 @@ section h1 {
     width: 6em
 }
 
+
+.game-board button:active{
+    background-color: #b6b3ab;
+}
 .board-header img {
     padding: 1%;
     height: 100%;
@@ -140,8 +144,7 @@ section h1 {
     gap: 1%;
     padding-left: 1%;
     padding-right: 1%;
-    height: 100%;
-    border: 1px solid;
+    flex:1;
 }
 
 .coloumn{
@@ -155,7 +158,6 @@ section h1 {
 }
 @media (max-width: 600px) {
     .game-right-side {
-        border: 1px solid magenta;
         display: none;
     }
 }
