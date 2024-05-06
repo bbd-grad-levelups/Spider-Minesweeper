@@ -98,3 +98,7 @@ document.addEventListener('openPopup',(event) =>{
 document.addEventListener('closePopup',()=>{
     closePopup();
 })
+
+document.addEventListener('gameboard-ready',()=>{
+    document.dispatchEvent(new CustomEvent('populateGameBoard'));
+})

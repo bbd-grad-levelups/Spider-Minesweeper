@@ -7,7 +7,7 @@ class gamePage extends HTMLElement {
 
         getHTML("components/game page/gamepage.html").then(html =>{
             this.innerHTML=html;
-           // document.dispatchEvent(new CustomEvent('leaderboard-ready',{detail: gamePage})) -> change this to be game page ready when dynamically adding content
+            document.dispatchEvent(new CustomEvent('gameboard-ready',{detail: gamePage}))
         }).catch(error =>{
             console.error(error)
         })
