@@ -54,7 +54,8 @@ router.get('/leaderboard', (req, res) => {
 
 router.get('/highscore', (req, res) => {
 
-  const playerUid = req.user.UID;
+  const playerUid = req.user.UID.toString();
+  const playerName = req.user.userName;
 
   const query = `
     SELECT MAX(s.ScoreAmount) as highestScore 
@@ -80,7 +81,7 @@ router.get('/highscore', (req, res) => {
       }
     })
     .catch((err) => {
-      console.error("Couldn't get highscores");
+      console.error("Couldn't get highscores: "+ err);
       return res.status(500).json({ error: 'Failed SQL'});
     });
   } 
