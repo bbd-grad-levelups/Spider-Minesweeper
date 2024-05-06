@@ -32,6 +32,7 @@ BEGIN
         THROW;
     END CATCH;
 END;
+GO
 
 CREATE PROCEDURE InsertGame
     @UserName NVARCHAR(255),
@@ -70,3 +71,4 @@ BEGIN
     -- Return the GameId
     SELECT @GameId AS GameId;
 END
+GO
