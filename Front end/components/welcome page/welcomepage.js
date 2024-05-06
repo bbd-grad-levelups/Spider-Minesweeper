@@ -8,10 +8,6 @@ class welcomePage extends HTMLElement {
         getHTML("components/welcome page/welcomepage.html").then(html=>{
             this.innerHTML=html;
         }).catch(error=>console.error(error))
-
-        const styleSheet = document.createElement('link');
-        styleSheet.rel = 'stylesheet';
-        styleSheet.href = 'style.css';
     }
 
 
