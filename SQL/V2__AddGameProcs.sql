@@ -1,18 +1,37 @@
-
-
-CREATE PROCEDURE UpdateGameStatusAndInsertScore
+CREATE PROCEDURE SubmitGameScore
+    @GameId INT,
     @GameScore INT,
-    @GameId INT
+    @PlayerUid INT
 AS
 BEGIN
-    INSERT INTO dbo.Score (ScoreAmount, GameId)
-    VALUES (@GameScore, @GameId);
+    SET NOCOUNT ON;
 
-    UPDATE dbo.Games
-    SET GameStatusId = (SELECT GameStatusId FROM dbo.GameStatus WHERE GameStatusName = 'Completed')
-    WHERE GameId = @GameId;
+    BEGIN TRY
+        IF NOT EXISTS (SELECT 1 FROM dbo.Games WHERE GameId = @GameId)
+        BEGIN
+            THROW 50001, 'Requested game does not exist', 1;
+        END;
+
+        BEGIN TRANSACTION;
+
+        INSERT INTO dbo.Score (ScoreAmount, GameId)
+        VALUES (@GameScore, @GameId);
+
+        UPDATE dbo.Games
+        SET GameStatusId = (SELECT GameStatusId FROM dbo.GameStatus WHERE GameStatusName = 'Completed')
+        WHERE GameId = @GameId;
+
+        COMMIT TRANSACTION;
+
+        RETURN 0;
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+
+        THROW;
+    END CATCH;
 END;
-
 
 CREATE PROCEDURE InsertGame
     @UserName NVARCHAR(255),
