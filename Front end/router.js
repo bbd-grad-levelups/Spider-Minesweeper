@@ -54,11 +54,9 @@ const createChildrenContent=() =>{
     
 
     const popup=pageToObject[currPopup]();
-    const popupContainer= document.getElementById('openPopup');
     popup.classList.add('generalContent')
-    console.log(popupContainer.childNodes)
-    popupContainer.childNodes[15].style.backgroundColor=popupToColour[currPopup]
-    popupContainer.children[6].children[1].appendChild(popup)
+    document.getElementById("popupBody").style.backgroundColor=popupToColour[currPopup]
+    document.getElementById("popup-content").appendChild(popup)
 }
 
 const closePopup = () =>{
