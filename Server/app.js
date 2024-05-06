@@ -16,10 +16,6 @@ app.use(oauthMiddleware);
 const registrationMiddleware = require('./Middleware/RegisterUser');
 app.use(registrationMiddleware);
 
-// Test Router
-const testRouter = require('./routes/test');
-app.use('/test', testRouter);
-
 // Games router
 const gamesRouter = require('./routes/games');
 app.use('/games', gamesRouter);
