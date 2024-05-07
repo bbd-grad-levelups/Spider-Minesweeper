@@ -18,5 +18,4 @@ const openInstructionsPopup=()=>{
     const event = new CustomEvent('openPopup',{detail: eventData});
 
     document.dispatchEvent(event);
-
 }

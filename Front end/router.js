@@ -39,7 +39,6 @@ const nav = (newPage) => {
 }
 
 const openPopup =() =>{
-
     const popup=pageToObject["popups"]();
     popup.setAttribute('id','openPopup')
     popup.classList.add("popupContainer")
@@ -48,8 +47,6 @@ const openPopup =() =>{
 }
 
 const createChildrenContent=() =>{
-
-
     const popup=pageToObject[currPopup]();
     const popupContainer= document.getElementById('openPopup');
     popup.classList.add('generalContent')
@@ -58,7 +55,6 @@ const createChildrenContent=() =>{
 }
 
 const closePopup = () =>{
-
     const popup=document.getElementById('openPopup');
 
     if(popup){
