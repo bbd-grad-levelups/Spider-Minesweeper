@@ -31,10 +31,10 @@ section{
     display: flex;
     flex-direction: row;
     height:min-content;
-    flex:0;
+    flex:1;
     margin: 0;
     justify-content: center;
-    align-items: ;
+    width:70%;
 }
 
 .stats h2{
@@ -120,13 +120,13 @@ img{
     display: flex;
     flex-direction: column;
     padding-right: 10%;
-    border-right: 1px solid #FD7461;
 }
 
 .buttons{
     display: flex;
     justify-content: space-evenly;
     width: 15rem;
+    flex: 1;
 }
 
 button{
@@ -136,10 +136,13 @@ button{
     font-size: 1em;
     color:#ffffff; 
     font-weight: 600;
+    justify-content: space-evenly;
     border:none;
     cursor: pointer;
     height: 30%;
 }
+
+
 
 .new-game-button{
     background-color: #FD7461;
@@ -147,6 +150,24 @@ button{
 
 .instructions-button{
     background-color: #777CA4;
+}
+
+.back-button{
+    background-color: transparent;
+    border:none;
+    height: 100%;
+    width: 10%;
+    font-size: 1em;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-button img {
+  width: 10px; 
+  height: 10px; 
 }
 
 
@@ -163,6 +184,14 @@ button{
     }
     .stats{
         width: fit-content;
+    }
+    .buttons{
+        display: flex;
+        justify-content: space-evenly;
+        width: 15rem;
+        height: 10rem;
+        padding-top: 1%;
+        flex: 0;
     }
    
 

@@ -1,16 +1,16 @@
 .mainBody{
     max-width: 80%;
-    height: 90%;
+    height: 70%;
     display: flex;
     border-radius: 10px;
     flex-direction: column;
-    padding: 1%;
+    padding: 4%;
     flex:1
 }
 
 .mainBody h1{
     width: 100%;
-    text-wrap:balance;
+    text-wrap:pretty ;
     /* font-size: 3rem; */
 }
 
@@ -18,7 +18,7 @@
     background-color: transparent;
     border:none;
     height: 100%;
-    width: 20%;
+    width: 10%;
     font-size: 1em;
     cursor: pointer;
     text-align: center;
