@@ -127,13 +127,16 @@ img{
     justify-content: space-evenly;
     width: 15rem;
     flex: 1;
+    gap:1em;
 }
+
+
 
 button{
     width: 100%;
     border-radius: 10rem;
     font-family: 'poppins';
-    font-size: 1em;
+    font-size: 1.3em;
     color:#ffffff; 
     font-weight: 600;
     justify-content: space-evenly;
@@ -153,22 +156,19 @@ button{
 }
 
 .back-button{
-    background-color: transparent;
-    border:none;
-    height: 100%;
-    width: 10%;
-    font-size: 1em;
-    cursor: pointer;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    width: 100px; 
+    height: 100px; 
+    position: fixed;
+    right: 2vw;
+    top: 1vh;
+  }
 
-.image-button img {
-  width: 10px; 
-  height: 10px; 
-}
+  .back-button button{
+    background: transparent;
+  }
+
+
+
 
 
 @media (max-width: 600px){
@@ -180,7 +180,7 @@ button{
         max-width: 50%;
     }
     .left-side-leaderboard h1{
-        font-size: 4em;
+        font-size: 3em;
     }
     .stats{
         width: fit-content;
@@ -194,5 +194,6 @@ button{
         flex: 0;
     }
    
+
 
 }

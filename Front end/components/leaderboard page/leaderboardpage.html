@@ -13,7 +13,16 @@
       href="/Front end/components/leaderboard page/style.css"
     />
   </head>
+ 
   <main>
+
+<section class="back-button" onclick="openNewGamePopup()"> 
+  <button>
+    <img src="/Front end/media/images/back_button.svg" />
+    </button>
+
+</section>
+
     <section class="left-side-leaderboard">
       <h1>Leaderboard</h1>
       <section class="board" id="leaderboard">
@@ -33,7 +42,12 @@
         </section>
       </section>
     </section>
+    
+
+
     <section class="right-side-leaderboard">
+
+      
       <section class="prestats">
         <img src="/Front end/media/images/trophy.svg" />
         <h1>Your stats</h1>
@@ -43,6 +57,7 @@
           <h2>High score</h2>
           <p id="score">900</p>
         </section>
+        
 
         <section class="right-stats">
           <h2>Position</h2>
@@ -55,7 +70,10 @@
         <button class="new-game-button" onclick="openNewGamePopup()">New game</button>
         <button class="instructions-button" onclick="openInstructionsPopup()">Instructions</button>
       </section>
+
+      
       
     </section>
+
   </main>
 </html>
