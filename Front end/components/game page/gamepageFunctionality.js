@@ -8,14 +8,9 @@ const board = [
   [0, 1, 2, 4, -1, 3, 1, 0],
   [0, 1, -1, -1, -1, -1, 1, 0],
 ];
-// const board = [
-//     [-1, -1, 1, 0],
-//     [3, 3, 1, 0],
-//     [-1, 2, 0, 0],
-//     [-1, 3, 1, 1]
-//   ];
-const size = board.length;
-
+const size = "large"
+let difficulty=null;
+let requests=null;
 const openBoard = Array.from({ length: size }, () => Array(size).fill(0)); //0 means closed, 1 means open, -1 means flagged
 
 let modeFlag=false;
@@ -30,9 +25,8 @@ const fillBoard = () => {
 
         for (let j = 0; j < board[i].length; j++) {
             const cell = document.createElement('button');
-            // cell.classList.add('coloumn');
             cell.onclick=()=>clickCell(cell.id)
-            cell.id = `${i}-${j}`; // Setting id based on row and column
+            cell.id = `${i}-${j}`;
             row.appendChild(cell);
         }
 
@@ -42,7 +36,8 @@ const fillBoard = () => {
 };
 
 
-document.addEventListener('populateGameBoard',()=>{
+document.addEventListener('populateGameBoard',(event)=>{
+    requests=event.detail.requests;
     fillBoard();
 })  
 
@@ -53,6 +48,7 @@ const clearBoard=()=>{
 }
 
 const changeFlagMode=()=>{
+    calcScore()
     modeFlag=!modeFlag;
     
     if(modeFlag){
@@ -94,4 +90,16 @@ const clickCell=(cellID)=>{
         openBoard[row][col]=0;
     }
     
+}
+
+document.addEventListener('setDifficulty',(event)=>{
+    difficulty=event.detail.difficulty
+})
+
+const calcScore=()=>{
+    const multiplier=requests.getMultiplier(difficulty,size)
+
+    multiplier.then(data=>{
+        console.log(data)
+    })
 }

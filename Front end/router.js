@@ -7,6 +7,9 @@ import victorypopup from "./components/victory popup/victorypopup.js";
 import losspopup from "./components/loss popup/losspopup.js";
 import warningpopup from "./components/warning popup/warningpopup.js";
 import gamePage from "./components/game page/gamepage.js";
+import Requests from "./util/requests.js";
+
+const requests =new Requests();
 let currentPage="welcome page";
 let currPopup=null;
 
@@ -79,7 +82,7 @@ nav("welcome page")
 
 
 document.addEventListener('leaderboard-ready',()=>{
-    document.dispatchEvent(new CustomEvent("popoulateLeaderBoard"))
+    document.dispatchEvent(new CustomEvent("popoulateLeaderBoard", {detail: requests}))
 })
 
 document.addEventListener('popup-ready',(event)=>{
@@ -100,5 +103,5 @@ document.addEventListener('closePopup',()=>{
 })
 
 document.addEventListener('gameboard-ready',()=>{
-    document.dispatchEvent(new CustomEvent('populateGameBoard'));
+    document.dispatchEvent(new CustomEvent('populateGameBoard',{detail:{requests:requests}}));
 })
