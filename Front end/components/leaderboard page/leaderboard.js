@@ -8,8 +8,9 @@ class leaderboard extends HTMLElement {
         getHTML("components/leaderboard page/leaderboardpage.html").then(html =>{
             this.innerHTML=html;
             document.dispatchEvent(new CustomEvent('leaderboard-ready',{detail: leaderboard}))
-        }).catch(error => console.error(error))
-
+        }).catch(error =>{
+            console.error(error)
+        })
 
     }
 }

@@ -1,5 +1,4 @@
 const handleButtonClick=(newPage)=>{
-    console.log(newPage)
     const eventData={message:newPage};
     const event = new CustomEvent('TriggerRouting',{detail: eventData});
 
@@ -19,5 +18,5 @@ const openInstructionsPopup=()=>{
     const event = new CustomEvent('openPopup',{detail: eventData});
 
     document.dispatchEvent(event);
-    
+
 }
