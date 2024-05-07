@@ -3,7 +3,6 @@
 var express = require('express');
 const jwt = require('jsonwebtoken');
 const request = require('request');
-const fs = require('fs');
 
 var router = express.Router();
 
@@ -14,13 +13,10 @@ const appName = process.env.minesweeper_app_name;
 /* GET login */
 router.get('/', function(req, res) {
 
-  const githubToken = req.headers.authorization.replace('Bearer ', '');
-  console.log(githubToken);
-  // Verify the GitHub OAuth token by making a request to GitHub's authentication endpoint
   request.get({
     url: 'https://api.github.com/user',
     headers: {
-      'Authorization': `token ${githubToken}`,
+      'Authorization': `token ${req.headers.authorization.replace('Bearer ', '')}`,
       'User-Agent': appName
     }
   }, (error, response, body) => {
@@ -31,21 +27,27 @@ router.get('/', function(req, res) {
       const jwtPayload = {
         userId: githubUser.id,
         username: githubUser.login,
-        // Add other relevant user data as needed
       };
 
-      // Sign JWT token with private key
       const jwtToken = jwt.sign(jwtPayload, privateKey, { expiresIn: '1h' });
-
-      // Send JWT token back to the client
-      res.json({ jwtToken });
+      res.json({ jwtToken: jwtToken });
     } else {
-      // Handle error when verifying GitHub OAuth token
-      console.log(error);
-      console.log(response);
+
+      console.log(`Failed login query: ${error} ${response}`);
       res.status(401).json({ error: 'Invalid GitHub OAuth token' });
     }
   });
+});
+
+router.get('/username', function(req, res, next) {
+  var playerName = req.user.userName;
+
+  if (playerName !== '') {
+      res.json({ userName: playerName});
+  } 
+  else {
+      res.status(404).json({ error : 'Cannot get username for anonymous player!' });
+  }
 });
 
 module.exports = router;
