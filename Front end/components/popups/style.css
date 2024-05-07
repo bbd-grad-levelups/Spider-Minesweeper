@@ -1,11 +1,19 @@
 .mainBody{
-    max-width: 70%;
-    height: 60%;
+    /* max-width: 80%;
+    height: 70%;
     display: flex;
     border-radius: 10px;
     flex-direction: column;
     padding: 5%;
-    flex:1
+    flex:1 */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+    max-width: 30%;
+    height: 60%;
+    border-radius: 10px;
+    margin: auto;
 }
 
 .mainBody h1{
@@ -19,6 +27,7 @@
     border:none;
     height: 90%;
     width: 10%;
+    font-family: poppins;
     font-size: 1em;
     color: white;
     cursor: pointer;
@@ -34,3 +43,21 @@
     width: fit-content;
     margin: 1%;
 }
+
+@media (max-width: 600px){
+    .mainBody{
+        max-width: 80%;
+        height:auto;
+        padding: 5%;
+    }
+
+    .mainBody h1{
+        width: 80%;
+        text-wrap:balance;
+
+    .mainBody p{
+        width: 60%;
+        font-size: 0.7em;
+        text-wrap: balance;
+    }
+
