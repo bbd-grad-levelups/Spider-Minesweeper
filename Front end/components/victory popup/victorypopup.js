@@ -6,7 +6,7 @@ class victorypopup extends HTMLElement {
     }
     connectedCallback(){
         getHTML('components/victory popup/victorypopup.html').then(html =>{
-                this.innerHTML=html;
+            this.innerHTML=html;
         }).catch(error =>console.error(error));
         
     }
