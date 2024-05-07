@@ -30,6 +30,6 @@ body{
 
 @media (max-width: 600px){
     html{
-        height: fit-content;
+        height: 140%;
     }
 }

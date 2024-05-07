@@ -24,8 +24,11 @@ section h1 {
 .game-left-side {
     flex: 1;
     height: 100%;
+    width: 100%;
 }
-
+.game-bottom-row{
+    display: none;
+}
 .game-right-side {
     height: 100%;
 }
@@ -136,6 +139,7 @@ section h1 {
     background-color: #b6b3ab;
 }
 .gameBody{
+    height: 100%;
     flex: 4;
 }
 .row{
@@ -145,6 +149,8 @@ section h1 {
     padding-left: 1%;
     padding-right: 1%;
     flex:1;
+    height: 100%;
+    
 }
 
 .coloumn{
@@ -153,11 +159,31 @@ section h1 {
 }
 
 .flagImg{
-    height: 100%;
-    width: 100%;
+    height: 70%;
+    width: 70%;
+}
+.game-bottom-row button{
+    border: transparent;
+    border-radius: 50%;
+    height: 2em;
+    width: 2em;
+    font-size: 2em;
+    color: white;
 }
 @media (max-width: 600px) {
+    .game-bottom-row{
+        display: flex;
+        justify-content: space-around;
+        height: 10%;
+        width: 100%;
+        align-items: center;
+        
+    }
     .game-right-side {
         display: none;
+    }
+    .game-full-content{
+        flex-direction: column;
+        height: 65%;
     }
 }

@@ -1,25 +1,26 @@
-// const board = [
-//   [-1, -1, 1, 0, 1, 1, 1, 0],
-//   [3, 3, 1, 0, 2, -1, 3, 1],
-//   [-1, 2, 0, 0, 2, -1, 3, -1],
-//   [-1, 3, 1, 1, 1, 2, 4, 3],
-//   [1, 2, -1, 1, 0, 1, -1, -1],
-//   [0, 1, 1, 2, 1, 2, 2, 2],
-//   [0, 1, 2, 4, -1, 3, 1, 0],
-//   [0, 1, -1, -1, -1, -1, 1, 0],
-// ];
 const board = [
-    [-1, -1, 1, 0],
-    [3, 3, 1, 0],
-    [-1, 2, 0, 0],
-    [-1, 3, 1, 1]
-  ];
+  [-1, -1, 1, 0, 1, 1, 1, 0],
+  [3, 3, 1, 0, 2, -1, 3, 1],
+  [-1, 2, 0, 0, 2, -1, 3, -1],
+  [-1, 3, 1, 1, 1, 2, 4, 3],
+  [1, 2, -1, 1, 0, 1, -1, -1],
+  [0, 1, 1, 2, 1, 2, 2, 2],
+  [0, 1, 2, 4, -1, 3, 1, 0],
+  [0, 1, -1, -1, -1, -1, 1, 0],
+];
+// const board = [
+//     [-1, -1, 1, 0],
+//     [3, 3, 1, 0],
+//     [-1, 2, 0, 0],
+//     [-1, 3, 1, 1]
+//   ];
 const size = board.length;
 
 const openBoard = Array.from({ length: size }, () => Array(size).fill(0)); //0 means closed, 1 means open, -1 means flagged
 
 let modeFlag=false;
 const fillBoard = () => {
+    openBoard.forEach(row => row.fill(0));
     const grid=document.createElement('article');
     grid.classList.add('gameGrid');
 
@@ -29,7 +30,7 @@ const fillBoard = () => {
 
         for (let j = 0; j < board[i].length; j++) {
             const cell = document.createElement('button');
-            cell.classList.add('coloumn');
+            // cell.classList.add('coloumn');
             cell.onclick=()=>clickCell(cell.id)
             cell.id = `${i}-${j}`; // Setting id based on row and column
             row.appendChild(cell);
@@ -68,8 +69,17 @@ const clickCell=(cellID)=>{
     const val=board[row][col];
     if(openBoard[row][col] === 0){
         if(!modeFlag){
-            document.getElementById(cellID).textContent=val;
-            openBoard[row][col]=1 
+            if(board[row][col]!==-1){
+                document.getElementById(cellID).textContent=val;
+                openBoard[row][col]=1 
+            }else{
+                const flagimg=document.createElement('img');
+                flagimg.src='./media/images/Angry Spider.svg';
+                flagimg.classList.add('flagImg')
+                document.getElementById(cellID).appendChild(flagimg)
+                openBoard[row][col]=1 
+            }
+            
         }else{
             const flagimg=document.createElement('img');
             flagimg.src='./media/images/redflag.svg';
