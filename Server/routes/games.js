@@ -5,10 +5,6 @@ const sql = require('mssql');
 const { pool } = require('../db');
 const router = express.Router();
 
-function getRandomBoardPos(max) {
-  return Math.round(Math.random() * (max -1));
-}
-
 function getBoard(difficulty, boardLength) {
   const numOfSpider = Math.round((difficulty / 100) * boardLength ** 2);
 
@@ -19,8 +15,8 @@ function getBoard(difficulty, boardLength) {
     let newPositionX, newPositionY;
 
     do {
-      newPositionX = getRandomBoardPos(boardLength);
-      newPositionY = getRandomBoardPos(boardLength);
+      newPositionX = Math.round(Math.random() * (boardLength -1));;
+      newPositionY = Math.round(Math.random() * (boardLength -1));;
     } while (gameBoard[newPositionX][newPositionY] !== 0);
 
     gameBoard[newPositionX][newPositionY] = -1;
