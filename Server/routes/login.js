@@ -39,4 +39,15 @@ router.get('/', function(req, res) {
   });
 });
 
+router.get('/username', function(req, res, next) {
+  var playerName = req.user.userName;
+
+  if (playerName !== '') {
+      res.json({ userName: playerName});
+  } 
+  else {
+      res.status(404).json({ error : 'Cannot get username for anonymous player!' });
+  }
+});
+
 module.exports = router;

@@ -27,11 +27,7 @@ app.use('/modifiers', modifiersRouter);
 const scoresRouter = require('./routes/scores');
 app.use('/scores', scoresRouter);
 
-// Users router - Mostly for getting usernames
-const usersRouter = require('./routes/users');
-app.use('/users', usersRouter);
-
-// Login router - JWT token
+// Login router - User management
 const loginRouter = require('./routes/login');
 app.use('/login', loginRouter);
 
