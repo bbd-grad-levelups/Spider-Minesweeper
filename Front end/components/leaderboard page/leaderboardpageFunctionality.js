@@ -30,6 +30,8 @@ const populateBoard = (event) => {
 
 }
 
-
+const goBack=()=>{
+    history.back()
+}
 
 document.addEventListener("popoulateLeaderBoard", populateBoard);
