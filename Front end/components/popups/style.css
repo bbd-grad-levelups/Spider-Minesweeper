@@ -10,10 +10,11 @@
     align-items: center;
     justify-content: center;
     padding: 1%;
-    max-width: 30%;
-    height: 80%;
+    width: 30%;
+    height: auto;
     border-radius: 10px;
     margin: auto;
+    opacity: 95%;
 }
 
 .mainBody h1{
@@ -28,7 +29,7 @@
     height: 90%;
     width: 10%;
     font-family: poppins;
-    font-size: 1em;
+    font-size: 0.7em;
     color: white;
     cursor: pointer;
     text-align: center;
@@ -41,20 +42,29 @@
     height: 5%;
     font-size: 2em;
     width: fit-content;
-    margin: 1%;
+    margin: 0%;
+}
+
+.popup-content{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: 600px){
     .mainBody{
-        max-width: 80%;
+        width: 80%;
         height:auto;
         padding: 5%;
         margin: auto;
+        opacity: 95%;
     }
 
     .mainBody h1{
         width: 80%;
         text-wrap:balance;
+        font-size: 2.5em;
     }
     .mainBody p{
         width: 60%;

@@ -7,7 +7,7 @@
     color: white;
 }
 .full-content-instructions p{
-    width: 80%;
+    width: 90%;
     text-align: center;
     font-family: poppins;
     font-size: 1.2em;
@@ -21,7 +21,7 @@
 
 .full-content-instructions button{
     background-color: transparent;
-    width: 40%;
+    width: 50%;
     height: 10%;
     font-family: poppins;
     font-size: 1.5em;
@@ -37,16 +37,16 @@
 
 @media (max-width: 600px){
     .full-content-instructions{
-        max-width: 80%;
+        max-width: 90%;
         height:auto;
-        padding: 5%;
+        padding: 2%;
         margin: auto;
     }
 
     .full-content-instructions p{
         text-align: center;
         font-family: poppins;
-        font-size: 1em;
+        font-size: 1.5em;
         flex:1;
     }
 
@@ -61,3 +61,4 @@
         margin: 7%;
         color: white;
     }
+}
