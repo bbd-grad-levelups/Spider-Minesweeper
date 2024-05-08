@@ -1,0 +1,189 @@
+.game-full-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    font-family: 'poppins';
+}
+
+section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* gap: 1em; */
+}
+
+section h1 {
+    text-align: center;
+    font-size: 5em;
+    margin: 0;
+}
+
+.game-left-side {
+    flex: 1;
+    height: 100%;
+    width: 100%;
+}
+.game-bottom-row{
+    display: none;
+}
+.game-right-side {
+    height: 100%;
+}
+
+.game-right-side h1 {
+    font-size: 4em;
+}
+
+.game-right-side p {
+    color: #FD776E;
+    font-size: 3em;
+    font-family: 'poppins';
+}
+
+
+.game-right-side button {
+    border-radius: 10rem;
+    min-width: 100%;
+    min-height: 3rem;
+    font-family: poppins;
+    border: none;
+    cursor: pointer;
+}
+
+.game-full-content section {
+    align-items: center;
+}
+
+.game-button-section {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    flex: 1;
+    gap: 5%;
+}
+
+.leaderboard-button {
+    background-color: #99B8AA;
+}
+
+.instructions-button {
+    background-color: #777CA4;
+}
+
+.new-game-button {
+    background-color: #FD7461;
+}
+
+.game-board {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 90%;
+    height: 90%;
+    border-radius: 1rem;
+}
+
+.board-header {
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-family: 'poppins';
+    font-size: 3em;
+    
+}
+
+.game-board button {
+    background-color: #E1DAD0;
+    border: none;
+    height: 6em;
+    width: 6em
+}
+
+
+.game-board button:active{
+    background-color: #b6b3ab;
+}
+.board-header img {
+    padding: 1%;
+    height: 100%;
+    width: 100%;
+}
+
+.gameGrid{
+    display:flex;
+    justify-content: center;
+    height:100%;
+    width: 100%;
+    padding-bottom: 1%;
+    
+}
+
+.gameGrid button{
+    flex:1;
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+    background-color: #EAE6DA;
+    margin: 1%;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameGrid button:active{
+    background-color: #b6b3ab;
+}
+.gameBody{
+    height: 100%;
+    flex: 4;
+}
+.row{
+    display: flex;
+    flex-direction: column;
+    gap: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+    flex:1;
+    height: 100%;
+    
+}
+
+.coloumn{
+    display: flex;
+    flex-direction: column;
+}
+
+.flagImg{
+    height: 70%;
+    width: 70%;
+}
+.game-bottom-row button{
+    border: transparent;
+    border-radius: 50%;
+    height: 2em;
+    width: 2em;
+    font-size: 2em;
+    color: white;
+}
+@media (max-width: 600px) {
+    .game-bottom-row{
+        display: flex;
+        justify-content: space-around;
+        height: 10%;
+        width: 100%;
+        align-items: center;
+        
+    }
+    .game-right-side {
+        display: none;
+    }
+    .game-full-content{
+        flex-direction: column;
+        height: 65%;
+    }
+}

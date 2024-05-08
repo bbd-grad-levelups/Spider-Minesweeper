@@ -1,8 +1,10 @@
 .full-content{
     display: flex;
+    width: 100%;
     flex:1;
     height: 90%;
     color: white;
+    flex-direction: column;
 }
 .popup-button-container{
     gap:2em;
