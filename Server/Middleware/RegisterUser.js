@@ -39,7 +39,7 @@ async function addUser(req) {
   const query = `INSERT INTO dbo.Users (Username, UserUid) VALUES (@username, @uid)`;
   
   await pool.request()
-  .input('username', sql.VarChar, req.user.Username)
+  .input('username', sql.VarChar, req.user.userName)
   .input('uid', sql.VarChar, req.user.UID.toString())
   .query(query)
   .then((insertResult) => {
