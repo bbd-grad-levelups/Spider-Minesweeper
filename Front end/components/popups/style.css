@@ -1,20 +1,20 @@
 .mainBody{
-    /* max-width: 80%;
-    height: 70%;
-    display: flex;
-    border-radius: 10px;
-    flex-direction: column;
-    padding: 5%;
-    flex:1 */
-    flex-direction: column;
+    max-width: 80%;
+    height:auto;
+    display:flex;
+    border-radius:10px;
+    flex-direction:column;
+    padding:5%;
+    flex:1;
+    opacity:95%;
+     /* flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 1%;
-    width: 30%;
+    max-width: 50%;
     height: auto;
     border-radius: 10px;
-    margin: auto;
-    opacity: 95%;
+    margin: auto; */
 }
 
 .mainBody h1{
@@ -54,7 +54,7 @@
 
 @media (max-width: 600px){
     .mainBody{
-        width: 80%;
+        width: 90%;
         height:auto;
         padding: 5%;
         margin: auto;
@@ -62,20 +62,20 @@
     }
 
     .mainBody h1{
-        width: 80%;
-        text-wrap:balance;
-        font-size: 2.5em;
+        width: 90%;
+        text-wrap:pretty;
+        font-size: 1.5em;
     }
     .mainBody p{
-        width: 60%;
-        font-size: 0.7em;
+        max-width: 80%;
+        font-size: 0.5em;
         text-wrap: balance;
     }
 
-.popup-content{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+    .popup-content{
+        display: flex;
+        width: 90%;
+        justify-content: center;
+        align-items: center;
 }
 }

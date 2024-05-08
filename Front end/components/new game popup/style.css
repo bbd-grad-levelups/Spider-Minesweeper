@@ -1,28 +1,27 @@
 .full-content{
     display: flex;
-    width: auto;
+    width: 90%;
     align-content: center;
     flex:1;
-    height: auto;
+    height: 50%;
     color: white;
     flex-direction: column;
 }
 .popup-button-container{
-    gap:0em;
-    width: 85%;
+        width: 45%;
 }
 .popup-button-container button{
     border-radius: 10rem;
     width: 40%;
-    height: 20%;
-    margin: 5%;
-    gap: 10%;
+    height: 30%;
+    margin: 1%;
+    gap: 0%;
     font-family: poppins;
     cursor: pointer;
     border: 1px solid white;
     background-color:#777CA4;
     color: white;
-    font-size: 1.5rem;  
+    font-size: 2rem;  
 }
 
 .popup-button-container button:active{
@@ -31,7 +30,7 @@
 
 .full-content h1{
     text-align:center;
-    font-size: 3.5em;
+    font-size: 4em;
     margin: 0;
 }
 
@@ -50,12 +49,30 @@
         flex:1;
     }
 
+    .popup-button-container{
+        gap:0em;
+        width: 75%;
+    }
+    .popup-button-container button{
+        border-radius: 10rem;
+        width: 80%;
+        height: 30%;
+        margin: 5%;
+        gap: 10%;
+        font-family: poppins;
+        cursor: pointer;
+        border: 1px solid white;
+        background-color:#777CA4;
+        color: white;
+        font-size: 1.5rem;  
+    }
+
     .full-content-instructions button{
         background-color: transparent;
-        width: 90%;
-        height: 50%;
+        width: 95%;
+        height: 60%;
         font-family: poppins;
-        font-size: 1em;
+        font-size: 2em;
         border-radius: 2em;
         border:1px solid white;
         margin: 7%;
@@ -64,7 +81,7 @@
 
     .full-content h1{
         text-align:center;
-        font-size: 2em;
+        font-size: 2.5em;
         margin: 0;
     }
 

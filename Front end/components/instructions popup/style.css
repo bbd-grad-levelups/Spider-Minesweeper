@@ -39,14 +39,14 @@
     .full-content-instructions{
         max-width: 90%;
         height:auto;
-        padding: 2%;
+        padding: 1%;
         margin: auto;
     }
 
     .full-content-instructions p{
         text-align: center;
         font-family: poppins;
-        font-size: 1.5em;
+        font-size: 0.8em;
         flex:1;
     }
 
@@ -61,4 +61,11 @@
         margin: 7%;
         color: white;
     }
+
+    .full-content-instructions h1{
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    
 }
