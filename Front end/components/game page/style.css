@@ -1,6 +1,7 @@
 .game-full-content {
     width: 100%;
     height: 100%;
+    padding-top: 1%;
     display: flex;
     flex-direction: row;
     font-family: 'poppins';
@@ -30,11 +31,22 @@ section h1 {
     display: none;
 }
 .game-right-side {
-    height: 100%;
+    height: 50%;
 }
 
 .game-right-side h1 {
-    font-size: 4em;
+    font-size: 6em;
+}
+
+.game-right-side h2 {
+    font-size: 2em;
+    font-weight: 400;
+}
+
+.game-right-side h3 {
+    font-size: 3em;
+    font-weight: 800;
+    color: #FD776E;
 }
 
 .game-right-side p {
@@ -46,11 +58,14 @@ section h1 {
 
 .game-right-side button {
     border-radius: 10rem;
-    min-width: 100%;
-    min-height: 3rem;
+    min-width: 90%;
+    min-height: 4rem;
     font-family: poppins;
+    font-size: 1.5em;
+    color: white;
     border: none;
     cursor: pointer;
+    gap: 10%;
 }
 
 .game-full-content section {
@@ -60,9 +75,9 @@ section h1 {
 .game-button-section {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 50%;
     flex: 1;
-    gap: 5%;
+    gap: 10%;
 }
 
 .leaderboard-button {
@@ -80,29 +95,35 @@ section h1 {
 .game-board {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    border: 3px solid #373B5B;
     width: 90%;
     height: 90%;
     border-radius: 1rem;
+    padding: 1%;
 }
 
 .board-header {
     flex:1;
+    height: 10%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding-left: 5%;
     padding-right: 5%;
     font-family: 'poppins';
-    font-size: 3em;
+    font-size: 4em;
+    font-weight: 800;
     
 }
 
 .game-board button {
     background-color: #E1DAD0;
     border: none;
-    height: 6em;
-    width: 6em
+    height: 80%;
+    width: 18%;
+    border-radius: 1em;
+    padding: 1%;
+    justify-content: center;
 }
 
 
@@ -110,7 +131,7 @@ section h1 {
     background-color: #b6b3ab;
 }
 .board-header img {
-    padding: 1%;
+    padding: 2%;
     height: 100%;
     width: 100%;
 }
@@ -145,7 +166,7 @@ section h1 {
 .row{
     display: flex;
     flex-direction: column;
-    gap: 1%;
+    gap: 1.5%;
     padding-left: 1%;
     padding-right: 1%;
     flex:1;
@@ -186,4 +207,26 @@ section h1 {
         flex-direction: column;
         height: 65%;
     }
+
+    .board-header {
+        flex:1;
+        height: 20%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: 5%;
+        padding-right: 5%;
+        font-family: 'poppins';
+        font-size: 2em;
+        font-weight: 800;
+        
+    }
+    .board-header img {
+        padding: 2%;
+        height: 90%;
+        width: 100%;
+    }
+
+    
+    
 }

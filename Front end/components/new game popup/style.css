@@ -7,27 +7,62 @@
     flex-direction: column;
 }
 .popup-button-container{
-    gap:2em;
-    width: 50%;
+    gap:1em;
+    width: 85%;
 }
 .popup-button-container button{
     border-radius: 10rem;
-    height: 4rem;
-    min-width: 100%;
+    width: 100%;
+    height: 15%;
+    margin: 5%;
+    
     font-family: poppins;
     cursor: pointer;
     border: 1px solid white;
     background-color:#777CA4;
     color: white;
-    font-size: 2rem;
+    font-size: 1.5rem;  
+}
 
 }
 .popup-button-container button:active{
     background-color:#515571;
 }
 
-section h1{
+.full-content h1{
     text-align:center;
     font-size: 3.5em;
     margin: 0;
 }
+
+@media (max-width: 600px){
+    .full-content-instructions{
+        max-width: 90%;
+        height:auto;
+        padding: 5%;
+        margin: auto;
+    }
+
+    .full-content-instructions p{
+        text-align: center;
+        font-family: poppins;
+        font-size: 1em;
+        flex:1;
+    }
+
+    .full-content-instructions button{
+        background-color: transparent;
+        width: 90%;
+        height: 50%;
+        font-family: poppins;
+        font-size: 1em;
+        border-radius: 2em;
+        border:1px solid white;
+        margin: 7%;
+        color: white;
+    }
+
+    .full-content h1{
+        text-align:center;
+        font-size: 2em;
+        margin: 0;

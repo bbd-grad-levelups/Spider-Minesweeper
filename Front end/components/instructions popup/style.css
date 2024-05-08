@@ -22,12 +22,12 @@
 .full-content-instructions button{
     background-color: transparent;
     width: 40%;
-    height: 40%;
+    height: 10%;
     font-family: poppins;
     font-size: 1.5em;
     border-radius: 2em;
     border:1px solid white;
-    margin: 4%;
+    margin: 5%;
     color: white;
 }
 
@@ -36,6 +36,13 @@
 }
 
 @media (max-width: 600px){
+    .full-content-instructions{
+        max-width: 80%;
+        height:auto;
+        padding: 5%;
+        margin: auto;
+    }
+
     .full-content-instructions p{
         text-align: center;
         font-family: poppins;
@@ -53,3 +60,4 @@
         border:1px solid white;
         margin: 7%;
         color: white;
+    }

@@ -11,7 +11,7 @@
     justify-content: center;
     padding: 1%;
     max-width: 30%;
-    height: 60%;
+    height: 80%;
     border-radius: 10px;
     margin: auto;
 }
@@ -49,6 +49,7 @@
         max-width: 80%;
         height:auto;
         padding: 5%;
+        margin: auto;
     }
 
     .mainBody h1{
