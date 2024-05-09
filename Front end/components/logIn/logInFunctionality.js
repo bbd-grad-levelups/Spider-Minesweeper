@@ -1,5 +1,5 @@
-const clientId = '';
-const redirectUri = '';
+const clientId = 'Iv23liHbiQ9aD6uAgyym';
+const redirectUri = 'https://bbd-grad-levelups.github.io/Spider-Minesweeper/';
 const requests = require('../../util/requests');
 
 function authorize() {

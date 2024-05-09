@@ -37,19 +37,18 @@ class Requests {
     }
 
     getJWT(code) {
-      const endpoint="login";
-      return fetch(this.baseURL+endpoint, {
-        method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ code }),
-      })
-      .then(response => {
-        console.log(response) 
-        return response.json();
-      });
+        const endpoint="login";
+        return fetch(this.baseURL+endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code }),
+        })
+        .then(response => {
+            console.log(response) 
+            return response.json();
+        });
     }
-
-  }
+}
 
 
 export default Requests;
