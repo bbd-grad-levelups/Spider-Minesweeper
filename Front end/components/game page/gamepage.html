@@ -14,14 +14,14 @@
     <section class="game-left-side">
         <article class="game-board" id="game-board">
           <section class="board-header">
-            <p>14</p>
+            <p id="remainingSpiders"></p>
             <button onclick="clearBoard()">
               <img src="./media/images/Happy Spider.svg"/>
             </button>
             <button onclick="changeFlagMode()">
               <img id="flagInidcator" src="./media/images/redflag.svg" />
             </button>
-            
+
             <p>123</p>
           </section>
           <section id="gameBody" class="gameBody">
@@ -36,7 +36,7 @@
 
         <article class="game-button-section">
             <button onclick="handleButtonClick('leaderboard page')" class="leaderboard-button">Leaderboard</button>
-            <button onclick="openNewGamePopup()" class="new-game-button">New game</button> 
+            <button onclick="openNewGamePopup()" class="new-game-button">New game</button>
             <button onclick="openInstructionsPopup()" class="instructions-button">Instructions</button>
         </article>
     </section>

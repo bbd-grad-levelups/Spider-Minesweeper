@@ -1,21 +1,63 @@
-const board = [
-  [-1, -1, 1, 0, 1, 1, 1, 0],
-  [3, 3, 1, 0, 2, -1, 3, 1],
-  [-1, 2, 0, 0, 2, -1, 3, -1],
-  [-1, 3, 1, 1, 1, 2, 4, 3],
-  [1, 2, -1, 1, 0, 1, -1, -1],
-  [0, 1, 1, 2, 1, 2, 2, 2],
-  [0, 1, 2, 4, -1, 3, 1, 0],
-  [0, 1, -1, -1, -1, -1, 1, 0],
-];
-const size = "large"
-let difficulty=null;
-let requests=null;
-const openBoard = Array.from({ length: size }, () => Array(size).fill(0)); //0 means closed, 1 means open, -1 means flagged
+function getBoard(difficulty, boardLength) {
+    console.log('difficulty: ' + difficulty);
+    console.log('boardLength: ' + boardLength);
 
+    const numOfSpider = Math.round((difficulty / 100) * boardLength ** 2);
+
+    console.log('numOfSpider: ' + numOfSpider);
+
+    let gameBoard = [];
+
+	for (let i = 0; i < boardLength; i++) {
+			gameBoard[i] = [];
+			for(let j = 0; j < boardLength; j++) {
+					gameBoard[i][j] = {
+						revealed: false,
+                        flagged: false,
+						count: 0,
+					};
+			}
+	}
+
+    var spiderPositions = [];
+    for (let i = 0; i < numOfSpider; i++) {
+
+        let newPositionX = Math.round(Math.random() * (boardLength -1));
+        let newPositionY = Math.round(Math.random() * (boardLength -1));
+
+        while (gameBoard[newPositionX][newPositionY].count === -1){
+            newPositionX = Math.round(Math.random() * (boardLength -1));
+            newPositionY = Math.round(Math.random() * (boardLength -1));
+
+        }
+        gameBoard[newPositionX][newPositionY].count = -1;
+
+
+        spiderPositions.push([newPositionX, newPositionY]);
+    }
+
+    for (const [x, y] of spiderPositions) {
+        for (let i = Math.max(0, x - 1); i <= Math.min(boardLength - 1, x + 1); i++) {
+            for (let j = Math.max(0, y - 1); j <= Math.min(boardLength - 1, y + 1); j++) {
+                if (gameBoard[i][j].count !== -1) {
+                        gameBoard[i][j].count += 1;
+                }
+            }
+        }
+    }
+
+    console.log(gameBoard);
+
+    return gameBoard;
+  }
+
+let board = getBoard(20,8);
+let boardLength = 8;
+let remainingSpidersNum = 10;
 let modeFlag=false;
+
+
 const fillBoard = () => {
-    openBoard.forEach(row => row.fill(0));
     const grid=document.createElement('article');
     grid.classList.add('gameGrid');
 
@@ -25,32 +67,33 @@ const fillBoard = () => {
 
         for (let j = 0; j < board[i].length; j++) {
             const cell = document.createElement('button');
-            cell.onclick=()=>clickCell(cell.id)
             cell.id = `${i}-${j}`;
+            cell.onclick=()=>clickCell(cell.id);
             row.appendChild(cell);
         }
 
         grid.appendChild(row);
     }
     document.getElementById('gameBody').appendChild(grid);
+    document.getElementById("remainingSpiders").textContent = remainingSpidersNum;
 };
 
 
 document.addEventListener('populateGameBoard',(event)=>{
     requests=event.detail.requests;
     fillBoard();
-})  
+})
 
 const clearBoard=()=>{
     document.getElementById('gameBody').innerHTML="";
-    openBoard.forEach(row => row.fill(0));
+    board = getBoard(20,8);
     fillBoard();
 }
 
 const changeFlagMode=()=>{
-    calcScore()
+    // calcScore()
     modeFlag=!modeFlag;
-    
+
     if(modeFlag){
         document.getElementById('flagInidcator').src="./media/images/greenflag.svg"
     }else{
@@ -58,38 +101,81 @@ const changeFlagMode=()=>{
     }
 }
 
+function revealCell(row, col, cellID) {
+
+	if (row < 0 || row >= board.length || col < 0 || col >= board[row].length || board[row][col].revealed) {
+		return;
+	}
+
+    const cell = document.getElementById(cellID);
+
+    if (modeFlag) {
+
+        if (board[row][col].flagged === true) {
+
+
+            cell.removeChild(cell.querySelector('.flagImg'));
+
+            remainingSpidersNum = remainingSpidersNum + 1;
+            document.getElementById("remainingSpiders").textContent = remainingSpidersNum;
+
+            board[row][col].flagged = false;
+        }
+        else {
+            const flagimg=document.createElement('img');
+            flagimg.src='./media/images/redflag.svg';
+            flagimg.classList.add('flagImg');
+            cell.appendChild(flagimg);
+
+            board[row][col].flagged = true;
+
+
+            remainingSpidersNum = remainingSpidersNum - 1;
+            document.getElementById("remainingSpiders").textContent = remainingSpidersNum;
+        }
+    }
+    else {
+
+        board[row][col].revealed = true;
+
+        if (board[row][col].count === -1) {
+            // Handle game over
+            alert("Game Over! You stepped on a spider.");
+
+            cell.classList.add("mine");
+            const flagimg=document.createElement('img');
+            flagimg.src='./media/images/Angry Spider.svg';
+            flagimg.classList.add('flagImg')
+            cell.appendChild(flagimg)
+        }
+        else if (board[row][col].count === 0) {
+
+            cell.classList.add("revealed");
+            // If cell has no mines nearby,
+            // Reveal adjacent cells
+            for (let dx = -1;dx <= 1;dx++) {
+
+                for (let dy = -1;dy <= 1;dy++) {
+
+                    revealCell(row + dx,col + dy,  `${row + dx}-${col + dy}`);
+                }
+            }
+        }
+        else if (board[row][col].count > 0) {
+
+            cell.textContent = board[row][col].count;
+        }
+    }
+
+
+}
+
 const clickCell=(cellID)=>{
     const pos=cellID.split('-')
     const row=parseInt(pos[0]);
     const col=parseInt(pos[1]);
-    const val=board[row][col];
-    if(openBoard[row][col] === 0){
-        if(!modeFlag){
-            if(board[row][col]!==-1){
-                document.getElementById(cellID).textContent=val;
-                openBoard[row][col]=1 
-            }else{
-                const flagimg=document.createElement('img');
-                flagimg.src='./media/images/Angry Spider.svg';
-                flagimg.classList.add('flagImg')
-                document.getElementById(cellID).appendChild(flagimg)
-                openBoard[row][col]=1 
-            }
-            
-        }else{
-            const flagimg=document.createElement('img');
-            flagimg.src='./media/images/redflag.svg';
-            flagimg.classList.add('flagImg')
-            document.getElementById(cellID).appendChild(flagimg)
-            openBoard[row][col]=-1;
-        }
 
-        
-    }else if(modeFlag && openBoard[row][col]===-1){
-        document.getElementById(cellID).removeChild(document.getElementById(cellID).firstChild)
-        openBoard[row][col]=0;
-    }
-    
+    revealCell(row,col,cellID);
 }
 
 document.addEventListener('setDifficulty',(event)=>{
