@@ -119,10 +119,9 @@ function revealCell(row, col, cellID) {
         openSlots++;
         if(checkGameWin()){
             document.dispatchEvent(new CustomEvent('openPopup',{detail:{message:"victory popup"}}))
+            requests.submitScore(currentGameId, (score - seconds) * multiplier);
             resetTimer();
             document.getElementById('Score').textContent = 'Score: 000';
-
-            requests.submitScore(currentGameId, (score - seconds) * multiplier);
         }
         if (board[row][col].count === -1) {
             document.dispatchEvent(new CustomEvent('openPopup',{detail:{message:"loss popup"}}))
