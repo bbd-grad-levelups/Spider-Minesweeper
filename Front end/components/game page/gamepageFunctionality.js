@@ -12,6 +12,7 @@ let elapsedTime = 0;
 let currentGameId = -1;
 
 const fillBoard = () => {
+    getUserName();
     const grid=document.createElement('article');
     grid.classList.add('gameGrid');
 
@@ -34,6 +35,7 @@ const fillBoard = () => {
 };
 
 const clearBoard=()=>{
+    
     seconds=0;  
     document.getElementById('gameBody').innerHTML="";
     boardInfo = requests.getBoard(difficulty, 'large');
@@ -120,7 +122,7 @@ function revealCell(row, col, cellID) {
             resetTimer();
             document.getElementById('Score').textContent = 'Score: 000';
 
-            requests.saveScore(currentGameId, (score - seconds) * multiplier);
+            requests.submitScore(currentGameId, (score - seconds) * multiplier);
         }
         if (board[row][col].count === -1) {
             document.dispatchEvent(new CustomEvent('openPopup',{detail:{message:"loss popup"}}))
@@ -208,6 +210,7 @@ function resetTimer() {
 }
 
 const getUserName=()=>{
+    console.log("USER NAME GOT")
     requests.getUserName().then(data=>{
         if(data.userName !==undefined){
         document.getElementById("enjoyUser").textContent="Enjoy the game, "+data.userName;
