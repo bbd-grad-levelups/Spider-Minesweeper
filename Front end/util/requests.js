@@ -1,4 +1,6 @@
 class Requests {
+    jwt = null;
+
     constructor() {
         this.baseURL = "http://spider-sweeper-env.eba-z92mr8uh.eu-west-1.elasticbeanstalk.com/"
     }
@@ -21,9 +23,12 @@ class Requests {
     }
 
     getMultiplier(difficulty,size){
+
         const endpoint="modifiers/multiplier";
         const queryParams={boardSize:size,difficulty:difficulty};
         const queryString = new URLSearchParams(queryParams).toString();
+
+        console.log(this.baseURL+endpoint+"?"+queryString);
         return fetch(this.baseURL+endpoint+"?"+queryString).then(response => {
                 if (!response.ok) {
                     console.log(response.status)
@@ -34,7 +39,22 @@ class Requests {
             .catch(error => {
                 console.error("Error: ", error);
             });
+    }
 
+    getJWT(code) {
+        const endpoint="login";
+        return fetch(this.baseURL+endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code }),
+        })
+        .then(response => {
+            return response.json();
+        });
+    }
+
+    saveJWT(jwt) {
+        jwt = jwt;
     }
 }
 

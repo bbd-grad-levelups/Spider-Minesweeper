@@ -38,14 +38,13 @@ const nav = (newPage) => {
     const newPageContent=pageToObject[currentPage]();
     document.body.innerHTML='';
     newPageContent.classList.add('generalContent');
-    console.log(newPageContent)
     document.body.appendChild(newPageContent);
     window.history.pushState({ page: currentPage }, "", window.location.pathname);
 
 }
 
 const openPopup =() =>{
-    
+
     const popup=pageToObject["popups"]();
     popup.setAttribute('id','openPopup')
     popup.classList.add("popupContainer")
@@ -54,7 +53,7 @@ const openPopup =() =>{
 }
 
 const createChildrenContent=() =>{
-    
+
 
     const popup=pageToObject[currPopup]();
     popup.classList.add('generalContent')
@@ -63,7 +62,7 @@ const createChildrenContent=() =>{
 }
 
 const closePopup = () =>{
-    
+
     const popup=document.getElementById('openPopup');
 
     if(popup){
@@ -78,7 +77,25 @@ const handlePopState = (event) => {
 };
 
 window.addEventListener('popstate', handlePopState);
-nav("welcome page")
+
+const urlParams = new URLSearchParams(window.location.search);
+const code = urlParams.get('code');
+
+if (!code) {
+    nav("welcome page");
+}
+else {
+
+    if (code && requests) {
+        let jwt = requests.getJWT(code)
+        .then(data => {
+            if (data.jwtToken) {
+                requests.saveJWT(data.jwtToken);
+                nav("welcome page");
+            }
+        });
+      }
+}
 
 
 document.addEventListener('leaderboard-ready',()=>{
