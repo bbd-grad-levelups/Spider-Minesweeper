@@ -52,7 +52,6 @@ class Requests {
 
     saveJWT(jwt) {
         jwt = jwt;
-        console.log(jwt);
     }
 }
 

@@ -85,7 +85,6 @@ else {
     if (code && requests) {
         let jwt = requests.getJWT(code)
         .then(data => {
-            console.log('data: ' + data.jwtToken);
             if (data.jwtToken) {
                 requests.saveJWT(data.jwtToken);
                 nav("welcome page");
@@ -118,8 +117,4 @@ document.addEventListener('closePopup',()=>{
 
 document.addEventListener('gameboard-ready',()=>{
     document.dispatchEvent(new CustomEvent('populateGameBoard',{detail:{requests:requests}}));
-})
-
-document.addEventListener("giveRequest", ()=>{
-    document.dispatchEvent(new CustomEvent('recieveRequest',{detail:{requests:requests}}))
 })
