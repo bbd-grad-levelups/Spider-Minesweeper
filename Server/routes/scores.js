@@ -58,13 +58,18 @@ router.get('/highscore', (req, res) => {
   const playerName = req.user.userName;
 
   const query = `
-    SELECT MAX(s.ScoreAmount) as highestScore 
+    SELECT 
+      MAX(s.ScoreAmount) as highestScore,
+      (SELECT COUNT(*) + 1 
+       FROM dbo.Score s2 
+       JOIN dbo.Games g2 ON g2.GameId = s2.GameId 
+       JOIN dbo.Users u2 ON u2.UserId = g2.UserId 
+       WHERE s2.ScoreAmount > MAX(s.ScoreAmount)) as position
     FROM dbo.Score s
     JOIN dbo.Games g ON g.GameId = s.GameId
     JOIN dbo.Users u ON u.UserId = g.UserId
     WHERE u.UserUid = @uid
   `;
-
   if (playerUid !== '') {
     pool.request()
     .input('uid', sql.VarChar, playerUid)
@@ -76,7 +81,8 @@ router.get('/highscore', (req, res) => {
       else {
         res.json({ 
           playerName: playerName, 
-          playerScore: result.recordset[0].highestScore 
+          playerScore: result.recordset[0].highestScore,
+          playerPosition: result.recordset[0].position
         });
       }
     })

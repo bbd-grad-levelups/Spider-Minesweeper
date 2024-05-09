@@ -6,34 +6,49 @@ const { pool } = require('../db');
 const router = express.Router();
 
 function getBoard(difficulty, boardLength) {
+
   const numOfSpider = Math.round((difficulty / 100) * boardLength ** 2);
 
-  var gameBoard = Array.from({ length: boardLength }, () => Array(boardLength).fill(0));
+  let gameBoard = [];
+
+  for (let i = 0; i < boardLength; i++) {
+      gameBoard[i] = [];
+      for(let j = 0; j < boardLength; j++) {
+          gameBoard[i][j] = {
+            revealed: false,
+            flagged: false,
+            count: 0,
+          };
+      }
+  }
 
   var spiderPositions = [];
   for (let i = 0; i < numOfSpider; i++) {
-    let newPositionX, newPositionY;
 
-    do {
-      newPositionX = Math.round(Math.random() * (boardLength -1));;
-      newPositionY = Math.round(Math.random() * (boardLength -1));;
-    } while (gameBoard[newPositionX][newPositionY] !== 0);
+      let newPositionX = Math.round(Math.random() * (boardLength -1));
+      let newPositionY = Math.round(Math.random() * (boardLength -1));
 
-    gameBoard[newPositionX][newPositionY] = -1;
-    spiderPositions.push([newPositionX, newPositionY]);
+      while (gameBoard[newPositionX][newPositionY].count === -1){
+          newPositionX = Math.round(Math.random() * (boardLength -1));
+          newPositionY = Math.round(Math.random() * (boardLength -1));
+
+      }
+
+      gameBoard[newPositionX][newPositionY].count = -1;
+      spiderPositions.push([newPositionX, newPositionY]);
   }
 
   for (const [x, y] of spiderPositions) {
-    for (let i = Math.max(0, x - 1); i <= Math.min(boardLength - 1, x + 1); i++) {
-      for (let j = Math.max(0, y - 1); j <= Math.min(boardLength - 1, y + 1); j++) {
-        if (gameBoard[i][j] !== -1) {
-          gameBoard[i][j] += 1;
-        }
+      for (let i = Math.max(0, x - 1); i <= Math.min(boardLength - 1, x + 1); i++) {
+          for (let j = Math.max(0, y - 1); j <= Math.min(boardLength - 1, y + 1); j++) {
+              if (gameBoard[i][j].count !== -1) {
+                      gameBoard[i][j].count += 1;
+              }
+          }
       }
-    }
   }
 
-  return gameBoard;
+  return { gameBoard, numOfSpider };
 }
 
 // Get all
@@ -52,7 +67,7 @@ router.get('/board', async (req, res) => {
       .input('boardLength', sql.VarChar, boardLength)
       .query(boardQuery);
   const gameSize = sizeResult.recordset[0].BoardSize;
-  
+
   const diffQuery = `
     SELECT Bombpercentage, DifficultyId
     FROM dbo.Difficulty
@@ -66,7 +81,7 @@ router.get('/board', async (req, res) => {
   const boardPositions = getBoard(gameDifficulty, gameSize);
 
   let gameId = -1;
-  if (userName !== '') 
+  if (userName !== '')
   {
     const insertProcedure = 'InsertGame @UserName, @DifficultyName, @SizeDescription, @GameBoard';
     const insertResult = await pool.request()
@@ -80,6 +95,7 @@ router.get('/board', async (req, res) => {
 
   res.json({
     board: boardPositions,
+    spiderNum: Math.round((gameDifficulty / 100) * gameSize ** 2),
     gameId: gameId
   });
 

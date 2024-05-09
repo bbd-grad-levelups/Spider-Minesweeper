@@ -128,7 +128,9 @@ img{
     padding-left: 5%;
     border-left: 1px solid #FD7461;
 }
-
+.right-stats p{
+    text-wrap: nowrap;
+}
 .left-stats{
     display: flex;
     flex-direction: column;
