@@ -7,6 +7,7 @@ class welcomePage extends HTMLElement {
     connectedCallback(){
         getHTML("components/welcome page/welcomepage.html").then(html=>{
             this.innerHTML=html;
+            document.dispatchEvent(new CustomEvent("getRequests"))
         }).catch(error=>console.error(error))
     }
 
