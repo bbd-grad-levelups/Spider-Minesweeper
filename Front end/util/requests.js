@@ -1,4 +1,6 @@
 class Requests {
+    jwt = null;
+
     constructor() {
         this.baseURL = "http://spider-sweeper-env.eba-z92mr8uh.eu-west-1.elasticbeanstalk.com/"
     }
@@ -44,9 +46,13 @@ class Requests {
             body: JSON.stringify({ code }),
         })
         .then(response => {
-            console.log(response) 
             return response.json();
         });
+    }
+
+    saveJWT(jwt) {
+        jwt = jwt;
+        console.log(jwt);
     }
 }
 
