@@ -1,6 +1,6 @@
 .mainBody{
-    max-width: 80%;
-    height:auto;
+    max-width: 40%;
+    height:60%;
     display:flex;
     border-radius:10px;
     flex-direction:column;
@@ -54,7 +54,7 @@
 
 @media (max-width: 600px){
     .mainBody{
-        width: 90%;
+        max-width: 15em;
         height:auto;
         padding: 5%;
         margin: auto;
@@ -64,11 +64,11 @@
     .mainBody h1{
         width: 90%;
         text-wrap:pretty;
-        font-size: 1.5em;
+        font-size: 2em;
     }
     .mainBody p{
         max-width: 80%;
-        font-size: 0.5em;
+        font-size: 0.8em;
         text-wrap: balance;
     }
 

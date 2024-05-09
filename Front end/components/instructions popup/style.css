@@ -12,6 +12,7 @@
     font-family: poppins;
     font-size: 1.2em;
     flex:1;
+    overflow: hidden;
 }
 
 .full-content-instructions h1{
@@ -37,7 +38,7 @@
 
 @media (max-width: 600px){
     .full-content-instructions{
-        max-width: 90%;
+        max-width: 100%;
         height:auto;
         padding: 1%;
         margin: auto;
@@ -64,7 +65,7 @@
 
     .full-content-instructions h1{
         margin: 0;
-        font-size: 2rem;
+        font-size: 1em;
     }
 
     
