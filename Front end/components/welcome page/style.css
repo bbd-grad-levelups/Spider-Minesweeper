@@ -73,13 +73,22 @@ section h2{
 }
 
 .spider1{
-    display: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 50%;
+    margin-right: 10%;
 }
 .spider2{
-    display: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 10%;
+    margin-right: 10%;
 }
 .spider-right-side{
     display: none;
+    
 }
 .bottom-spider{
     display: none;
@@ -121,8 +130,8 @@ section h2{
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
-        width: 100%;
-        margin-right: 10%;
+        width: 40%;
+        margin-right: 1%;
         
     }
 
@@ -135,17 +144,17 @@ section h2{
         
     }
 
-    .spider-button{
-        width: 100px; 
-        height: 100px; 
+    /* .spider-button{
+        width: 100%; 
+        height: 100%; 
         position: fixed;
         right: 2vw;
         top: 1vh;
-      }
+      } */
     
-      .spider-button{
+    /* .spider-button{
         background: transparent;
-      }
+      } */
 
     .button-container button{
         border-radius: 5rem;

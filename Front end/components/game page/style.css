@@ -232,6 +232,9 @@ section h1 {
         width: 100%;
     }
 
-    
+    .game-board {
+            border: 0px solid #373B5B;
+        
+    }
     
 }
