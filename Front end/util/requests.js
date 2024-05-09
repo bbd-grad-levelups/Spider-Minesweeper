@@ -73,6 +73,7 @@ class Requests {
     }
 
     saveJWT(jwt) {
+        console.log('jwt: ' + jwt);
         this.jwt = jwt;
     }
 
@@ -86,8 +87,8 @@ class Requests {
         }).then(response =>{
             return response.json();
         })
-            
-        
+
+
     }
 
     getHighScore(){
