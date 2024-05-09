@@ -230,8 +230,6 @@ section h1 {
 
 @media (max-width: 600px) {
     .mobile-title{
-        /* margin-top: 3%;
-        padding: 0%; */
         height: 4.5em;
         width: 100%;
         display: flex;
@@ -254,11 +252,9 @@ section h1 {
 
     .mobile-title h1{
         font-size: 3em;
-        /* text-wrap: nowrap; */
     }
 
     .game-full-content{
-        /* margin: 0%; */
         margin-left: 0%;
         margin-bottom: 3em;
         flex-direction: column;
