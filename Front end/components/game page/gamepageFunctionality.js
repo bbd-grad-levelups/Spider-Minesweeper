@@ -33,6 +33,7 @@ const fillBoard = () => {
 };
 
 const clearBoard=()=>{
+    seconds=0;  
     document.getElementById('gameBody').innerHTML="";
     boardInfo = requests.getBoard(difficulty, 'large');
 
@@ -167,20 +168,21 @@ const getMultiplier=(difficulty)=>{
 function startTimer() {
     if (timerInterval === null) { // Check if timerInterval is null
         startTime = Date.now() - elapsedTime;
-        timerInterval = setInterval(updateTimer, 100); // Update timer every 100 milliseconds
+        timerInterval = setInterval(updateTimer, 1000); // Update timer every 100 milliseconds
     }
 }
 
 function updateTimer() {
-    const now = Date.now();
-    elapsedTime = now - startTime;
-    displayTime(elapsedTime);
+    // const now = Date.now();
+    // elapsedTime = now - startTime;
+    seconds++;
+    displayTime(seconds);
 }
 
 function displayTime(time) {
-    const seconds = Math.floor((time % 60000) / 1000);
+    // const seconds = Math.floor((time % 60000) / 1000);
 
-    document.getElementById('timer').textContent = `${formatNumber(seconds)}`;
+    document.getElementById('timer').textContent = `${formatNumber(time)}`;
     document.getElementById('Score').textContent = `Score: ${formatNumber((score-seconds)*multiplier)}`;
 }
 
@@ -193,6 +195,7 @@ function stopTimer() {
 }
 
 function resetTimer() {
+    seconds=0;
     clearInterval(timerInterval);
     timerInterval = null;
     elapsedTime = 0;
