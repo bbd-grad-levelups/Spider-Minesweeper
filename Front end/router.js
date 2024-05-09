@@ -44,6 +44,7 @@ const nav = (newPage) => {
 }
 
 const openPopup =() =>{
+
     const popup=pageToObject["popups"]();
     popup.setAttribute('id','openPopup')
     popup.classList.add("popupContainer")
@@ -52,6 +53,8 @@ const openPopup =() =>{
 }
 
 const createChildrenContent=() =>{
+
+
     const popup=pageToObject[currPopup]();
     popup.classList.add('generalContent')
     document.getElementById("popupBody").style.backgroundColor=popupToColour[currPopup]
@@ -59,6 +62,7 @@ const createChildrenContent=() =>{
 }
 
 const closePopup = () =>{
+
     const popup=document.getElementById('openPopup');
 
     if(popup){
