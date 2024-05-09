@@ -10,7 +10,12 @@ class Requests {
         const queryParams={boardSize:boardSize,difficulty:difficulty};
         const queryString = new URLSearchParams(queryParams).toString();
 
-        return fetch(this.baseURL+endpoint+"?"+queryString)
+        return fetch(this.baseURL+endpoint+"?"+queryString,{
+                method: "GET",
+                headers: {
+                    'Authorization': "Bearer " + this.jwt
+                }
+            })
             .then(response => {
                 if (!response.ok) {
                     console.log(response)
