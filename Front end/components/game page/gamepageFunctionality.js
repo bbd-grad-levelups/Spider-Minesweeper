@@ -86,7 +86,7 @@ const fillBoard = () => {
 };
 
 const clearBoard=()=>{
-    seconds=0;
+    seconds=0;  
     document.getElementById('gameBody').innerHTML="";
     boardInfo = requests.getBoard(difficulty, 'large');
 
