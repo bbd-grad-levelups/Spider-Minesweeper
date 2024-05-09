@@ -1,7 +1,7 @@
 .full-content-victory{
     display: flex;
     flex:1;
-    height: 100%;
+    height: 80%;
     gap:0;
 }
 .full-content-victory p{
@@ -11,22 +11,68 @@
 }
 
 .victory-heading{
-    margin: 0;
-    font-size: 2rem;
-    font-color: white;
+    margin-bottom: 3%;
+    font-size: 3em;
+    color: white;
+}
+
+img{
+    max-width: 70%;
+    height: 50%;
+}
+
+
+.full-content-victory button:active{
+    background-color: "#ca5c4d";
 }
 
 .full-content-victory button{
     background-color: transparent;
-    width: 60%;
+    width: 40%;
     height: 10%;
+    font-family: poppins;
+    font-size: 1em;
     border-radius: 2em;
     border:1px solid white;
-    margin: 5%;
+    margin: 7%;
     color: white;
-    cursor: pointer;
 }
 
-.full-content-victory button:active{
-    background-color: "#ca5c4d";
+@media (max-width: 600px){
+     .full-content-victory{
+        max-width: 100%;
+        height:auto;
+        padding: 1%;
+        margin: auto;
+    }
+
+    .full-content-victory p{
+        text-align: center;
+        font-family: poppins;
+        font-size: 0.8em;
+        flex:1;
+    }
+
+
+    img{
+        width: 20%;
+        height: 20%;
+    }
+
+    .full-content-victory button{
+        background-color: transparent;
+        width: 70%;
+        height: 70%;
+        font-family: poppins;
+        font-size: 1.2em;
+        border-radius: 2em;
+        border:1px solid white;
+        margin: 7%;
+        color: white;
+    } 
+
+    .full-content-victory h1{
+        margin: 0;
+        font-size: 0.5em;
+    }
 }
