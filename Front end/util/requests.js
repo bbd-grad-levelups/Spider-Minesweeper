@@ -23,9 +23,12 @@ class Requests {
     }
 
     getMultiplier(difficulty,size){
+
         const endpoint="modifiers/multiplier";
         const queryParams={boardSize:size,difficulty:difficulty};
         const queryString = new URLSearchParams(queryParams).toString();
+
+        console.log(this.baseURL+endpoint+"?"+queryString);
         return fetch(this.baseURL+endpoint+"?"+queryString).then(response => {
                 if (!response.ok) {
                     console.log(response.status)

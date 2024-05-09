@@ -95,7 +95,7 @@ section h1 {
     padding-right: 5%;
     font-family: 'poppins';
     font-size: 3em;
-    
+
 }
 
 .game-board button {
@@ -121,7 +121,7 @@ section h1 {
     height:100%;
     width: 100%;
     padding-bottom: 1%;
-    
+
 }
 
 .gameGrid button{
@@ -150,12 +150,20 @@ section h1 {
     padding-right: 1%;
     flex:1;
     height: 100%;
-    
+
 }
 
 .coloumn{
     display: flex;
     flex-direction: column;
+}
+
+.gameGrid button.revealed {
+    background-color: #ccc;
+}
+
+.gameGrid button.mine {
+    background-color: #ff3333;
 }
 
 .flagImg{
@@ -177,7 +185,7 @@ section h1 {
         height: 10%;
         width: 100%;
         align-items: center;
-        
+
     }
     .game-right-side {
         display: none;
