@@ -11,7 +11,6 @@ CREATE TABLE Difficulty (
 	ScoreMult FLOAT,
 );
 
-
 CREATE TABLE BoardSize (
   BoardSizeId INT IDENTITY(1,1) PRIMARY KEY,
 	SizeDescription VARCHAR(100),

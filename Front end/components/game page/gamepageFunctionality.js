@@ -29,19 +29,18 @@ const fillBoard = () => {
 
         grid.appendChild(row);
     }
+
     document.getElementById('gameBody').appendChild(grid);
     document.getElementById("remainingSpiders").textContent = formatNumber(numOfSpider);
     document.getElementById('Score').textContent = `Score: ${formatNumber(score*multiplier)}`;
 };
 
 const clearBoard=()=>{
-    
-    seconds=0;  
+    seconds=0;
     document.getElementById('gameBody').innerHTML="";
     boardInfo = requests.getBoard(difficulty, 'large');
 
     boardInfo.then((data) =>{
-
         board = data.board.gameBoard;
         numOfSpider = data.spiderNum;
         currentGameId = data.gameId;
@@ -58,7 +57,6 @@ const clickCell=(cellID)=>{
     const pos=cellID.split('-')
     const row=parseInt(pos[0]);
     const col=parseInt(pos[1]);
-
     revealCell(row,col,cellID);
 }
 
@@ -73,26 +71,19 @@ const changeFlagMode=()=>{
 }
 
 function revealCell(row, col, cellID) {
-
 	if (row < 0 || row >= board.length || col < 0 || col >= board[row].length || board[row][col].revealed) {
 		return;
 	}
 
     startTimer();
-
     const cell = document.getElementById(cellID);
 
-
     if (modeFlag) {
-
         if (board[row][col].flagged === true) {
-
-
             cell.removeChild(cell.querySelector('.flagImg'));
 
             numOfSpider = numOfSpider + 1;
             document.getElementById("remainingSpiders").textContent = formatNumber(numOfSpider);
-
             board[row][col].flagged = false;
         }
         else {
@@ -102,27 +93,25 @@ function revealCell(row, col, cellID) {
             cell.appendChild(flagimg);
 
             board[row][col].flagged = true;
-
-
             numOfSpider = numOfSpider - 1;
             document.getElementById("remainingSpiders").textContent = formatNumber(numOfSpider);
         }
     }
     else {
-
         if (board[row][col].flagged) {
             return;
         }
 
         board[row][col].revealed = true;
-
         openSlots++;
+
         if(checkGameWin()){
             document.dispatchEvent(new CustomEvent('openPopup',{detail:{message:"victory popup"}}))
             requests.submitScore(currentGameId, (score - seconds) * multiplier);
             resetTimer();
             document.getElementById('Score').textContent = 'Score: 000';
         }
+
         if (board[row][col].count === -1) {
             document.dispatchEvent(new CustomEvent('openPopup',{detail:{message:"loss popup"}}))
             resetTimer();
@@ -135,12 +124,9 @@ function revealCell(row, col, cellID) {
             cell.appendChild(flagimg)
         }
         else if (board[row][col].count === 0) {
-
             cell.classList.add("revealed");
-            // If cell has no mines nearby,
-            // Reveal adjacent cells
-            for (let dx = -1;dx <= 1;dx++) {
 
+            for (let dx = -1;dx <= 1;dx++) {
                 for (let dy = -1;dy <= 1;dy++) {
 
                     revealCell(row + dx,col + dy,  `${row + dx}-${col + dy}`);
@@ -151,42 +137,36 @@ function revealCell(row, col, cellID) {
             cell.textContent = board[row][col].count;
         }
     }
-
 }
 
 const checkGameWin = () => {
-
     if(openSlots===numOfNonSpider){
         return true;
     }
+
     return false;
 }
 
 const getMultiplier=(difficulty)=>{
     const multiplierReq=requests.getMultiplier(difficulty,'large')
-
     multiplierReq.then(data=>{
         multiplier=data.Multiplier;
     })
 }
 
 function startTimer() {
-    if (timerInterval === null) { // Check if timerInterval is null
+    if (timerInterval === null) {
         startTime = Date.now() - elapsedTime;
-        timerInterval = setInterval(updateTimer, 1000); // Update timer every 100 milliseconds
+        timerInterval = setInterval(updateTimer, 1000);
     }
 }
 
 function updateTimer() {
-    // const now = Date.now();
-    // elapsedTime = now - startTime;
     seconds++;
     displayTime(seconds);
 }
 
 function displayTime(time) {
-    // const seconds = Math.floor((time % 60000) / 1000);
-
     document.getElementById('timer').textContent = `${formatNumber(time)}`;
     document.getElementById('Score').textContent = `Score: ${formatNumber((score-seconds)*multiplier)}`;
 }
@@ -223,7 +203,6 @@ document.addEventListener('populateGameBoard',(event)=>{
     getMultiplier(difficulty);
     resetTimer();
     document.getElementById('Score').textContent = 'Score: 000';
-
 })
 
 document.addEventListener('setDifficulty',(event)=>{

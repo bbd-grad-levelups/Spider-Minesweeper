@@ -1,5 +1,6 @@
 class Requests {
     jwt = null;
+
     constructor() {
         this.baseURL = "http://spider-sweeper-env.eba-z92mr8uh.eu-west-1.elasticbeanstalk.com/"
     }
@@ -17,7 +18,6 @@ class Requests {
             })
             .then(response => {
                 if (!response.ok) {
-                    console.log(response)
                     throw new Error('Network Response was not okay ', response);
                 }
                 return response.json();
@@ -29,10 +29,10 @@ class Requests {
 
     getLeaderboard() {
         const endpoint = "scores/leaderboard";
+
         return fetch(this.baseURL + endpoint)
             .then(response => {
                 if (!response.ok) {
-                    console.log(response)
                     throw new Error('Network Response was not okay ', response);
                 }
                 return response.json();
@@ -43,14 +43,12 @@ class Requests {
     }
 
     getMultiplier(difficulty,size){
-
         const endpoint="modifiers/multiplier";
         const queryParams={boardSize:size,difficulty:difficulty};
         const queryString = new URLSearchParams(queryParams).toString();
 
         return fetch(this.baseURL+endpoint+"?"+queryString).then(response => {
                 if (!response.ok) {
-                    console.log(response.status)
                     throw new Error('Network Response was not okay ', response);
                 }
                 return response.json();
@@ -62,6 +60,7 @@ class Requests {
 
     getJWT(code) {
         const endpoint="login";
+
         return fetch(this.baseURL+endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -73,12 +72,12 @@ class Requests {
     }
 
     saveJWT(jwt) {
-        console.log('jwt: ' + jwt);
         this.jwt = jwt;
     }
 
     getUserName(){
         const endpoint="login/username";
+
         return fetch(this.baseURL+endpoint,{
             method: "GET",
             headers:{
@@ -86,14 +85,11 @@ class Requests {
             }
         }).then(response =>{
             if (!response.ok) {
-                console.log(response)
                 throw new Error('Network Response was not okay ', response);
             }
             return response.json();
-            
+
         })
-
-
     }
 
     getHighScore(){
@@ -106,7 +102,6 @@ class Requests {
             }
         }).then(response =>{
             if (!response.ok) {
-                console.log(response)
                 throw new Error('Network Response was not okay ', response);
             }
             return response.json();
@@ -120,7 +115,6 @@ class Requests {
 
       return fetch(this.baseURL+endpoint+"?"+queryString).then(response =>{
           if (!response.ok) {
-            console.log(response.status)
             throw new Error('Network Response was not okay ', response);
           }
           return response.json();

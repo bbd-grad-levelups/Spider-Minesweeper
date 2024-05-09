@@ -1,6 +1,5 @@
 const sql = require('mssql');
 
-// Database configuration
 const config = {
   server: process.env.minesweeper_db_endpoint,
   database: 'SpiderSweeperDB',
@@ -12,10 +11,8 @@ const config = {
   }
 };
 
-// Create a new connection pool
 const pool = new sql.ConnectionPool(config);
 
-// Connect to the database
 pool.connect()
   .then(() => {
     console.log('Connected to Microsoft SQL Server database');

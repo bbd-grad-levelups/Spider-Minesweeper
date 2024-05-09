@@ -17,7 +17,6 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* gap: 1em; */
 }
 
 section h1 {
@@ -26,15 +25,16 @@ section h1 {
     margin: 0;
 }
 
-
 .game-left-side {
     flex: 1;
     height: 100%;
     width: 100%;
 }
+
 .game-bottom-row{
     display: none;
 }
+
 .game-right-side {
     height: 80%;
 }
@@ -86,16 +86,16 @@ section h1 {
     width: 50%;
     gap: 1em;
     flex: 1;
-    
+
 }
 
 .back-button{
-    width: 100px; 
-    height: 100px; 
+    width: 100px;
+    height: 100px;
     position: fixed;
     right: 2vw;
     top: 1vh;
-  }
+}
 
 .back-button button{
     background: transparent;
@@ -134,7 +134,6 @@ section h1 {
     font-family: 'poppins';
     font-size: 4em;
     font-weight: 800;
-    
 }
 
 .game-board button {
@@ -147,10 +146,10 @@ section h1 {
     justify-content: center;
 }
 
-
 .game-board button:active{
     background-color: #b6b3ab;
 }
+
 .board-header img {
     padding: 2%;
     height: 100%;
@@ -163,11 +162,12 @@ section h1 {
     height:100%;
     width: 100%;
     padding-bottom: 1%;
-    
 }
+
 .mobile-title{
     display: none;
 }
+
 .gameGrid button{
     flex:1;
     width: 100%;
@@ -185,10 +185,12 @@ section h1 {
 .gameGrid button:active{
     background-color: #b6b3ab;
 }
+
 .gameBody{
     height: 100%;
     flex: 4;
 }
+
 .row{
     display: flex;
     flex-direction: column;
@@ -198,8 +200,6 @@ section h1 {
     flex:1;
     height: 100%;
 }
-
-
 
 .coloumn{
     display: flex;
@@ -218,6 +218,7 @@ section h1 {
     height: 70%;
     width: 70%;
 }
+
 .game-bottom-row button{
     border: transparent;
     border-radius: 50%;
@@ -226,6 +227,7 @@ section h1 {
     font-size: 3em;
     color: white;
 }
+
 @media (max-width: 600px) {
     .mobile-title{
         /* margin-top: 3%;
@@ -235,6 +237,7 @@ section h1 {
         display: flex;
         flex:0.15;
     }
+
     .game-bottom-row{
         display: flex;
         justify-content: space-around;
@@ -244,13 +247,16 @@ section h1 {
         padding-bottom: 5%;
         padding-top: 5%;
     }
+
     .game-right-side {
         display: none;
     }
+
     .mobile-title h1{
         font-size: 3em;
         /* text-wrap: nowrap; */
     }
+
     .game-full-content{
         /* margin: 0%; */
         margin-left: 0%;
@@ -269,8 +275,8 @@ section h1 {
         font-family: 'poppins';
         font-size: 2em;
         font-weight: 800;
-        
     }
+
     .board-header img {
         padding: 2%;
         height: 90%;
@@ -278,23 +284,20 @@ section h1 {
     }
 
     .game-board {
-            border: 0px solid #373B5B;
-        
+        border: 0px solid #373B5B;
     }
-    
+
     .back-button{
-        width: 100px; 
-        height: 100px; 
+        width: 100px;
+        height: 100px;
         position: fixed;
         right: 2vw;
         top: 1vh;
-      }
-    
+    }
+
     .back-button button{
         background: transparent;
     }
-
-    
 }
 
 @media (max-width: 950px) {

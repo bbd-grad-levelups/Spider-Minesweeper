@@ -40,21 +40,16 @@ const nav = (newPage) => {
     newPageContent.classList.add('generalContent');
     document.body.appendChild(newPageContent);
     window.history.pushState({ page: currentPage }, "", window.location.pathname);
-
 }
 
 const openPopup =() =>{
-
     const popup=pageToObject["popups"]();
     popup.setAttribute('id','openPopup')
     popup.classList.add("popupContainer")
     document.body.appendChild(popup);
-
 }
 
 const createChildrenContent=() =>{
-
-
     const popup=pageToObject[currPopup]();
     popup.classList.add('generalContent')
     document.getElementById("popupBody").style.backgroundColor=popupToColour[currPopup]
@@ -62,7 +57,6 @@ const createChildrenContent=() =>{
 }
 
 const closePopup = () =>{
-
     const popup=document.getElementById('openPopup');
 
     if(popup){
@@ -85,7 +79,6 @@ if (!code) {
     nav("welcome page");
 }
 else {
-
     if (code && requests) {
         let jwt = requests.getJWT(code)
         .then(data => {
@@ -94,9 +87,8 @@ else {
                 nav("welcome page");
             }
         });
-      }
+    }
 }
-
 
 document.addEventListener('leaderboard-ready',()=>{
     document.dispatchEvent(new CustomEvent("popoulateLeaderBoard", {detail: requests}))
@@ -105,6 +97,7 @@ document.addEventListener('leaderboard-ready',()=>{
 document.addEventListener('popup-ready',(event)=>{
     createChildrenContent()
 })
+
 document.addEventListener('TriggerRouting', (event) =>{
     nav(event.detail.message);
 })

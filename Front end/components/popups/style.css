@@ -7,20 +7,11 @@
     padding:5%;
     flex:1;
     opacity:95%;
-     /* flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1%;
-    max-width: 50%;
-    height: auto;
-    border-radius: 10px;
-    margin: auto; */
 }
 
 .mainBody h1{
     width: 100%;
     text-wrap:balance;
-    /* font-size: 3rem; */
 }
 
 .exit-button{
@@ -77,5 +68,5 @@
         width: 90%;
         justify-content: center;
         align-items: center;
-}
+    }
 }

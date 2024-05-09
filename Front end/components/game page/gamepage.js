@@ -1,17 +1,17 @@
 import { getHTML } from "../../util/common.js";
+
 class gamePage extends HTMLElement {
     constructor(){
         super();
     }
-    connectedCallback(){
 
+    connectedCallback(){
         getHTML("components/game page/gamepage.html").then(html =>{
             this.innerHTML=html;
             document.dispatchEvent(new CustomEvent('gameboard-ready',{detail: gamePage}))
         }).catch(error =>{
             console.error(error)
         })
-        
     }
 }
 

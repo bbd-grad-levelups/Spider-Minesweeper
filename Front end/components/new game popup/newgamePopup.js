@@ -4,11 +4,11 @@ class newgamePopup extends HTMLElement {
     constructor(){
         super();
     }
+
     connectedCallback(){
         getHTML('components/new game popup/newgamePopup.html').then(html =>{
             this.innerHTML=html;
         }).catch(error =>console.error(error));
-        
     }
 }
 

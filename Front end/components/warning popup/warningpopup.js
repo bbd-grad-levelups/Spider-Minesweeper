@@ -4,11 +4,11 @@ class warningpopup extends HTMLElement {
     constructor(){
         super();
     }
+
     connectedCallback(){
         getHTML('components/warning popup/warningpopup.html').then(html =>{
             this.innerHTML=html;
         }).catch(error =>console.error(error));
-        
     }
 }
 

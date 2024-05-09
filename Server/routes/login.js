@@ -1,23 +1,16 @@
-// User route
-
 var express = require('express');
 const jwt = require('jsonwebtoken');
 const request = require('request');
 
 var router = express.Router();
 
-
-
-// Load RSA private key
 const privateKey = process.env.minesweeper_private_key;
 const appName = process.env.minesweeper_app_name;
 const appSecret = process.env.minesweeper_app_secret;
 
-/* GET login */
 router.post('/', async (req, res) => {
   const { code } = req.body;
 
-  // Exchange code for access token
   request.post({
       url: 'https://github.com/login/oauth/access_token',
       headers: {
@@ -37,8 +30,6 @@ router.post('/', async (req, res) => {
       } else {
           const accessToken = body.access_token;
 
-          console.log(accessToken)
-
           if (accessToken) {
               request.get({
                 url: 'https://api.github.com/user',
@@ -49,8 +40,6 @@ router.post('/', async (req, res) => {
               }, (error, response, body) => {
                 if (!error && response.statusCode === 200) {
                   const githubUser = JSON.parse(body);
-
-                  // Generate a JWT token with GitHub user information
                   const jwtPayload = {
                     userId: githubUser.id,
                     username: githubUser.login,
@@ -59,8 +48,6 @@ router.post('/', async (req, res) => {
                   const jwtToken = jwt.sign(jwtPayload, privateKey, { expiresIn: '1h' });
                   res.json({ jwtToken: jwtToken });
                 } else {
-
-                  console.log(`Failed login query: ${error} ${response}`);
                   res.status(401).json({ error: 'Invalid GitHub OAuth token' });
                 }
               });
