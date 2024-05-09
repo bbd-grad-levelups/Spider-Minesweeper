@@ -51,9 +51,9 @@ function getBoard(difficulty, boardLength) {
     return { gameBoard, numOfSpider };
   }
 
-let board = getBoard(20,8).gameBoard;
+let board = getBoard(30,2).gameBoard;
 let boardLength = 8;
-const numOfSpider = getBoard(20,8).numOfSpider;
+const numOfSpider = getBoard(30,2).numOfSpider;
 let remainingSpidersNum = 10;
 let modeFlag=false;
 
@@ -110,6 +110,8 @@ function revealCell(row, col, cellID) {
 		return;
 	}
 
+    startTimer();
+
     const cell = document.getElementById(cellID);
 
     if (modeFlag) {
@@ -144,6 +146,7 @@ function revealCell(row, col, cellID) {
         if (board[row][col].count === -1) {
             // Handle game over
             alert("Game Over! You stepped on a spider.");
+            stopTimer();
 
             cell.classList.add("mine");
             const flagimg=document.createElement('img');
@@ -171,33 +174,64 @@ function revealCell(row, col, cellID) {
     }
 }
 
+// const checkGameWin = () => {
+//     let allRevealed = true;
+//     let win = true;
+
+//     for (let i = 0; i < row; i++) {
+//         for (let j = 0; j < col; j++) {
+
+//             if (board[i][j].revealed === false && board[i][j].flagged === false) {
+//                 allRevealed = false;
+//             }
+//         }
+//     }
+
+//     if (allRevealed === true) {
+
+//         for (let i = 0; i < row; i++) {
+//             for (let j = 0; j < col; j++) {
+
+//                 if (board[i][j].flagged === true && board[i][j].count !== -1) {
+//                     win = false;
+//                 }
+//             }
+//         }
+//     }
+
+//     return win;
+// }
+
 const checkGameWin = () => {
     let allRevealed = true;
-    let win = true;
+    let allFlagsValid = true;
 
+    // Check if all cells are revealed
     for (let i = 0; i < row; i++) {
         for (let j = 0; j < col; j++) {
-
-            if (board[i][j].revealed === false && board[i][j].flagged === false) {
+            if (!board[i][j].revealed && !board[i][j].flagged) {
                 allRevealed = false;
+                break;
             }
         }
     }
 
-    if (allRevealed === true) {
-
+    // Check if all flagged cells are correct
+    if (allRevealed) {
         for (let i = 0; i < row; i++) {
             for (let j = 0; j < col; j++) {
-
-                if (board[i][j].flagged === true && board[i][j].count !== -1) {
-                    win = false;
+                if (board[i][j].flagged && board[i][j].count !== -1) {
+                    allFlagsValid = false;
+                    break;
                 }
             }
         }
     }
 
-    return win;
+    // Win condition: All cells revealed and all flags correctly placed
+    return allRevealed && allFlagsValid;
 }
+
 
 const timer = () => {
     document.getElementById("timer").textContent = 1;
@@ -219,3 +253,63 @@ const calcScore=()=>{
         console.log(data)
     })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let timerInterval;
+let startTime;
+let elapsedTime = 1000; // Initial elapsed time in milliseconds
+
+function startTimer() {
+    startTime = Date.now() + elapsedTime; // Start time is current time plus initial elapsed time
+    timerInterval = setInterval(updateTimer, 1000); // Update timer every second (1000 milliseconds)
+}
+
+function updateTimer() {
+    const now = Date.now();
+    elapsedTime = startTime - now; // Calculate remaining time by subtracting current time from start time
+    if (elapsedTime <= 0) {
+        stopTimer(); // Stop the timer when elapsed time reaches 0
+        displayTime(0); // Display 0 seconds
+    } else {
+        displayTime(Math.floor(elapsedTime / 1000)); // Convert elapsed time from milliseconds to seconds and display
+    }
+}
+
+function displayTime(time) {
+    const timerElement = document.getElementById('timer');
+    console.log('formatTime(time): ' + formatTime(time));
+    timerElement.textContent = `${formatTime(time)}`;
+}
+
+function formatTime(time) {
+    return time < 10 ? `0${time}` : time;
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+
+
+// function resetTimer() {
+//     clearInterval(timerInterval);
+//     elapsedTime = 0;
+//     displayTime(elapsedTime);
+// }
