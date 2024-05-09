@@ -26,7 +26,7 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_ASSUME_ROLE }}
           aws-region: "eu-west-1"
-          role-session-name: Server_CD_GitHub_to_AWS_via_FederatedOIDC
+          role-session-name: Deployment_CD_GitHub_to_AWS_via_FederatedOIDC
 
       - name: Create API Package
         working-directory: ${{ env.api_directory }}
@@ -45,3 +45,7 @@ jobs:
           region: eu-west-1
           deployment_package: api.zip
           existing_bucket_name: spider-sweeper-deploy-bucket
+
+      - name: Deploy website
+        run: aws s3 sync . s3://${{ secrets.BUCKET_NAME }}
+        working-directory: Front end

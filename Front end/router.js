@@ -38,7 +38,6 @@ const nav = (newPage) => {
     const newPageContent=pageToObject[currentPage]();
     document.body.innerHTML='';
     newPageContent.classList.add('generalContent');
-    console.log(newPageContent)
     document.body.appendChild(newPageContent);
     window.history.pushState({ page: currentPage }, "", window.location.pathname);
 
@@ -88,7 +87,25 @@ const calcScore=()=>{
 console.log("calcscore" + calcScore());
 
 window.addEventListener('popstate', handlePopState);
-nav("welcome page")
+
+const urlParams = new URLSearchParams(window.location.search);
+const code = urlParams.get('code');
+
+if (!code) {
+    nav("welcome page");
+}
+else {
+
+    if (code && requests) {
+        let jwt = requests.getJWT(code)
+        .then(data => {
+            if (data.jwtToken) {
+                requests.saveJWT(data.jwtToken);
+                nav("welcome page");
+            }
+        });
+      }
+}
 
 
 document.addEventListener('leaderboard-ready',()=>{

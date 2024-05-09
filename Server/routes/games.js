@@ -65,17 +65,22 @@ router.get('/board', async (req, res) => {
 
   const boardPositions = getBoard(gameDifficulty, gameSize);
 
-  const insertProcedure = 'InsertGame @UserName, @DifficultyName, @SizeDescription, @GameBoard';
-  const insertResult = await pool.request()
-      .input('UserName', sql.NVarChar, userName)
-      .input('DifficultyName', sql.NVarChar, difficulty)
-      .input('SizeDescription', sql.NVarChar, boardLength)
-      .input('GameBoard', sql.NVarChar, JSON.stringify(boardPositions))
-      .query(insertProcedure);
+  let gameId = -1;
+  if (userName !== '') 
+  {
+    const insertProcedure = 'InsertGame @UserName, @DifficultyName, @SizeDescription, @GameBoard';
+    const insertResult = await pool.request()
+        .input('UserName', sql.NVarChar, userName)
+        .input('DifficultyName', sql.NVarChar, difficulty)
+        .input('SizeDescription', sql.NVarChar, boardLength)
+        .input('GameBoard', sql.NVarChar, JSON.stringify(boardPositions))
+        .query(insertProcedure);
+    gameId = insertResult.recordset[0].GameId
+  }
 
   res.json({
     board: boardPositions,
-    gameId: insertResult.recordset[0].GameId
+    gameId: gameId
   });
 
 });
