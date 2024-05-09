@@ -6,12 +6,12 @@ const request = require('request');
 
 var router = express.Router();
 
-const CLIENT_ID = '';
-const CLIENT_SECRET = '';
+
 
 // Load RSA private key
 const privateKey = process.env.minesweeper_private_key;
 const appName = process.env.minesweeper_app_name;
+const appSecret = process.env.minesweeper_app_secret;
 
 /* GET login */
 router.post('/', async (req, res) => {
@@ -26,8 +26,8 @@ router.post('/', async (req, res) => {
       },
       json: true,
       body: {
-          client_id: CLIENT_ID,
-          client_secret: CLIENT_SECRET,
+          client_id: appName,
+          client_secret: appSecret,
           code,
       }
   }, async (error, response, body) => {
