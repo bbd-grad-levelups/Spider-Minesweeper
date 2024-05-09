@@ -105,6 +105,10 @@ function revealCell(row, col, cellID) {
     }
     else {
 
+        if (board[row][col].flagged) {
+            return;
+        }
+
         board[row][col].revealed = true;
 
         openSlots++;
