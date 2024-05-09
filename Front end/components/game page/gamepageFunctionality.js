@@ -9,6 +9,7 @@ let username;
 let timerInterval;
 let startTime;
 let elapsedTime = 0;
+let currentGameId = -1;
 
 const fillBoard = () => {
     const grid=document.createElement('article');
@@ -41,6 +42,7 @@ const clearBoard=()=>{
 
         board = data.board.gameBoard;
         numOfSpider = data.spiderNum;
+        currentGameId = data.gameId;
 
         numOfNonSpider=(board.length*board.length)-numOfSpider;
         openSlots=0;
@@ -117,6 +119,8 @@ function revealCell(row, col, cellID) {
             document.dispatchEvent(new CustomEvent('openPopup',{detail:{message:"victory popup"}}))
             resetTimer();
             document.getElementById('Score').textContent = 'Score: 000';
+
+            requests.saveScore(currentGameId, (score - seconds) * multiplier);
         }
         if (board[row][col].count === -1) {
             document.dispatchEvent(new CustomEvent('openPopup',{detail:{message:"loss popup"}}))

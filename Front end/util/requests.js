@@ -112,6 +112,22 @@ class Requests {
             return response.json();
         })
     }
+
+    submitScore(gameId, score){
+      const endpoint="scores/submit";
+      const queryParams={gameId:gameId, score:score};
+      const queryString = new URLSearchParams(queryParams).toString();
+
+      return fetch(this.baseURL+endpoint+"?"+queryString).then(response =>{
+          if (!response.ok) {
+            console.log(response.status)
+            throw new Error('Network Response was not okay ', response);
+          }
+          return response.json();
+      }).catch(error => {
+          console.error("Error: ", error);
+      });
+    }
 }
 
 
