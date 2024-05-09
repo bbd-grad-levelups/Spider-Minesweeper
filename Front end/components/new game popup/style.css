@@ -1,12 +1,15 @@
 .full-content{
     display: flex;
+    width: 100%;
     flex:1;
     height: 100%;
     color: white;
+    flex-direction: column;
 }
 .popup-button-container{
     gap:1em;
-    width: 100%;
+    width: 80%;
+    flex:1;
 }
 .popup-button-container button{
     border-radius: 10rem;

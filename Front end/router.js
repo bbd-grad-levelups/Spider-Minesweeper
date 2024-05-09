@@ -6,6 +6,10 @@ import instructionPopup from "./components/instructions popup/instructions.js";
 import victorypopup from "./components/victory popup/victorypopup.js";
 import losspopup from "./components/loss popup/losspopup.js";
 import warningpopup from "./components/warning popup/warningpopup.js";
+import gamePage from "./components/game page/gamepage.js";
+import Requests from "./util/requests.js";
+
+const requests =new Requests();
 let currentPage="welcome page";
 let currPopup=null;
 
@@ -17,7 +21,8 @@ const pageToObject={
     "victory popup":()=>{return new victorypopup()},
     "popups":()=>{return new popups()},
     "loss popup":() =>{return new losspopup()},
-    "warning popup":()=>{return new warningpopup()}
+    "warning popup":()=>{return new warningpopup()},
+    "game page":()=>{return new gamePage()}
 }
 
 const popupToColour={
@@ -33,6 +38,7 @@ const nav = (newPage) => {
     const newPageContent=pageToObject[currentPage]();
     document.body.innerHTML='';
     newPageContent.classList.add('generalContent');
+    console.log(newPageContent)
     document.body.appendChild(newPageContent);
     window.history.pushState({ page: currentPage }, "", window.location.pathname);
 
@@ -48,10 +54,9 @@ const openPopup =() =>{
 
 const createChildrenContent=() =>{
     const popup=pageToObject[currPopup]();
-    const popupContainer= document.getElementById('openPopup');
     popup.classList.add('generalContent')
-    popupContainer.childNodes[15].style.backgroundColor=popupToColour[currPopup]
-    popupContainer.children[6].children[1].appendChild(popup)
+    document.getElementById("popupBody").style.backgroundColor=popupToColour[currPopup]
+    document.getElementById("popup-content").appendChild(popup)
 }
 
 const closePopup = () =>{
@@ -73,7 +78,7 @@ nav("welcome page")
 
 
 document.addEventListener('leaderboard-ready',()=>{
-    document.dispatchEvent(new CustomEvent("popoulateLeaderBoard"))
+    document.dispatchEvent(new CustomEvent("popoulateLeaderBoard", {detail: requests}))
 })
 
 document.addEventListener('popup-ready',(event)=>{
@@ -91,4 +96,8 @@ document.addEventListener('openPopup',(event) =>{
 
 document.addEventListener('closePopup',()=>{
     closePopup();
+})
+
+document.addEventListener('gameboard-ready',()=>{
+    document.dispatchEvent(new CustomEvent('populateGameBoard',{detail:{requests:requests}}));
 })
