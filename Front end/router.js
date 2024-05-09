@@ -76,16 +76,6 @@ const handlePopState = (event) => {
     nav(page, false);
 };
 
-const calcScore=()=>{
-    const multiplier=requests.getMultiplier('easy',4)
-
-    multiplier.then(data=>{
-        console.log(data)
-    })
-}
-
-console.log("calcscore" + calcScore());
-
 window.addEventListener('popstate', handlePopState);
 
 const urlParams = new URLSearchParams(window.location.search);

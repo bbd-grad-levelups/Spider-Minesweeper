@@ -56,10 +56,11 @@ let boardLength = 8;
 let numOfSpider = getBoard(30,3).numOfSpider;
 let numOfNonSpider=0;
 let openSlots=0;
-// let remainingSpidersNum = 10;
 let modeFlag=false;
-
-
+let difficulty=null;
+let requests=null;
+let score=1000;
+let multiplier=0;
 const fillBoard = () => {
     const grid=document.createElement('article');
     grid.classList.add('gameGrid');
@@ -79,6 +80,7 @@ const fillBoard = () => {
     }
     document.getElementById('gameBody').appendChild(grid);
     document.getElementById("remainingSpiders").textContent = formatNumber(numOfSpider);
+    document.getElementById('Score').textContent = `Score: ${formatNumber(score*multiplier)}`;
 };
 
 const clearBoard=()=>{
@@ -87,8 +89,9 @@ const clearBoard=()=>{
     numOfSpider = getBoard(30,3).numOfSpider;
     numOfNonSpider=(board.length*board.length)-numOfSpider;
     openSlots=0;
-    // remainingSpidersNum = 10;
     fillBoard();
+    resetTimer();
+    document.getElementById('Score').textContent = 'Score: 000';
 }
 
 const clickCell=(cellID)=>{
@@ -154,9 +157,10 @@ function revealCell(row, col, cellID) {
             document.dispatchEvent(new CustomEvent('openPopup',{detail:{message:"victory popup"}}))
         }
         if (board[row][col].count === -1) {
-            // Handle game over
-            //alert("Game Over! You stepped on a spider.");
             document.dispatchEvent(new CustomEvent('openPopup',{detail:{message:"loss popup"}}))
+            resetTimer();
+            document.getElementById('Score').textContent = 'Score: 000';
+
             cell.classList.add("mine");
             const flagimg=document.createElement('img');
             flagimg.src='./media/images/Angry Spider.svg';
@@ -190,83 +194,27 @@ const checkGameWin = () => {
         return true;
     }
     return false;
-    // let allRevealed = true;
-    // let win = false;
-    // for (let i = 0; i < board.length; i++) {
-    //     for (let j = 0; j < board.length; j++) {
-
-    //         if (board[i][j].revealed === false && board[i][j].flagged === false) {
-    //             allRevealed = false;
-    //         }
-    //     }
-    // }
-
-    // if (allRevealed === true) {
-
-    //     for (let i = 0; i < board.length; i++) {
-    //         for (let j = 0; j < board.length; j++) {
-
-    //             if (board[i][j].count === -1 && board[i][j].flagged === false) {
-    //                 win = false;
-    //             }
-    //             else{
-    //                 win = true;
-    //             }
-    //         }
-    //     }
-    // }
-
-    // return win;
-
-    // let allRevealed = true;
-    // let win = false;
-    // console.log(board)
-    // // First loop to check if all non-flagged cells are revealed
-
-
-
-    // for (let i = 0; i < board.length; i++) {
-    //     for (let j = 0; j < board[i].length; j++) {
-    //         if (!board[i][j].revealed && !board[i][j].flagged) {
-    //             console.log(i,j)
-    //             console.log(board[i][j].revealed, board[i][j].flagged)
-    //             allRevealed = false;
-    //             break; // No need to continue checking if one cell is not revealed and not flagged
-    //         }
-    //     }
-    //     if (!allRevealed) {
-    //         break; // If at least one cell is not revealed and not flagged, break the outer loop
-    //     }
-    // }
-    // console.log("all revealed",allRevealed)
-    // // If all cells are revealed, check if they are correctly flagged as mines
-    // if (allRevealed) {
-    //     win = true; // Assume win until proven otherwise
-    //     for (let i = 0; i < board.length; i++) {
-    //         for (let j = 0; j < board[i].length; j++) {
-    //             if (board[i][j].count === -1 && !board[i][j].flagged) {
-    //                 win = false; // If any mine cell is not flagged, player hasn't won
-    //                 break; // No need to continue checking
-    //             }
-    //         }
-    //         if (!win) {
-    //             break; // If win condition is not met, break the outer loop
-    //         }
-    //     }
-    // }
-
-    // return win;
-
 }
 
+const getMultiplier=(difficulty)=>{
+const multiplierReq=requests.getMultiplier(difficulty,'large')
 
-const timer = () => {
-    document.getElementById("timer").textContent = 1;
+    multiplierReq.then(data=>{
+        console.log(data.Multiplier)
+        multiplier=data.Multiplier;
+    })
 }
+
+// console.log("calcscore" + calcScore());
 
 document.addEventListener('populateGameBoard',(event)=>{
     requests=event.detail.requests;
     clearBoard();
+    getMultiplier(difficulty);
+    console.log('populate:'+ score)
+    stopTimer();
+    document.getElementById('Score').textContent = 'Score: 000';
+
 })
 
 document.addEventListener('setDifficulty',(event)=>{
@@ -295,8 +243,6 @@ let timerInterval;
 let startTime;
 let elapsedTime = 0;
 
-console.log('timerElement: ' + timerElement);
-
 function startTimer() {
     startTime = Date.now() - elapsedTime;
     timerInterval = setInterval(updateTimer, 100); // Update timer every 100 milliseconds
@@ -313,8 +259,10 @@ function displayTime(time) {
     const seconds = Math.floor((time % 60000) / 1000);
     // const milliseconds = Math.floor((time % 1000) / 10);
     // const timerElement = ;
+    console.log(score)
+
     document.getElementById('timer').textContent = `${formatNumber(seconds)}`;
-    document.getElementById('Score').textContent = `Score: ${formatNumber(1000-seconds)}`;
+    document.getElementById('Score').textContent = `Score: ${formatNumber((score-seconds)*multiplier)}`;
     // timerElement.textContent = `${formatTime(minutes)}:${formatTime(seconds)}:${formatTime(milliseconds)}`;
 }
 
@@ -327,8 +275,9 @@ function stopTimer() {
 }
 
 
-// function resetTimer() {
-//     clearInterval(timerInterval);
-//     elapsedTime = 0;
-//     displayTime(elapsedTime);
-// }
+function resetTimer() {
+    clearInterval(timerInterval);
+    elapsedTime = 0;
+    displayTime(elapsedTime);
+    startTime = Date.now() - elapsedTime;
+}
