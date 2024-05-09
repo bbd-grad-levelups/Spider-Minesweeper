@@ -91,7 +91,7 @@ const clearBoard=()=>{
 
     boardInfo.then((data) =>{
 
-        board = data.board;
+        board = data.board.gameBoard;
         numOfSpider = data.spiderNum;
 
         numOfNonSpider=(board.length*board.length)-numOfSpider;

@@ -84,7 +84,12 @@ class Requests {
                 'Authorization': "Bearer "+this.jwt
             }
         }).then(response =>{
+            if (!response.ok) {
+                console.log(response)
+                throw new Error('Network Response was not okay ', response);
+            }
             return response.json();
+            
         })
             
         
@@ -99,6 +104,10 @@ class Requests {
                 'Authorization': "Bearer "+this.jwt
             }
         }).then(response =>{
+            if (!response.ok) {
+                console.log(response)
+                throw new Error('Network Response was not okay ', response);
+            }
             return response.json();
         })
     }
