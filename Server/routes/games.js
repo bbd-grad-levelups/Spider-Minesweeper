@@ -80,6 +80,7 @@ router.get('/board', async (req, res) => {
 
   res.json({
     board: boardPositions,
+    spiderNum: Math.round((gameDifficulty / 100) * gameSize ** 2),
     gameId: gameId
   });
 
