@@ -1,6 +1,5 @@
 class Requests {
-    jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExMTk2MzIwNiwidXNlcm5hbWUiOiJQcm9mLUxpZ2h0IiwiaWF0IjoxNzE1MjYzNzM2LCJleHAiOjE3MTUyNjczMzZ9.3-TeaSiMnE1W8If062H0aDgloRUJnYhPq2FePZDsMpk";
-
+    jwt = null;
     constructor() {
         this.baseURL = "http://spider-sweeper-env.eba-z92mr8uh.eu-west-1.elasticbeanstalk.com/"
     }
