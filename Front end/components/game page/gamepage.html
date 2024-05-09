@@ -11,6 +11,9 @@
     <title>Document</title>
   </head>
   <section class="game-full-content">
+    <section class="mobile-title">
+      <h1>Itsy Bitsy  BOOM!</h1>
+    </section>
     <section class="game-left-side">
         <article class="game-board" id="game-board">
           <section class="board-header">
@@ -28,6 +31,13 @@
 
           </section>
         </article>
+        <footer class="game-bottom-row">
+          <button onclick="openNewGamePopup()" class="new-game-button">+</button>
+          <button onclick="openInstructionsPopup()" class="instructions-button">?</button>
+          <button onclick="handleButtonClick('leaderboard page')" class="leaderboard-button">
+            <img src="media/images/trophy.svg" alt="illustration of a trophy" class="flagImg"/>
+          </button>
+      </footer>
     </section>
     <section class="game-right-side">
         <h1>Itsy Bitsy  BOOM!</h1>
@@ -40,13 +50,5 @@
             <button onclick="openInstructionsPopup()" class="instructions-button">Instructions</button>
         </article>
     </section>
-
-    <footer class="game-bottom-row">
-        <button onclick="openNewGamePopup()" class="new-game-button">+</button>
-        <button onclick="openInstructionsPopup()" class="instructions-button">?</button>
-        <button onclick="handleButtonClick('leaderboard page')" class="leaderboard-button">
-          <img src="media/images/trophy.svg" alt="illustration of a trophy" class="flagImg"/>
-        </button>
-    </footer>
   </section>
 </html>
