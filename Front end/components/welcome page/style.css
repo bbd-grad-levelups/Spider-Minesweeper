@@ -20,24 +20,17 @@ section{
 
 section h1{
     text-align:center;
-    font-size: 5em;
+    font-size: 7.5em;
     margin: 0;
 }
 
 section h2{
     text-align: center;
     font-size: 2em;
+    font-weight: 400;
     border: transparent;
 }
 
-.button-container button{
-    border-radius: 10rem;
-    min-width: 100%;
-    min-height: 3rem;
-    font-family: poppins;
-    border:none;
-    cursor: pointer;
-}
 
 .new-game-button{
     background-color: #FD7461;
@@ -45,6 +38,7 @@ section h2{
 
 .login-button{
     background-color: #B59584;
+    
 }
 
 .leaderboard-button{
@@ -59,73 +53,154 @@ section h2{
     max-height:min-content;
     flex-grow: 0;
 }
+.button-container button{
+    border-radius: 10rem;
+    width: 100%;
+    min-height: 5rem;
+    font-size: 1.5em;
+    color: white;
+    font-family: poppins;
+    border:none;
+    cursor: pointer;
+}
 
 .right-side p{
     color: #353959;
-    font-size: 2em;
+    font-size: 2.5em;
+    font-weight: 600;
     text-align:center;
-}
-
-.spider1{
-    display: none;
+    padding-bottom: 2%;
 }
 .spider2{
-    display: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 10%;
+    margin-right: 10%;
 }
-.spider-right-side{
-    display: none;
+
+/* .spider-left-top-side{
+    width: 30%; 
+    height: 30%; 
+    position: fixed;
+    left: 10vw;
+    top: 5vh;
+} */
+
+.spider-right-top-side{
+    width: 30%; 
+    height: 30%; 
+    position: fixed;
+    right: 3vw;
+    top: 1vh;
 }
+/* .spider-left-bottom-side{
+    width: 30%; 
+    height: 30%; 
+    position: fixed;
+    left: 20vw;
+    bottom: 1vh;
+}
+
+.spider-right-bottom-side{
+    width: 30%; 
+    height: 15%; 
+    position: fixed;
+    right: 2vw;
+    bottom: 1vh;
+} */
+    
 .bottom-spider{
     display: none;
 }
 @media (max-width: 600px){
     main{
+        display: none;
         flex-direction: column;
+        display: flex;
+        flex:1;
+        height: 100%;
+        font-family: 'poppins';
+        color: #353959;
+        width: 100%;
+        justify-content: space-evenly;
     }    
     section h1{
-        font-size: 4em;
+        font-size: 4.5em;
 
     }
     .left-side{
         align-items: center;
     }
     section h2{
-        font-size: 1em;
+        font-size: 1.5em;
+        font-weight: 400;
+        padding-bottom: 5%;
     }
     .right-side{
-        flex:2;
-        gap: 5;
+        flex:1;
+        justify-content:start;
     }
     .right-side p{
         margin: 0;
+        font-size: 1.5em;
     }
-    .spider1{
-        display: block;
-        
-    }
-
-    .spider2{
-        display: block;
-        max-width: 4em;
-    }
-    .spider-right-side{
+    
+    /* .spider-right-top-side{
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
-        width: 100%;
-        margin-right: 10%;
+        width: 40%;
+        margin-right: 1%;
         
+    } */
+
+    .spider-left-top-side{
+        display: none;
+    }
+    
+    .spider-right-top-side{
+        display:flex;
+        width: 10%; 
+        height: 10%; 
+        position: fixed;
+        right: 6vw;
+        top: 2vh;
+    }
+    
+    .spider-left-bottom-side{
+        display: none;
+        width: 10%; 
+        height: 10%; 
+        position: fixed;
+        left: 20vw;
+        bottom: 5vh;
+    }
+    
+    .spider-right-bottom-side{
+        display: none;
+    }
+    
+
+    .button-container button{
+        border-radius: 5rem;
+        width: 90%;
+        height: 20%;
+        font-size: 1.3em;
+        color: white;
+        font-family: poppins;
+        border:none;
+        cursor: pointer;
     }
 
-    .bottom-spider{
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        width: 100%;
-        margin-left: 10%;
-        
+    .button-container{
+        min-width: 80%;
+        max-height:min-content;
+        flex-grow: 0;
     }
-
-
+    
+    .spider1{
+    width:5rem ;
+    }
 }
 

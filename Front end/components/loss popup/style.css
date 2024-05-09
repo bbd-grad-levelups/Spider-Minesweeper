@@ -17,14 +17,20 @@
     
 }
 
+img{
+    width: 40%;
+    height: 40%;
+    margin-bottom: 1%;
+}
+
 .full-content-loss button{
     background-color: transparent;
-    width: 60%;
-    height: 10%;
+    width: 40%;
+    height: 20%;
     border-radius: 2em;
     border:1px solid white;
     margin: 5%;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-family: "poppins";
     color: white;
     cursor: pointer;
@@ -48,3 +54,41 @@
     margin-left: 10%;
 }
 
+@media (max-width: 600px){
+    .full-content-loss{
+       max-width: 100%;
+       height:auto;
+       padding: 1%;
+       margin: auto;
+   }
+
+   .full-content-loss p{
+       text-align: center;
+       font-family: poppins;
+       font-size: 0.8em;
+       flex:1;
+   }
+
+
+   img{
+       width: 30%;
+       height: 20%;
+   }
+
+   .full-content-loss button{
+       background-color: transparent;
+       width: 90%;
+       height: 10%;
+       font-family: poppins;
+       font-size: 1.2em;
+       border-radius: 2em;
+       border:1px solid white;
+       margin: 7%;
+       color: white;
+   } 
+
+   .full-content-loss h1{
+       margin: 0;
+       font-size: 1em;
+   }
+}

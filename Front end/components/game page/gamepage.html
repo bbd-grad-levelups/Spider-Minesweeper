@@ -8,7 +8,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="components/game page/style.css" />
-    <title>Document</title>
+    <title>Play Itsy Bitsy BOOM!</title>
+    <meta name="description" content="Play Itsy Bitsy Boom!Make sure to get all the spiders before your score hits zero!" />
   </head>
   <section class="game-full-content">
     <section class="game-left-side">
@@ -28,10 +29,17 @@
 
           </section>
         </article>
+        <footer class="game-bottom-row">
+          <button onclick="openNewGamePopup()" class="new-game-button">+</button>
+          <button onclick="openInstructionsPopup()" class="instructions-button">?</button>
+          <button onclick="handleButtonClick('leaderboard page')" class="leaderboard-button">
+            <img src="media/images/trophy.svg" alt="illustration of a trophy" class="flagImg"/>
+          </button>
+      </footer>
     </section>
     <section class="game-right-side">
         <h1>Itsy Bitsy  BOOM!</h1>
-        <h2 id="enjoyUser"> Enjoy the game, @username</h2>
+        <h2 id="enjoyUser">Make sure to capture all the spiders before your score hits zero!</h2>
         <p id="Score">Score: 1000</p>
 
         <article class="game-button-section">
@@ -40,13 +48,5 @@
             <button onclick="openInstructionsPopup()" class="instructions-button">Instructions</button>
         </article>
     </section>
-
-    <footer class="game-bottom-row">
-        <button onclick="openNewGamePopup()" class="new-game-button">+</button>
-        <button onclick="openInstructionsPopup()" class="instructions-button">?</button>
-        <button onclick="handleButtonClick('leaderboard page')" class="leaderboard-button">
-          <img src="media/images/trophy.svg" class="flagImg"/>
-        </button>
-    </footer>
   </section>
 </html>
