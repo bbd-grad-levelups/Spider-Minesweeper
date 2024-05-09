@@ -28,6 +28,7 @@ const populateBoard = (event) => {
 
     })
     event.detail.getHighScore().then(data =>{
+        console.log("none")
         if(data.playerScore !=null){
             document.getElementById("position").textContent=data.playerPosition;
             document.getElementById("score").textContent=data.playerScore;
