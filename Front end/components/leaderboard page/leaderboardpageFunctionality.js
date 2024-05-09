@@ -9,7 +9,7 @@ const populateBoard = (event) => {
             let first = document.createElement('section');
             let second = document.createElement('section');
             let last = document.createElement('section');
-            first.textContent = index;
+            first.textContent = index+1;
             second.textContent = element["playerName"];
             last.textContent = element['playerScore'];
             first.classList.add("outer");

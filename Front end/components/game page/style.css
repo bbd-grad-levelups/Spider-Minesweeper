@@ -203,6 +203,14 @@ section h1 {
     flex-direction: column;
 }
 
+.gameGrid button.revealed {
+    background-color: #ccc;
+}
+
+.gameGrid button.mine {
+    background-color: #ff3333;
+}
+
 .flagImg{
     height: 70%;
     width: 70%;

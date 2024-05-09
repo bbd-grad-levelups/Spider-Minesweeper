@@ -11,7 +11,7 @@ class leaderboard extends HTMLElement {
         }).catch(error =>{
             console.error(error)
         })
-        
+
     }
 }
 

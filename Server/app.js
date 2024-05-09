@@ -2,23 +2,25 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 // Middleware
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(bodyParser.json());
 
-// OAuth Step
+// OAuth
 const oauthMiddleware = require('./Middleware/OAuth');
 app.use(oauthMiddleware);
 
+// User Registration
 const registrationMiddleware = require('./Middleware/RegisterUser');
 app.use(registrationMiddleware);
-
-// Test Router
-const testRouter = require('./routes/test');
-app.use('/test', testRouter);
 
 // Games router
 const gamesRouter = require('./routes/games');
@@ -32,11 +34,7 @@ app.use('/modifiers', modifiersRouter);
 const scoresRouter = require('./routes/scores');
 app.use('/scores', scoresRouter);
 
-// Users router - Mostly for getting usernames
-const usersRouter = require('./routes/users');
-app.use('/users', usersRouter);
-
-// Login router - JWT token
+// Login router - User management
 const loginRouter = require('./routes/login');
 app.use('/login', loginRouter);
 

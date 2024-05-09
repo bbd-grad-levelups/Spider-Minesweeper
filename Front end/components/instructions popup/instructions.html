@@ -19,5 +19,15 @@
           all safe squares; lose by clicking 
          on a spider.It's a game of logic and luck, so enjoy and try to beat your best time! <br> </p>
             <button onclick="openNewGamePopup()">Play Now</button>
+
+            <!-- SOME NOTES ON HOW I WANT TO DO THE BOARD:
+            
+            1) grid of buttons
+            2) each button has a on click
+              2.1) on the click check if the cell is open if not do nothing
+              2.2) if yes, either open the cell or flag it depending on the mode of the baord/ right click or left click
+            3) if win (ie all non spider cells are open) display popup
+            4) if lose (click on spider) display loss popup
+            5) if open non bomb cell: use bfs or floodfill to find all components that are 0s until its fully surrounded by by numbers-->
   </main>
 </html>
