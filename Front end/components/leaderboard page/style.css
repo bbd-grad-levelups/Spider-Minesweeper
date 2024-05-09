@@ -27,7 +27,7 @@ section{
 }
 .left-side-leaderboard h1{
     margin: 0;
-    font-size: 5em;
+    font-size: 6em;
     text-align: left;
 }
 .stats{
@@ -138,7 +138,7 @@ img{
 .buttons{
     display: flex;
     justify-content: space-evenly;
-    width: 15rem;
+    width: 20rem;
     height: 15rem;
     flex: 1;
     gap:1em;
@@ -172,9 +172,9 @@ button{
     top: 1vh;
   }
 
-  .back-button button{
+.back-button button{
     background: transparent;
-  }
+}
 
 @media (max-width: 600px){
     .leaderboard-full-content{
@@ -184,7 +184,13 @@ button{
     img{
         max-width: 50%;
     }
+    
+    .left-side-leaderboard{
+        width: 90%;
+    }
+    
     .left-side-leaderboard h1{
+        display: none;
         font-size: 3em;
     }
     .stats{
@@ -201,7 +207,17 @@ button{
         padding-top: 1%;
         flex: 0;
     }
+    .back-button{
+        width: 100px; 
+        height: 100px; 
+        position: fixed;
+        right: 2vw;
+        top: 1vh;
+      }
     
+    .back-button button{
+        background: transparent;
+    }
    
 
 
