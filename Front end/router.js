@@ -45,7 +45,7 @@ const nav = (newPage) => {
 }
 
 const openPopup =() =>{
-    
+
     const popup=pageToObject["popups"]();
     popup.setAttribute('id','openPopup')
     popup.classList.add("popupContainer")
@@ -54,7 +54,7 @@ const openPopup =() =>{
 }
 
 const createChildrenContent=() =>{
-    
+
 
     const popup=pageToObject[currPopup]();
     popup.classList.add('generalContent')
@@ -63,7 +63,7 @@ const createChildrenContent=() =>{
 }
 
 const closePopup = () =>{
-    
+
     const popup=document.getElementById('openPopup');
 
     if(popup){
@@ -76,6 +76,16 @@ const handlePopState = (event) => {
     const page = event.state ? event.state.page : "welcome page";
     nav(page, false);
 };
+
+const calcScore=()=>{
+    const multiplier=requests.getMultiplier('easy',4)
+
+    multiplier.then(data=>{
+        console.log(data)
+    })
+}
+
+console.log("calcscore" + calcScore());
 
 window.addEventListener('popstate', handlePopState);
 nav("welcome page")
