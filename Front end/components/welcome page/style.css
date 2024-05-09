@@ -79,22 +79,22 @@ section h2{
     margin-right: 10%;
 }
 
-.spider-left-top-side{
+/* .spider-left-top-side{
     width: 30%; 
     height: 30%; 
     position: fixed;
     left: 10vw;
     top: 5vh;
-}
+} */
 
 .spider-right-top-side{
     width: 30%; 
     height: 30%; 
     position: fixed;
-    right: 5vw;
-    top: 2vh;
+    right: 3vw;
+    top: 1vh;
 }
-.spider-left-bottom-side{
+/* .spider-left-bottom-side{
     width: 30%; 
     height: 30%; 
     position: fixed;
@@ -108,7 +108,7 @@ section h2{
     position: fixed;
     right: 2vw;
     bottom: 1vh;
-}
+} */
     
 .bottom-spider{
     display: none;
