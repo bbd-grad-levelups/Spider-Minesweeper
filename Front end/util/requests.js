@@ -1,5 +1,5 @@
 class Requests {
-    jwt = null;
+    jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExMTk2MzIwNiwidXNlcm5hbWUiOiJQcm9mLUxpZ2h0IiwiaWF0IjoxNzE1MjYzNzM2LCJleHAiOjE3MTUyNjczMzZ9.3-TeaSiMnE1W8If062H0aDgloRUJnYhPq2FePZDsMpk";
 
     constructor() {
         this.baseURL = "http://spider-sweeper-env.eba-z92mr8uh.eu-west-1.elasticbeanstalk.com/"
@@ -54,7 +54,34 @@ class Requests {
     }
 
     saveJWT(jwt) {
-        jwt = jwt;
+        this.jwt = jwt;
+    }
+
+    getUserName(){
+        const endpoint="login/username";
+        return fetch(this.baseURL+endpoint,{
+            method: "GET",
+            headers:{
+                'Authorization': "Bearer "+this.jwt
+            }
+        }).then(response =>{
+            return response.json();
+        })
+            
+        
+    }
+
+    getHighScore(){
+        const endpoint="scores/highscore";
+
+        return fetch(this.baseURL+endpoint,{
+            method: "GET",
+            headers:{
+                'Authorization': "Bearer "+this.jwt
+            }
+        }).then(response =>{
+            return response.json();
+        })
     }
 }
 

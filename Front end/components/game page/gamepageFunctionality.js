@@ -61,6 +61,7 @@ let difficulty=null;
 let requests=null;
 let score=1000;
 let multiplier=0;
+let username;
 const fillBoard = () => {
     const grid=document.createElement('article');
     grid.classList.add('gameGrid');
@@ -92,6 +93,7 @@ const clearBoard=()=>{
     fillBoard();
     resetTimer();
     document.getElementById('Score').textContent = 'Score: 000';
+    getUserName();
 }
 
 const clickCell=(cellID)=>{
@@ -280,4 +282,12 @@ function resetTimer() {
     elapsedTime = 0;
     displayTime(elapsedTime);
     startTime = Date.now() - elapsedTime;
+}
+
+const getUserName=()=>{
+    requests.getUserName().then(data=>{
+        if(data.userName !==undefined){
+        document.getElementById("enjoyUser").textContent="Enjoy the game, "+data.userName;
+        }
+    })
 }

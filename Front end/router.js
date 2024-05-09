@@ -122,3 +122,7 @@ document.addEventListener('closePopup',()=>{
 document.addEventListener('gameboard-ready',()=>{
     document.dispatchEvent(new CustomEvent('populateGameBoard',{detail:{requests:requests}}));
 })
+
+document.addEventListener('getRequests',()=>{
+    document.dispatchEvent(new CustomEvent('sendWelcomeRequests',{detail:{requests:requests}}));
+})
