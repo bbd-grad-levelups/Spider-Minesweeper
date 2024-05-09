@@ -27,7 +27,18 @@ const populateBoard = (event) => {
         });
 
     })
+    event.detail.getHighScore().then(data =>{
+        if(data.playerScore !=null){
+            document.getElementById("position").textContent=data.playerPosition;
+            document.getElementById("score").textContent=data.playerScore;
+        }else{
+            document.getElementById("position").textContent="Not placed"
+            document.getElementById("score").textContent="0";
+        }
+    })
 
+
+    
 }
 
 
