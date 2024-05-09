@@ -40,6 +40,7 @@ class Requests {
 
     getMultiplier(difficulty,size){
 
+
         const endpoint="modifiers/multiplier";
         const queryParams={boardSize:size,difficulty:difficulty};
         const queryString = new URLSearchParams(queryParams).toString();
