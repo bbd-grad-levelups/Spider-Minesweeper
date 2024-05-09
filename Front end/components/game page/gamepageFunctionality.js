@@ -48,11 +48,12 @@ function getBoard(difficulty, boardLength) {
 
     console.log(gameBoard);
 
-    return gameBoard;
+    return { gameBoard, numOfSpider };
   }
 
-let board = getBoard(20,8);
+let board = getBoard(20,8).gameBoard;
 let boardLength = 8;
+const numOfSpider = getBoard(20,8).numOfSpider;
 let remainingSpidersNum = 10;
 let modeFlag=false;
 
@@ -78,16 +79,18 @@ const fillBoard = () => {
     document.getElementById("remainingSpiders").textContent = remainingSpidersNum;
 };
 
-
-document.addEventListener('populateGameBoard',(event)=>{
-    requests=event.detail.requests;
-    fillBoard();
-})
-
 const clearBoard=()=>{
     document.getElementById('gameBody').innerHTML="";
     board = getBoard(20,8);
     fillBoard();
+}
+
+const clickCell=(cellID)=>{
+    const pos=cellID.split('-')
+    const row=parseInt(pos[0]);
+    const col=parseInt(pos[1]);
+
+    revealCell(row,col,cellID);
 }
 
 const changeFlagMode=()=>{
@@ -166,17 +169,44 @@ function revealCell(row, col, cellID) {
             cell.textContent = board[row][col].count;
         }
     }
-
-
 }
 
-const clickCell=(cellID)=>{
-    const pos=cellID.split('-')
-    const row=parseInt(pos[0]);
-    const col=parseInt(pos[1]);
+const checkGameWin = () => {
+    let allRevealed = true;
+    let win = true;
 
-    revealCell(row,col,cellID);
+    for (let i = 0; i < row; i++) {
+        for (let j = 0; j < col; j++) {
+
+            if (board[i][j].revealed === false && board[i][j].flagged === false) {
+                allRevealed = false;
+            }
+        }
+    }
+
+    if (allRevealed === true) {
+
+        for (let i = 0; i < row; i++) {
+            for (let j = 0; j < col; j++) {
+
+                if (board[i][j].flagged === true && board[i][j].count !== -1) {
+                    win = false;
+                }
+            }
+        }
+    }
+
+    return win;
 }
+
+const timer = () => {
+    document.getElementById("timer").textContent = 1;
+}
+
+document.addEventListener('populateGameBoard',(event)=>{
+    requests=event.detail.requests;
+    fillBoard();
+})
 
 document.addEventListener('setDifficulty',(event)=>{
     difficulty=event.detail.difficulty
