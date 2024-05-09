@@ -34,7 +34,7 @@ section h1 {
     display: none;
 }
 .game-right-side {
-    height: 75%;
+    height: 100%;
 }
 
 .game-right-side h1 {
@@ -44,9 +44,12 @@ section h1 {
 .game-right-side h2 {
     font-size: 2em;
     font-weight: 400;
+    text-align: center;
 }
 
 .game-right-side h3 {
+    padding: 0%;
+    margin: 4%;
     font-size: 3em;
     font-weight: 800;
     color: #FD776E;
@@ -61,7 +64,7 @@ section h1 {
 .game-right-side button {
     border-radius: 10rem;
     min-width: 80%;
-    min-height: 35%;
+    height: 3em;
     font-family: poppins;
     font-size: 1.5em;
     color: white;
@@ -195,6 +198,9 @@ section h1 {
     color: white;
 }
 @media (max-width: 600px) {
+    .game-full-content {
+        margin: 0%;
+    }
     .game-bottom-row{
         display: flex;
         justify-content: space-around;
@@ -235,4 +241,10 @@ section h1 {
         
     }
     
+}
+
+@media (max-width: 950px) {
+    .game-right-side h1 {
+        font-size: 5em;
+    }
 }

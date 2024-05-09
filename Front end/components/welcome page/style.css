@@ -123,6 +123,7 @@ section h2{
         font-family: 'poppins';
         color: #353959;
         width: 100%;
+        justify-content: space-evenly;
     }    
     section h1{
         font-size: 4.5em;
@@ -138,6 +139,7 @@ section h2{
     }
     .right-side{
         flex:1;
+        justify-content:start;
     }
     .right-side p{
         margin: 0;
