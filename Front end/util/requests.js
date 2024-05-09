@@ -5,6 +5,29 @@ class Requests {
         this.baseURL = "http://spider-sweeper-env.eba-z92mr8uh.eu-west-1.elasticbeanstalk.com/"
     }
 
+    getBoard(difficulty,boardSize) {
+        const endpoint = "games/board";
+        const queryParams={boardSize:boardSize,difficulty:difficulty};
+        const queryString = new URLSearchParams(queryParams).toString();
+
+        return fetch(this.baseURL+endpoint+"?"+queryString,{
+                method: "GET",
+                headers: {
+                    'Authorization': "Bearer " + this.jwt
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    console.log(response)
+                    throw new Error('Network Response was not okay ', response);
+                }
+                return response.json();
+            })
+            .catch(error => {
+                console.error("Error: ", error);
+            });
+    }
+
     getLeaderboard() {
         const endpoint = "scores/leaderboard";
         return fetch(this.baseURL + endpoint)
@@ -18,17 +41,15 @@ class Requests {
             .catch(error => {
                 console.error("Error: ", error);
             });
-
-
     }
 
     getMultiplier(difficulty,size){
+
 
         const endpoint="modifiers/multiplier";
         const queryParams={boardSize:size,difficulty:difficulty};
         const queryString = new URLSearchParams(queryParams).toString();
 
-        console.log(this.baseURL+endpoint+"?"+queryString);
         return fetch(this.baseURL+endpoint+"?"+queryString).then(response => {
                 if (!response.ok) {
                     console.log(response.status)
