@@ -225,6 +225,10 @@ section h1 {
     width: 2em;
     font-size: 3em;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 @media (max-width: 600px) {
     .mobile-title{
@@ -243,6 +247,7 @@ section h1 {
         align-items: center;
         padding-bottom: 5%;
         padding-top: 5%;
+        
     }
     .game-right-side {
         display: none;
