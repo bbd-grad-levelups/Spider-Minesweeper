@@ -1,59 +1,3 @@
-function getBoard(difficulty, boardLength) {
-    console.log('difficulty: ' + difficulty);
-    console.log('boardLength: ' + boardLength);
-
-    const numOfSpider = Math.round((difficulty / 100) * boardLength ** 2);
-
-    console.log('numOfSpider: ' + numOfSpider);
-
-    let gameBoard = [];
-
-	for (let i = 0; i < boardLength; i++) {
-			gameBoard[i] = [];
-			for(let j = 0; j < boardLength; j++) {
-					gameBoard[i][j] = {
-						revealed: false,
-                        flagged: false,
-						count: 0,
-					};
-			}
-	}
-
-    var spiderPositions = [];
-    for (let i = 0; i < numOfSpider; i++) {
-
-        let newPositionX = Math.round(Math.random() * (boardLength -1));
-        let newPositionY = Math.round(Math.random() * (boardLength -1));
-
-        while (gameBoard[newPositionX][newPositionY].count === -1){
-            newPositionX = Math.round(Math.random() * (boardLength -1));
-            newPositionY = Math.round(Math.random() * (boardLength -1));
-
-        }
-        gameBoard[newPositionX][newPositionY].count = -1;
-
-
-        spiderPositions.push([newPositionX, newPositionY]);
-    }
-
-    for (const [x, y] of spiderPositions) {
-        for (let i = Math.max(0, x - 1); i <= Math.min(boardLength - 1, x + 1); i++) {
-            for (let j = Math.max(0, y - 1); j <= Math.min(boardLength - 1, y + 1); j++) {
-                if (gameBoard[i][j].count !== -1) {
-                        gameBoard[i][j].count += 1;
-                }
-            }
-        }
-    }
-
-    console.log(gameBoard);
-
-    return { gameBoard, numOfSpider };
-  }
-
-let board = getBoard(30,3).gameBoard;
-let boardLength = 8;
-let numOfSpider = getBoard(30,3).numOfSpider;
 let numOfNonSpider=0;
 let openSlots=0;
 let modeFlag=false;
@@ -62,6 +6,9 @@ let requests=null;
 let score=1000;
 let multiplier=0;
 let username;
+let timerInterval;
+let startTime;
+let elapsedTime = 0;
 
 const fillBoard = () => {
     const grid=document.createElement('article');
@@ -158,6 +105,10 @@ function revealCell(row, col, cellID) {
     }
     else {
 
+        if (board[row][col].flagged) {
+            return;
+        }
+
         board[row][col].revealed = true;
 
         openSlots++;
@@ -213,44 +164,6 @@ const getMultiplier=(difficulty)=>{
     })
 }
 
-// console.log("calcscore" + calcScore());
-
-document.addEventListener('populateGameBoard',(event)=>{
-    requests=event.detail.requests;
-    clearBoard();
-    getMultiplier(difficulty);
-    console.log('populate:'+ score)
-    stopTimer();
-    document.getElementById('Score').textContent = 'Score: 000';
-
-})
-
-document.addEventListener('setDifficulty',(event)=>{
-    difficulty=event.detail.difficulty
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-let timerInterval;
-let startTime;
-let elapsedTime = 0;
-
 function startTimer() {
     if (timerInterval === null) { // Check if timerInterval is null
         startTime = Date.now() - elapsedTime;
@@ -294,6 +207,7 @@ const getUserName=()=>{
         }
     })
 }
+
 document.addEventListener('populateGameBoard',(event)=>{
     requests=event.detail.requests;
     clearBoard();
