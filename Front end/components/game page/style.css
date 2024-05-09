@@ -83,7 +83,7 @@ section h1 {
     align-items: center;
     flex-direction: column;
     width: 50%;
-    gap: 7% ;
+    gap: 1em;
     flex: 1;
     
 }
