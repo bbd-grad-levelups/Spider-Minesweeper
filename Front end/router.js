@@ -101,3 +101,7 @@ document.addEventListener('closePopup',()=>{
 document.addEventListener('gameboard-ready',()=>{
     document.dispatchEvent(new CustomEvent('populateGameBoard',{detail:{requests:requests}}));
 })
+
+document.addEventListener("giveRequest", ()=>{
+    document.dispatchEvent(new CustomEvent('recieveRequest',{detail:{requests:requests}}))
+})
