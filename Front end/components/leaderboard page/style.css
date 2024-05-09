@@ -130,6 +130,7 @@ img{
 }
 .right-stats p{
     text-wrap: nowrap;
+    
 }
 .left-stats{
     display: flex;

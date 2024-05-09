@@ -22,7 +22,7 @@ section {
 
 section h1 {
     text-align: center;
-    font-size: 8em;
+    font-size: 6em;
     margin: 0;
 }
 
@@ -40,27 +40,28 @@ section h1 {
 }
 
 .game-right-side h1 {
-    font-size: 6em;
+    font-size: 4.5em;
 }
 
 .game-right-side h2 {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 400;
     text-align: center;
 }
 
 .game-right-side h3 {
     padding: 0%;
-    margin: 4%;
-    font-size: 3em;
+    margin: 2%;
+    font-size: 2em;
     font-weight: 800;
     color: #FD776E;
 }
 
 .game-right-side p {
     color: #FD776E;
-    font-size: 3em;
+    font-size: 2em;
     font-family: 'poppins';
+    margin:1em;
 }
 
 .game-right-side button {
@@ -172,7 +173,7 @@ section h1 {
     width: 100%;
     height: 100%;
     border-radius: 1em;
-    font-size: 3em;
+    font-size: 1em;
     font-weight: 600;
     color: #373B5B;
     background-color: #EAE6DA;
