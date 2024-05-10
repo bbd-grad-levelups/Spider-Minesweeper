@@ -6,6 +6,7 @@
     gap:0;
     color: white;
 }
+
 .full-content-instructions p{
     width: 90%;
     text-align: center;
@@ -67,6 +68,4 @@
         margin: 0;
         font-size: 1em;
     }
-
-    
 }

@@ -4,6 +4,7 @@
     height: 100%;
     gap:0;
 }
+
 .full-content-warning p{
     text-align: center;
     font-family: poppins;
@@ -14,7 +15,7 @@
     margin: 0;
     font-size: 3em;
     color: white;
-    
+
 }
 
 .full-content-warning button{
@@ -33,6 +34,7 @@
 .full-content-warning button:active{
     background-color: #ff7f61;
 }
+
 .warning-heading{
     width: 100%;
     display: flex;

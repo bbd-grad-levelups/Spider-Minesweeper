@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
 }
+
 html{
     display: flex;
     flex-direction: column;
@@ -11,6 +12,7 @@ html{
     height: 100%;
     background-color: #FFF8E8;
 }
+
 body{
     display: flex;
     flex-direction: row;

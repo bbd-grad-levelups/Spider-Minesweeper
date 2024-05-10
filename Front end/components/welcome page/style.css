@@ -38,7 +38,6 @@ section h2{
 
 .login-button{
     background-color: #B59584;
-    
 }
 
 .leaderboard-button{
@@ -53,6 +52,7 @@ section h2{
     max-height:min-content;
     flex-grow: 0;
 }
+
 .button-container button{
     border-radius: 10rem;
     width: 100%;
@@ -71,6 +71,7 @@ section h2{
     text-align:center;
     padding-bottom: 2%;
 }
+
 .spider2{
     display: flex;
     flex-direction: row;
@@ -79,40 +80,18 @@ section h2{
     margin-right: 10%;
 }
 
-/* .spider-left-top-side{
-    width: 30%; 
-    height: 30%; 
-    position: fixed;
-    left: 10vw;
-    top: 5vh;
-} */
-
 .spider-right-top-side{
-    width: 30%; 
-    height: 30%; 
+    width: 30%;
+    height: 30%;
     position: fixed;
     right: 3vw;
     top: 1vh;
 }
-/* .spider-left-bottom-side{
-    width: 30%; 
-    height: 30%; 
-    position: fixed;
-    left: 20vw;
-    bottom: 1vh;
-}
 
-.spider-right-bottom-side{
-    width: 30%; 
-    height: 15%; 
-    position: fixed;
-    right: 2vw;
-    bottom: 1vh;
-} */
-    
 .bottom-spider{
     display: none;
 }
+
 @media (max-width: 600px){
     main{
         display: none;
@@ -124,63 +103,57 @@ section h2{
         color: #353959;
         width: 100%;
         justify-content: space-evenly;
-    }    
+    }
+
     section h1{
         font-size: 4.5em;
-
     }
+
     .left-side{
         align-items: center;
     }
+
     section h2{
         font-size: 1.5em;
         font-weight: 400;
         padding-bottom: 5%;
     }
+
     .right-side{
         flex:1;
         justify-content:start;
     }
+
     .right-side p{
         margin: 0;
         font-size: 1.5em;
     }
-    
-    /* .spider-right-top-side{
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        width: 40%;
-        margin-right: 1%;
-        
-    } */
 
     .spider-left-top-side{
         display: none;
     }
-    
+
     .spider-right-top-side{
         display:flex;
-        width: 10%; 
-        height: 10%; 
+        width: 10%;
+        height: 10%;
         position: fixed;
         right: 6vw;
         top: 2vh;
     }
-    
+
     .spider-left-bottom-side{
         display: none;
-        width: 10%; 
-        height: 10%; 
+        width: 10%;
+        height: 10%;
         position: fixed;
         left: 20vw;
         bottom: 5vh;
     }
-    
+
     .spider-right-bottom-side{
         display: none;
     }
-    
 
     .button-container button{
         border-radius: 5rem;
@@ -198,9 +171,9 @@ section h2{
         max-height:min-content;
         flex-grow: 0;
     }
-    
+
     .spider1{
-    width:5rem ;
+        width:5rem ;
     }
 }
 

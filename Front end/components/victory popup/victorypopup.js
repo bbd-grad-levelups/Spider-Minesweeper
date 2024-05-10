@@ -4,11 +4,11 @@ class victorypopup extends HTMLElement {
     constructor(){
         super();
     }
+
     connectedCallback(){
         getHTML('components/victory popup/victorypopup.html').then(html =>{
             this.innerHTML=html;
         }).catch(error =>console.error(error));
-        
     }
 }
 

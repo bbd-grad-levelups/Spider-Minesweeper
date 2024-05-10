@@ -4,6 +4,7 @@
     height: 100%;
     gap:0;
 }
+
 .full-content-loss p{
     text-align: center;
     font-family: poppins;
@@ -14,7 +15,6 @@
     margin: 0;
     font-size: 3em;
     color: white;
-    
 }
 
 img{
@@ -39,6 +39,7 @@ img{
 .full-content-loss button:active{
     background-color: #6e74a6;
 }
+
 .loss-heading{
     width: 100%;
     display: flex;
@@ -47,7 +48,6 @@ img{
 }
 
 .loss-footer{
-
     width: 100%;
     display: flex;
     justify-content: start;
@@ -69,7 +69,6 @@ img{
        flex:1;
    }
 
-
    img{
        width: 30%;
        height: 20%;
@@ -85,7 +84,7 @@ img{
        border:1px solid white;
        margin: 7%;
        color: white;
-   } 
+   }
 
    .full-content-loss h1{
        margin: 0;

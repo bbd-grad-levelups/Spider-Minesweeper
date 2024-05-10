@@ -9,6 +9,7 @@
     color: #353959;
     width: 100%;
 }
+
 section{
     flex:1;
     display: flex;
@@ -22,14 +23,17 @@ section{
     color: #FD7461;
     text-align: center;
 }
+
 .left-side-leaderboard{
     height: 100%;
 }
+
 .left-side-leaderboard h1{
     margin: 0;
     font-size: 6em;
     text-align: left;
 }
+
 .stats{
     display: flex;
     flex-direction: row;
@@ -62,6 +66,7 @@ section{
     padding: 0;
     margin: 0;
 }
+
 .board{
     display: flex;
     flex-direction: column;
@@ -74,16 +79,17 @@ section{
     flex-direction: row;
     width: 100%;
     text-align: left;
-    align-items: center; /* Align items vertically in the center */
+    align-items: center;
     flex: 1;
     justify-content: center;
 }
+
 .boardSection p{
     flex:1;
     text-align: left;
     font-weight: 700;
     font-size: 1.5em;
-    
+
 }
 
 .outer{
@@ -98,11 +104,9 @@ section{
     flex:5
 }
 
-
 img{
     max-width: 90%
 }
-
 
 .boardSectionEven{
     background-color: #EAE6DA;
@@ -114,9 +118,8 @@ img{
     align-items: center;
     flex: 1;
     justify-content: center;
-
-
 }
+
 .boardSectionEven p{
     flex:1;
     text-align: center;
@@ -128,10 +131,11 @@ img{
     padding-left: 5%;
     border-left: 1px solid #FD7461;
 }
+
 .right-stats p{
     text-wrap: nowrap;
-    
 }
+
 .left-stats{
     display: flex;
     flex-direction: column;
@@ -153,12 +157,13 @@ button{
     border-radius: 10rem;
     font-family: 'poppins';
     font-size: 1.5em;
-    color:#ffffff; 
+    color:#ffffff;
     font-weight: 400;
     justify-content: space-evenly;
     border:none;
     cursor: pointer;
 }
+
 .new-game-button{
     background-color: #FD7461;
 }
@@ -168,8 +173,8 @@ button{
 }
 
 .back-button{
-    width: 100px; 
-    height: 100px; 
+    width: 100px;
+    height: 100px;
     position: fixed;
     right: 2vw;
     top: 1vh;
@@ -187,21 +192,23 @@ button{
     img{
         max-width: 50%;
     }
-    
+
     .left-side-leaderboard{
         width: 90%;
     }
-    
+
     .left-side-leaderboard h1{
         display: none;
         font-size: 3em;
     }
+
     .stats{
         width: fit-content;
         margin: 0%;
         padding: 10%;
         height: 1em;
     }
+
     .buttons{
         display: flex;
         justify-content: space-evenly;
@@ -210,18 +217,16 @@ button{
         padding-top: 1%;
         flex: 0;
     }
+
     .back-button{
-        width: 100px; 
-        height: 100px; 
+        width: 100px;
+        height: 100px;
         position: fixed;
         right: 2vw;
         top: 1vh;
       }
-    
+
     .back-button button{
         background: transparent;
     }
-   
-
-
 }

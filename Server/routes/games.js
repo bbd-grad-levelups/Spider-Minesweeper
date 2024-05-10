@@ -1,18 +1,15 @@
-// Games route
-
 const express = require('express');
 const sql = require('mssql');
 const { pool } = require('../db');
 const router = express.Router();
 
 function getBoard(difficulty, boardLength) {
-
   const numOfSpider = Math.round((difficulty / 100) * boardLength ** 2);
-
   let gameBoard = [];
 
   for (let i = 0; i < boardLength; i++) {
       gameBoard[i] = [];
+
       for(let j = 0; j < boardLength; j++) {
           gameBoard[i][j] = {
             revealed: false,
@@ -24,14 +21,12 @@ function getBoard(difficulty, boardLength) {
 
   var spiderPositions = [];
   for (let i = 0; i < numOfSpider; i++) {
-
       let newPositionX = Math.round(Math.random() * (boardLength -1));
       let newPositionY = Math.round(Math.random() * (boardLength -1));
 
       while (gameBoard[newPositionX][newPositionY].count === -1){
           newPositionX = Math.round(Math.random() * (boardLength -1));
           newPositionY = Math.round(Math.random() * (boardLength -1));
-
       }
 
       gameBoard[newPositionX][newPositionY].count = -1;
@@ -51,9 +46,7 @@ function getBoard(difficulty, boardLength) {
   return { gameBoard, numOfSpider };
 }
 
-// Get all
 router.get('/board', async (req, res) => {
-
   var difficulty = req.query.difficulty;
   var boardLength = req.query.boardSize;
   var userName = req.user.userName;
@@ -63,9 +56,11 @@ router.get('/board', async (req, res) => {
     FROM dbo.BoardSize
     WHERE SizeDescription = @boardLength
   `;
+
   const sizeResult = await pool.request()
       .input('boardLength', sql.VarChar, boardLength)
       .query(boardQuery);
+
   const gameSize = sizeResult.recordset[0].BoardSize;
 
   const diffQuery = `
@@ -73,16 +68,17 @@ router.get('/board', async (req, res) => {
     FROM dbo.Difficulty
     WHERE Difficultyname = @difficulty
   `;
+
   const difficultyResult = await pool.request()
     .input('difficulty', sql.VarChar, difficulty)
     .query(diffQuery);
+
   const gameDifficulty = difficultyResult.recordset[0].Bombpercentage;
 
   const boardPositions = getBoard(gameDifficulty, gameSize);
-
   let gameId = -1;
-  if (userName !== '')
-  {
+
+  if (userName !== '') {
     const insertProcedure = 'InsertGame @UserName, @DifficultyName, @SizeDescription, @GameBoard';
     const insertResult = await pool.request()
         .input('UserName', sql.NVarChar, userName)
@@ -98,8 +94,6 @@ router.get('/board', async (req, res) => {
     spiderNum: Math.round((gameDifficulty / 100) * gameSize ** 2),
     gameId: gameId
   });
-
 });
-
 
 module.exports = router;

@@ -11,11 +11,14 @@
     <title>Play Itsy Bitsy BOOM!</title>
     <meta name="description" content="Play Itsy Bitsy Boom!Make sure to get all the spiders before your score hits zero!" />
   </head>
+
   <section class="game-full-content">
     <section class="game-left-side">
         <article class="game-board" id="game-board">
           <section class="board-header">
+
             <p id="remainingSpiders">000</p>
+
             <button onclick="clearBoard()">
               <img src="./media/images/Happy Spider.svg"/>
             </button>
@@ -29,13 +32,14 @@
 
           </section>
         </article>
+
         <footer class="game-bottom-row">
           <button onclick="openNewGamePopup()" class="new-game-button">+</button>
           <button onclick="openInstructionsPopup()" class="instructions-button">?</button>
           <button onclick="handleButtonClick('leaderboard page')" class="leaderboard-button">
             🏆
           </button>
-      </footer>
+        </footer>
     </section>
     <section class="game-right-side">
         <h1>Itsy Bitsy  BOOM!</h1>

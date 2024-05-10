@@ -6,6 +6,7 @@ export const getHTML=(fileLoc)=>{
         .then(html=>{
             const broken=html.split('\n')
             let linesToRemove=[]
+
             broken.forEach((line,index) =>{
                 if(line.includes("<script>") && !broken[index-1].includes("live-server")){
                     for(let i=index;i<broken.length;i++){
@@ -16,13 +17,14 @@ export const getHTML=(fileLoc)=>{
                     }
                 }
             })
+
             linesToRemove.forEach(({ start, stop }) => {
                 broken.splice(start, stop - start + 1);
             });
+
             const resultHTML = broken.join('\n');
             resolve(resultHTML);
         }).catch(error => {reject(error)})
     })
-
 }
 

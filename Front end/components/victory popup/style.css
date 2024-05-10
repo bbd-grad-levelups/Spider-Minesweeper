@@ -4,6 +4,7 @@
     height: 80%;
     gap:0;
 }
+
 .full-content-victory p{
     text-align: center;
     font-family: poppins;
@@ -53,7 +54,6 @@ img{
         flex:1;
     }
 
-
     img{
         width: 20%;
         height: 20%;
@@ -69,7 +69,7 @@ img{
         border:1px solid white;
         margin: 7%;
         color: white;
-    } 
+    }
 
     .full-content-victory h1{
         margin: 0;
