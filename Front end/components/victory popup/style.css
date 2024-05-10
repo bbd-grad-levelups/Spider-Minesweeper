@@ -21,7 +21,10 @@ img{
     max-width: 70%;
     height: 50%;
 }
-
+.trophy{
+    font-size: 10rem;
+    margin: 0%;
+}
 
 .full-content-victory button:active{
     background-color: "#ca5c4d";

@@ -33,7 +33,10 @@ section{
     font-size: 6em;
     text-align: left;
 }
-
+.trophy{
+    font-size: 10rem;
+    margin: 0%;
+}
 .stats{
     display: flex;
     flex-direction: row;
