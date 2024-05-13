@@ -18,10 +18,5 @@ const openInstructionsPopup=()=>{
 requests=null;
 
 document.addEventListener("sendWelcomeRequests",(event)=>{
-    requests=event.detail.requests;
-    requests.getUserName().then(data =>{
-        if(data.userName!==undefined){
-            document.getElementById("WelcomeUser").textContent="Welcome "+data.userName;
-        }
-    })
+    document.getElementById("WelcomeUser").textContent="Welcome Human";
 })

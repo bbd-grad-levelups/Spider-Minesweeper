@@ -38,19 +38,19 @@ const fillBoard = () => {
 const clearBoard=()=>{
     seconds=0;
     document.getElementById('gameBody').innerHTML="";
-    boardInfo = requests.getBoard(difficulty, 'large');
+    boardInfo = requests.getBoard(difficulty, 'Large');
 
-    boardInfo.then((data) =>{
-        board = data.board.gameBoard;
-        numOfSpider = data.spiderNum;
-        currentGameId = data.gameId;
 
-        numOfNonSpider=(board.length*board.length)-numOfSpider;
-        openSlots=0;
-        fillBoard();
-        resetTimer();
-        document.getElementById('Score').textContent = 'Score: 000';
-    })
+    board = boardInfo.board.gameBoard;
+    numOfSpider = boardInfo.spiderNum;
+    currentGameId = boardInfo.gameId;
+
+    numOfNonSpider=(board.length*board.length)-numOfSpider;
+    openSlots=0;
+    fillBoard();
+    resetTimer();
+    document.getElementById('Score').textContent = 'Score: 000';
+
 }
 
 const clickCell=(cellID)=>{
@@ -107,7 +107,6 @@ function revealCell(row, col, cellID) {
 
         if(checkGameWin()){
             document.dispatchEvent(new CustomEvent('openPopup',{detail:{message:"victory popup"}}))
-            requests.submitScore(currentGameId, (score - seconds) * multiplier);
             resetTimer();
             document.getElementById('Score').textContent = 'Score: 000';
         }
@@ -148,10 +147,13 @@ const checkGameWin = () => {
 }
 
 const getMultiplier=(difficulty)=>{
-    const multiplierReq=requests.getMultiplier(difficulty,'large')
-    multiplierReq.then(data=>{
-        multiplier=data.Multiplier;
-    })
+  console.log("diff is: " + difficulty);
+    multiplier = 1;
+    if (difficulty === 'medium') {
+      multiplier = 2;
+    } else if (difficulty === 'hard') {
+      multiplier = 3;
+    }    
 }
 
 function startTimer() {
@@ -189,12 +191,7 @@ function resetTimer() {
 }
 
 const getUserName=()=>{
-    console.log("USER NAME GOT")
-    requests.getUserName().then(data=>{
-        if(data.userName !==undefined){
-        document.getElementById("enjoyUser").textContent="Enjoy the game, "+data.userName;
-        }
-    })
+  document.getElementById("enjoyUser").textContent="Enjoy the game, Human!";  
 }
 
 document.addEventListener('populateGameBoard',(event)=>{
